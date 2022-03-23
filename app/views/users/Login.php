@@ -61,7 +61,7 @@ EOT;
     </div>
     </div>
 EOT;
-    echo $text;
+    echo $text . "<a href='".URLROOT."pages/editProfile'> Profile </a>";
   }
 
   private function printEmail()

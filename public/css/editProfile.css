@@ -1,0 +1,26 @@
+
+#img {
+    margin-top:14%;
+    margin-left:-3%;
+    width: 40%;
+}
+#title{
+    position: absolute;
+    left:8%;
+    top: 15%;
+    font-size: 65px;
+    font-weight: bold;
+    color: black;
+}
+#centerEditForm{
+    position: absolute;
+    left: 55%;
+    top: 35%;
+}
+label{
+    color: black;
+    font-weight:500;
+}
+#margin-bottom{
+    margin-bottom:10%;
+}

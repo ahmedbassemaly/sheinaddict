@@ -12,9 +12,17 @@ class Pages extends Controller
 
     public function about()
     {
-        $viewPath = VIEWS_PATH . 'pages/About.php';
+        $viewPath = VIEWS_PATH . 'pages/about.php';
         require_once $viewPath;
         $aboutView = new About($this->getModel(), $this);
+        $aboutView->output();
+    }
+
+    public function editProfile()
+    {
+        $viewPath = VIEWS_PATH . 'pages/editProfile.php';
+        require_once $viewPath;
+        $aboutView = new editProfile($this->getModel(), $this);
         $aboutView->output();
     }
 
