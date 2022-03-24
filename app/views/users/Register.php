@@ -6,56 +6,54 @@ class Register extends view
     $title = $this->model->title;
 
     require APPROOT . '/views/inc/header.php';
-    $text = <<<EOT
-    <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4"> $title</h1>
-    </div>
-  </div>
-
-  </div>
-  </div>
-  </div>
-EOT;
-    echo $text;
+    
     $this->printForm();
     require APPROOT . '/views/inc/footer.php';
   }
 
   private function printForm()
   {
-    $action = URLROOT . 'users/register';
-    $loginUrl = URLROOT . 'users/login';
-
-    $text = <<<EOT
-    <div class="row">
-    <div class="col-md-6 mx-auto">
-    <div class="card card-body bg-light mt-5">
-    <h2>Sign Up</h2>
-    <form action="$action" method="post">
-EOT;
-    echo $text;
-    $this->printName();
-    $this->printEmail();
-    $this->printPassword();
-    $this->printConfirmPassword();
-    $text = <<<EOT
-    <div class="container">
-      <div class="row mt-4">
-        <div class="col">
-          <input type="submit" value="Register" class="form-control btn btn-lg btn-primary btn-block">
+    ?>
+    <div class="register">
+    <link rel="stylesheet" href="<?php echo URLROOT . 'css/register.css'; ?>">
+      <form action="" method="POST" class="formcontainer">
+        <br>
+        <h2>Sign Up</h2>
+        <div class="form__field">
+          
+            <input type="text" id="txt" name="fname" placeholder="First Name">
+            <input type="text" id="txt" name="lname" placeholder="Last Name">
+          
         </div>
-        <div class="col">
-          <a href="$loginUrl" class="form-control btn btn-lg btn-block">Current user, login here</a>
+        <div class="form__field">
+          
+            <input type="text" id="Email" name="Email" placeholder="Email" class='input-line full-width'>
+          
         </div>
-      </div>
-      </div>
-    </form>
-    </div>
-    </div>
-    </div>
-EOT;
-    echo $text;
+        <div class="form__field">
+          
+            <input type="password" id="password" name="password" placeholder="Password">
+          
+        </div>
+          
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+          
+        <div class="form__field">
+          
+            <input type="text" id="phone" name="phone" placeholder="Phone Number">
+            <input type="text" id="address" name="address" placeholder="Address">
+          
+        </div>
+        <div class="form__field">
+          
+            <input type="submit" value="Create My Account" id="submit" name="submit">
+          
+        </div>
+      </form>
+      <p class="acc">Already have an account? <a style="color:blue;"href="<?php echo URLROOT . 'users/Login'; ?>">Log in here </a></p>
+      <br>
+  </div>
+    <?php
   }
 
   private function printName()

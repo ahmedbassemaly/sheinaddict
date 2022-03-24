@@ -1,0 +1,64 @@
+body{
+    background: rgb(211,188,180);
+    background: linear-gradient(274deg, rgba(211,188,180,1) 0%,
+    rgba(222,204,195,1) 38%, rgba(193,168,159,1) 66%);
+}
+
+.register{
+    border:20%;
+    border-color: #C1A89F;
+    border-radius: 20px;
+    text-align: center;
+    width: 50%;
+    margin:0 auto;
+    background-color: white;
+    margin-bottom:4%;
+}
+.acc{
+    font-size:80%;
+    color:black; 
+}
+input[type="text"],[type="password"]{
+    width:64%;
+    padding:1%;
+    background-color: white;
+    outline:0;
+    border-width: thin;
+	border-radius: 20px;
+	border-color:#95705F;
+    margin-top:3%;
+}
+input[name="fname"]{
+    width:30%;
+    padding:1%;
+    box-sizing: border-box;
+    margin-right:2%;
+}
+input[name="lname"]{
+    width:30%;
+    padding:1%;
+    box-sizing: border-box;
+    margin-left:2%;
+}
+input[name="address"]{
+    width:30%;
+    padding:1%;
+    box-sizing: border-box;
+    margin-left:2%;
+}
+input[name="phone"]{
+    width:30%;
+    padding:1%;
+    box-sizing: border-box;
+    margin-right:2%;
+}
+input[type="submit"]{
+    border: none;
+    color: white;
+    border-radius:20px;
+    padding: 10px 25px;
+    background: #C1A89F;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
