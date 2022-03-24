@@ -1,3 +1,430 @@
-.jumbotron{
+/* .jumbotron{
     background-color:#cbcacc;
+} */
+
+/* navigation bar */
+.navbar-expand-lg {
+    background-color:  #d2b7a4;
 }
+.navbar-brand{
+    font-family: "Lucida Handwriting", cursive;
+    font-size: 24;
+    position: absolute;
+    margin-left: 40%;
+}
+
+.search-container *,
+.search-container *:after,
+.search-container *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* search bar focus */
+.search-container *:focus {
+  background: #fbfbfb;
+  color: #333333;
+  outline: 0;
+}
+
+/* search bar container */
+.search-container {
+    display: table;
+    position: relative;
+    width: 51px;
+    margin-left: 60%;
+  }
+  
+  /* search icon button */
+  .search-icon-btn {
+    background-color: #d2b7a4;
+    display: table-cell;
+    height: 50px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 50px;
+    z-index: 2;
+  }
+  
+  /* search bar input container */
+  .search-input {
+    position: absolute;
+    right: 4;
+    z-index: 1;
+  }
+  
+  /* search bar input */
+  .search-input input.search-bar {
+    border: 1px solid #cccccc;
+    border-radius: 25px;
+    height: 50px;
+    padding: 0px;
+    width: 40px;
+  }
+  .search-input input.search-bar:focus {
+    padding-left: 60px;
+    padding-right: 10px;
+    width: 200px;
+  }
+  
+  /* transition effect */
+  .search-input input.search-bar,
+  .search-icon-btn {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  
+  /* hover on search bar container */
+  .search-container:hover > .search-input input.search-bar {
+    padding-left: 60px;
+    padding-right: 10px;
+    width: 400px;
+  }
+
+/* footer */
+
+.footer {
+    text-align: center;
+    padding: 3px;
+    background-color: #d2b7a4;
+    color: white;
+    height: 20%;
+
+  }
+
+/* categories cards */
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+html{
+    line-height: 1.15;
+}
+body{
+    font-family: 'roboto', sans-serif;
+    color: #000000;
+    font-weight: 400;
+    background-color: #ffffff;
+    /* background-color: #ece8e5; */
+}
+
+a{
+    color: #ffffff;
+    font-weight: 400;
+    outline: none;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+a:hover{
+    color: #D3BCB4;
+    font-weight: 400;
+    outline: none;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.container-1{
+    width: 100%;
+    padding-right:15px ;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row-1{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10%;
+    width: 100%;
+    height: 100%;
+    margin-left: 2%;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.column{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.section-title{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 45px 0 30px 0;
+}
+.section-title::after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2%;
+    left: 0;
+    background: #ece8e5;
+}
+.effect{
+    position: relative;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+.effect .effect-img{
+    font-size: 0;
+    overflow: hidden;
+}
+.effect .effect-img img{
+    width: 100%;
+    height: auto;
+    transition: all .3s;
+}
+.effect:hover .effect-img img{
+    transform: scale(1.2);
+}
+
+.effect-img a[href]::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+.effect .effect-text{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    transition: all .3s ease-in;
+    opacity: 0;
+}
+.effect .effect-text .inner{
+    position: absolute;
+    padding: 15px;
+    z-index: 1;
+}
+.effect .effect-text:before,
+.effect .effect-text:after{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 0;
+    content: '';
+}
+.effect .effect-text:before{
+    border-top: 3px solid #ffffff;
+    border-right: 3px solid #ffffff;
+    left: -100%;
+    top: 0;
+}
+.effect .effect-text:after{
+    border-bottom: 3px solid #ffffff;
+    border-left: 3px solid #ffffff;
+    left: 100%;
+    bottom: 0;
+}
+.effect:hover .effect-text{
+    opacity: 1;
+}
+.effect:hover .effect-text:after,
+.effect:hover .effect-text:before{
+    animation-delay: .1s;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+.effect:hover .effect-text:after{
+    animation-name: left-up;
+}
+.effect:hover .effect-text:before{
+    animation-name: right-dn;
+}
+@-webkit-keyframes left-up {
+    0% {
+        left: 100%;
+        height: 0;
+    }
+    50% {
+        left: 0;
+        height: 0;
+    }
+    100% {
+        height: 100%;
+        left: 0;
+    }
+}
+@-webkit-keyframes right-dn {
+    0% {
+        left: -100%;
+        height: 0;
+    }
+    50% {
+        left: 0;
+        height: 0;
+    }
+    100% {
+        height: 100%;
+        left: 0;
+    }
+}
+.effect .effect-text h2{
+    height: 45px;
+    color: #ffffff;
+    font-size: 25px;
+    margin: 0;
+}
+.effect .effect-text p{
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.effect .effect-btn .btn{
+    display: inline-block;
+    height: 35px;
+    padding: 7px 15px;
+    color: #333333;
+    background: #ffffff;
+}
+
+@media (min-width:992px){
+    .container-1{
+        max-width: 960px;
+    }
+    .column{
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+/* slide show  */
+  .pic-wrapper {
+    position: relative;
+  width: 1400px;
+  height: 600px;
+  margin-left: 3%;
+    /* width: 100%;
+    height: 100%; */
+    padding-left: 3%;
+    padding-right: 3%;
+    overflow: hidden;
+  }
+
+  p{
+    font-family: "Sans-serif", Verdana;
+    font-style: italic;
+      font-size: 240%;
+      color: #95705F;
+  }
+
+  .center{
+    margin-left: 40%;
+    justify-content: center;
+    align-items: center;
+  }
+  figure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    opacity: 0;
+    margin-left: -30;
+    /* padding-left: 4%; */
+    padding-bottom: 50%;
+    padding-top: 5%;
+    /*animation*/
+    
+    animation: slideShow 24s linear infinite 0s;
+    -o-animation: slideShow 24s linear infinite 0s;
+    -moz-animation: slideShow 24s linear infinite 0s;
+    -webkit-animation: slideShow 24s linear infinite 0s;
+  }
+
+
+  .pic-1 {
+    opacity: 1;
+    background: url(1.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    /* -moz-background-size: cover; */
+    /* -o-background-size: cover; */
+    background-size: cover;
+  }
+  .pic-2 {
+    animation-delay: 6s;
+    -o-animation-delay: 6s;
+    -moz--animation-delay: 6s;
+    -webkit-animation-delay: 6s;
+    background: url(2.jpg) no-repeat center center;
+    /* -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+  }
+  .pic-3 {
+    animation-delay: 12s;
+    -o-animation-delay: 12s;
+    -moz--animation-delay: 12s;
+    -webkit-animation-delay: 12s;
+    background: url(3.jpg) no-repeat center center;
+    /* -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+  }
+  .pic-4 {
+    animation-delay: 18s;
+    -o-animation-delay: 18s;
+    -moz--animation-delay: 18s;
+    -webkit-animation-delay: 18s;
+    background: url(4.jpg) no-repeat center left;
+    /* -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+    margin-bottom: 10%;
+  }
+
+  @keyframes 
+slideShow {  
+    0% {
+     opacity: 0;
+     transform:scale(1);
+     -ms-transform:scale(1);
+    }
+    5% {
+    opacity: 1
+    }
+    25% {
+    opacity: 1;
+    }
+    30% {
+    opacity: 0;
+    transform:scale(1.1);
+    -ms-transform:scale(1.1);
+    }
+    100% {
+    opacity: 0;
+    transform:scale(1);
+    -ms-transformm:scale(1);
+    }
+}
+

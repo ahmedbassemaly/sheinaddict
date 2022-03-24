@@ -1,6 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+<nav class="navbar navbar-expand-lg navbar-dark mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="<?php echo URLROOT . 'public'; ?>"><?php echo SITENAME; ?></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,9 +10,8 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT . 'pages/about'; ?>">About Us</a>
-		          
-
         </li>
+         
 		<li class="nav-item">  <a class="nav-link" href="<?php echo URLROOT . 'pages/contact'; ?>">Contact</a>
          </li>
 		 <li class="nav-item dropdown">
@@ -35,13 +33,23 @@
                 <hr class="dropdown-divider">
               </li>
             <?php endif; ?>
+           
           </ul>
         </li>
-
+        
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <a class="navbar-brand" href="<?php echo URLROOT . 'public'; ?>"><?php echo SITENAME; ?></a>
+      <div class="search-container">
+          <div class="search-icon-btn">
+             <i class="fa fa-search"></i>
+          </div>
+          <div class="search-input">
+             <input type="search" class="search-bar" placeholder="Search...">
+          </div>
+       </div>
+
+    </form>
+  </div>
       </form>
     </div>
   </div>
