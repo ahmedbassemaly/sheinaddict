@@ -33,6 +33,7 @@ class Login extends View
         </div>
       </form>
       <p class="acc"> Don't have an account yet?<a style="color:blue;" href = "<?php echo URLROOT . 'users/register';?>"> Sign Up here!</a></p>
+      <?php echo "<a style='color:blue;' href='".URLROOT."pages/editProfile'> Profile </a>"; ?>
       <br>
   </div>
     <br><br>

@@ -22,8 +22,8 @@ class Pages extends Controller
     {
         $viewPath = VIEWS_PATH . 'pages/editProfile.php';
         require_once $viewPath;
-        $aboutView = new editProfile($this->getModel(), $this);
-        $aboutView->output();
+        $editProfileView = new editProfile($this->getModel(), $this);
+        $editProfileView->output();
     }
 
 }

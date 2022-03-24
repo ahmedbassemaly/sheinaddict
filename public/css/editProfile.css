@@ -1,26 +1,57 @@
+body{
+    background: rgb(211,188,180);
+    background: linear-gradient(274deg, rgba(211,188,180,1) 0%,rgba(222,204,195,1) 38%, rgba(193,168,159,1) 66%);
+}
 
-#img {
-    margin-top:14%;
-    margin-left:-3%;
-    width: 40%;
-}
-#title{
-    position: absolute;
-    left:8%;
-    top: 15%;
-    font-size: 65px;
-    font-weight: bold;
-    color: black;
-}
-#centerEditForm{
-    position: absolute;
-    left: 55%;
-    top: 35%;
-}
 label{
     color: black;
     font-weight:500;
 }
-#margin-bottom{
-    margin-bottom:10%;
+
+input[type="text"]{
+    border-radius: 50px;
 }
+
+/*Space between each Line in the card*/
+#margin-bottom{
+    margin-bottom:6%;
+}
+
+/*Space between Textfield and labels form the borders*/
+#centerEditForm{
+    padding: 2%;
+}
+
+.card {
+  box-shadow: 0px 4px 15px 3px #C1A89F;
+  width: 65%;
+  margin-top: 7%;
+  margin-left: 18%;
+  text-align: left;
+  font-weight: bold;
+  border-radius:10px;
+}
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background: #C1A89F;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  border-radius:20px;
+}
+
+.card button:hover {
+  opacity: 0.9;
+  background-color: #95705F;
+}
+
+.card-title {
+    font-weight:400;
+    font-size:250%;
+    color:black;
+    margin-bottom: 4%;
+ }
