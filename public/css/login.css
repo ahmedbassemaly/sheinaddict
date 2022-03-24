@@ -1,0 +1,40 @@
+body{
+    background: rgb(211,188,180);
+    background: linear-gradient(274deg, rgba(211,188,180,1) 0%,
+    rgba(222,204,195,1) 38%, rgba(193,168,159,1) 66%);
+}
+
+.login{
+    border:20%;
+    border-color: #ddb6a8;
+    border-radius: 20px;
+    text-align: center;
+    width: 50%;
+    margin:0 auto;
+    background-color: white;
+}
+.acc{
+    font-size:80%;
+    color:black; 
+}
+input[type="text"],[type="password"]{
+    width:64%;
+    padding:1%;
+    background-color: white;
+    outline:0;
+    border-width: thin;
+	border-radius: 20px;
+	border-color:#99725f;
+    margin-top:3%;
+}
+
+input[type="submit"]{
+    border: none;
+    color: white;
+    border-radius:20px;
+    padding: 10px 25px;
+    background: #d8b2a5;
+    text-decoration: none;
+    margin-top: 4%;
+    cursor: pointer;
+}
