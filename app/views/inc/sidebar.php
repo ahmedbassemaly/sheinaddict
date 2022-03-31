@@ -14,7 +14,18 @@
             </li>
             <br>
             <li>
-                <a href="#"><i class="fa-solid fa-truck-front"></i> Orders</a>
+                <!-- <a href="#"><i class="fa-solid fa-truck-front"></i> Orders</a> -->
+                 <!---------------- Orders here untill i have the dashboard ---------------->
+                <link rel="stylesheet" href="<?php echo URLROOT . 'css/orders.css'; ?>">
+                <div class="dropdown">
+                <button class="dropbtn"><i class="fa-solid fa-truck-front"></i> Orders</button>
+                <div class="dropdown-content">
+                  <a href=<?php echo URLROOT . 'pages/orders'; ?> style="color: black">Egypt</a>
+                  <a href=<?php echo URLROOT . 'pages/orders'; ?> style="color: black">Saudi Arabia</a>
+                </div>
+                </div>
+                <!---------------------------- End of orders -------------------------------->
+
             </li>
             <br>
             <li>

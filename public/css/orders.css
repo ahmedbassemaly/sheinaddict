@@ -1,0 +1,130 @@
+body{
+  background-color: #ece8e5;
+}
+#title{
+  text-align: center;
+  font-family: "Lucida Handwriting", cursive;
+}
+.dropbtn {
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  color: black;
+  background-color:transparent;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #DECCC3;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+/*******************************************************************/
+
+.container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap:10px;
+  width: 100%;
+}
+.card{
+  background-color: #E7D8CB;
+  box-shadow:5px 10px 10px #95705F;
+  border-radius:15px;
+}
+.line {
+  height: 1px;
+  width: 100%;
+}
+
+.card {
+  width: auto;
+  height:auto;
+}
+.btn-pink {
+  background-color: #D3BCB4;
+  color: #5c3625;
+  height: 70px;
+  padding: 20px 30px;
+  margin-top: 15px;
+}
+
+.btn-pink:hover {
+  background-color: #95705F;
+}
+
+.image-bg {
+  width: 100px
+}
+
+.fit-image {
+  object-fit: cover;
+  width: 100%
+}
+
+.prod-pic {
+  width: 80px;
+  height: 100px;
+  cursor: pointer
+}
+
+.prod-bg {
+  width: 19.5%;
+  height: 110px;
+  background-color: #C1A89F;/*color for images*/
+  border-radius:5px;
+  margin-bottom: 10px;
+}
+
+.fat-img {
+  width: 94px;
+  height: 100px;
+}
+
+.more {
+  width: 19.5%;
+  height: 110px;
+  color: #fff;
+  background-color: #000;
+  cursor: pointer
+}
+
+@media screen and (max-width: 677px) {
+  .card {
+      width: 100%;
+      margin: auto
+  }
+
+  .btn-pink {
+      width: 100%;
+      height: 40px;
+      padding: 6px 30px
+  }
+
+  .prod-bg {
+      width: 33%;
+      height: 110px;
+      background-color: #E0E0E0;
+  }
+
+  .more {
+      width: 66%
+  }
+}

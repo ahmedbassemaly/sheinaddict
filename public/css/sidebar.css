@@ -20,6 +20,15 @@
 .sidebar a:hover{
     color:darkred;
 }
+.sidebar button{
+    padding:6px 8px 6px 10px;
+    font-size:140%;
+    color:#E7D8CB;
+    display:block;
+    text-decoration: none;
+    text-align:left;
+    font-family:"Times New Roman";
+}
 .hr{
     color:#E7D8CB;
 }

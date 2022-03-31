@@ -61,6 +61,30 @@ class Pages extends Controller
         $editProductView = new editProduct($this->getModel(), $this);
         $editProductView->output();
     }
+    
+    public function category()
+    {
+        $viewPath = VIEWS_PATH . 'pages/category.php';
+        require_once $viewPath;
+        $categoryView = new category($this->getModel(), $this);
+        $categoryView->output();
+    }
+
+    public function orders()
+    {
+        $viewPath = VIEWS_PATH . 'pages/orders.php';
+        require_once $viewPath;
+        $ordersView = new orders($this->getModel(), $this);
+        $ordersView->output();
+    }
+
+    public function subCategory()
+    {
+        $viewPath = VIEWS_PATH . 'pages/subCategory.php';
+        require_once $viewPath;
+        $subCategoryView = new subCategory($this->getModel(), $this);
+        $subCategoryView->output();
+    }
 
 }
 

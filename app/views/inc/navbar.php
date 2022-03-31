@@ -49,6 +49,16 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="<?php echo URLROOT . 'pages/adminDashboard'; ?>">Admin</a>
         </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Men</a></li>
+              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Women</a></li>
+              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Kids</a></li>   
+          </ul>
+        </li>
+        
       </ul>
       <a class="navbar-brand" href="<?php echo URLROOT . 'public'; ?>"><?php echo SITENAME; ?></a>
 
