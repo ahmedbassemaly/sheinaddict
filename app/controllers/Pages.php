@@ -46,5 +46,21 @@ class Pages extends Controller
         $viewProfileView = new ViewProfile($this->getModel(), $this);
         $viewProfileView->output();
     }
+    public function addProduct()
+    {
+        $viewPath = VIEWS_PATH . 'pages/addProduct.php';
+        require_once $viewPath;
+        $addProductView = new addProduct($this->getModel(), $this);
+        $addProductView->output();
+    }
+
+    public function editProduct()
+    {
+        $viewPath = VIEWS_PATH . 'pages/editProduct.php';
+        require_once $viewPath;
+        $editProductView = new editProduct($this->getModel(), $this);
+        $editProductView->output();
+    }
+
 }
 
