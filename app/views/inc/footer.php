@@ -4,10 +4,12 @@
     <script src="<?php echo URLROOT; ?>js/main.js"></script>
   </head>
 
-  <body>
-    <div class="footer">
-      <p>Footer</p>
+  <body class="d-flex flex-column min-vh-100">
+    <footer class="mt-auto py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; Shein Addict<small>
     </div>
+    </footer>
   </body>
 </html>
 

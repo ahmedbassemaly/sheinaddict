@@ -1,0 +1,31 @@
+.box-1{
+    text-align: center;
+    position: relative;
+}
+
+.FAQ-row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 22%;
+    max-height: 60%;
+}
+.card{
+    width:220px
+}
+.card-body{
+    margin: 10%;
+}
+
+.icons{
+    color: #606060;
+    margin: 5%;
+}
+img {
+    margin-left: 20%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    width: 35%;
+    height: 35%;
+  }

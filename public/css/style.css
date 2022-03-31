@@ -1,5 +1,5 @@
 /* .jumbotron{
-    background-color:#cbcacc;
+    background-color:#cbc;
 } */
 
 /* navigation bar */
@@ -13,90 +13,63 @@
     margin-left: 40%;
 }
 
-.search-container *,
-.search-container *:after,
-.search-container *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* search bar focus */
-.search-container *:focus {
-  background: #fbfbfb;
-  color: #333333;
-  outline: 0;
-}
-
-/* search bar container */
-.search-container {
-    display: table;
-    position: relative;
-    width: 51px;
-    margin-left: 60%;
-  }
   
   /* search icon button */
+
+  .search-container {
+    display: table;
+    position: relative;
+    width: 2%;
+  }
+
   .search-icon-btn {
     background-color: #d2b7a4;
     display: table-cell;
-    height: 50px;
-    position: relative;
+    width: 55px;
+    height: 55px;
+    position:relative;
     text-align: center;
     vertical-align: middle;
-    width: 50px;
     z-index: 2;
   }
-  
-  /* search bar input container */
+
   .search-input {
     position: absolute;
-    right: 4;
+    right: 10;
     z-index: 1;
   }
-  
-  /* search bar input */
-  .search-input input.search-bar {
+
+
+  .search-hover {
     border: 1px solid #cccccc;
+    outline: none;
+    background-size: 22px;
     border-radius: 25px;
-    height: 50px;
-    padding: 0px;
-    width: 40px;
-  }
-  .search-input input.search-bar:focus {
-    padding-left: 60px;
-    padding-right: 10px;
-    width: 200px;
-  }
-  
-  /* transition effect */
-  .search-input input.search-bar,
-  .search-icon-btn {
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -ms-transition: all 0.5s;
-    -o-transition: all 0.5s;
+    width: 50px;
+    height: 10px;
+    padding: 25px;
     transition: all 0.5s;
   }
-  
-  /* hover on search bar container */
-  .search-container:hover > .search-input input.search-bar {
-    padding-left: 60px;
-    padding-right: 10px;
-    width: 400px;
+  .search-hover:hover {
+    width: 300px;
+    height: 10px;
+    padding-left: 50px;
   }
 
 /* footer */
 
-.footer {
+.footer-container {
     text-align: center;
     padding: 3px;
     background-color: #d2b7a4;
-    color: white;
     height: 20%;
 
   }
+
+  small{
+      color:#95705F
+  }
+
 
 /* categories cards */
 *,
@@ -107,12 +80,14 @@
 html{
     line-height: 1.15;
 }
+
 body{
     font-family: 'roboto', sans-serif;
     color: #000000;
     font-weight: 400;
     background-color: #ffffff;
     /* background-color: #ece8e5; */
+    max-width: 100%;
 }
 
 a{
@@ -140,8 +115,7 @@ a:hover{
 }
 .row-1{
     display: flex;
-    flex-wrap: wrap;
-    margin-left: 10%;
+    margin-left: 5%;
     width: 100%;
     height: 100%;
     margin-left: 2%;
@@ -149,8 +123,8 @@ a:hover{
 .row{
     display: flex;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 .column{
     position: relative;
@@ -318,11 +292,9 @@ a:hover{
 /* slide show  */
   .pic-wrapper {
     position: relative;
-  width: 1400px;
-  height: 600px;
-  margin-left: 3%;
-    /* width: 100%;
-    height: 100%; */
+    width: 95%;
+    height: 80%;
+    margin-left: 1%;
     padding-left: 3%;
     padding-right: 3%;
     overflow: hidden;

@@ -26,4 +26,12 @@ class Pages extends Controller
         $editProfileView->output();
     }
 
+    public function FAQ()
+    {
+        $viewPath = VIEWS_PATH . 'pages/FAQ.php';
+        require_once $viewPath;
+        $FAQView = new FAQ($this->getModel(), $this);
+        $FAQView->output();
+    }
+
 }
