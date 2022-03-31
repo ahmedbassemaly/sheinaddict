@@ -1,0 +1,108 @@
+body{
+    background: rgb(211,188,180);
+    background: linear-gradient(274deg, rgba(211,188,180,1) 0%,rgba(222,204,195,1) 38%, rgba(193,168,159,1) 66%);
+}
+
+label{
+    color: black;
+    font-weight:500;
+}
+
+input[type="text"]{
+    border-radius: 40px;
+    border-color:#99725f;
+    margin-bottom: 3%;
+}
+
+input[type=radio]{
+    border-color:#99725f;
+    margin-bottom: 3%;
+}
+
+#category{
+    border-radius: 50px;
+    border-color:#99725f;
+    margin-bottom: 3%;
+}
+
+#subcategory, #season, #neckline, #material{
+    border-radius: 50px;
+    border-color:#99725f;
+    margin-bottom: 3%;
+    padding:3%;
+}
+
+input[type=file]::file-selector-button {
+    border-radius: 50px;
+    border-color:#99725f;
+    margin-bottom: 3%;
+    padding:1.5%;
+    text-align: center;
+    cursor: pointer;
+    background: white;
+}
+
+#fileUpload{
+    border-radius: 50px;
+    border-color:#99725f;
+    margin-bottom: 3%;
+    padding:1.5%;
+    text-align: center;
+    cursor: pointer;
+    background: white;
+}
+
+/*Space between each Line in the card*/
+#margin-bottom{
+    margin-bottom:5%;
+}
+
+/*Space between Textfield and labels form the borders*/
+#centerEditForm{
+    padding: 7%;
+}
+
+.card {
+  box-shadow: 0px 4px 15px 3px #C1A89F;
+  width: 65%;
+  margin-top: 7%;
+  margin-left: 18%;
+  text-align: left;
+  font-weight: bold;
+  border-radius:10px;
+  margin-bottom: 10%;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background: #C1A89F;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  border-radius:50px;
+  margin-top:5%;
+
+}
+
+.card button:hover {
+  opacity: 0.9;
+  background-color: #95705F;
+}
+
+.card-title {
+    font-weight:400;
+    font-size:250%;
+    color:black;
+    margin-bottom: 3%;
+ }
+
+ .card .btn{
+     width: 50px;
+     height: 50px;
+     justify-content: center; 
+     border-radius: 80px;
+ }
