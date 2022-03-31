@@ -1,0 +1,91 @@
+body{
+    background: rgb(211,188,180);
+    background: linear-gradient(274deg, rgba(211,188,180,1) 0%,rgba(222,204,195,1) 38%, rgba(193,168,159,1) 66%);
+}
+.text h4{
+    color:white;
+    margin-left:25%;
+}
+.profile-card{
+    width: 100%;
+  min-height: 65%;
+  margin: auto;
+  /* margin-top:5%; */
+  padding-top:4%;
+  padding-bottom:4%;
+  box-shadow: 0px 8px 60px -10px rgba(13,28,39,0.6);
+  background: #fff;
+  border-radius: 12px;
+  max-width: 700px;
+  position: relative;
+}
+.fName{
+    margin-right:5%;
+}
+.lName{
+    margin-left:5%;
+}
+.profile-card_info_num{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:4%;
+    font-weight: 700;
+      font-size: 170%;
+      color: #324e63;
+}
+.profile-card_info_text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+      font-size: 160%;
+      color: #324e63;
+}
+.profile-card_name {
+    font-size: 24px;
+    color: #324e63;
+    margin-bottom: 15px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+.profile-card_address {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 125%;
+    font-weight: 600;
+    margin-top:2%;
+}
+.profile-card_email{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 105%;
+    font-weight: 450;
+    margin-top:2%;
+}
+.profile-card_number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 105%;
+    font-weight: 450;
+    margin-top:2%;
+}
+.edit button{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:none;
+    padding: 10px 25px;
+    margin-top:5%;
+    color:white;
+    background: #C1A89F;
+    border-radius:20px;
+    margin-left:41%;
+    
+}

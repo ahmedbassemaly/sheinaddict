@@ -32,6 +32,19 @@ class Pages extends Controller
         require_once $viewPath;
         $FAQView = new FAQ($this->getModel(), $this);
         $FAQView->output();
+    }    
+    public function adminDashboard(){
+        $viewPath = VIEWS_PATH . 'pages/adminDashboard.php';
+        require_once $viewPath;
+        $adminDashboardView = new adminDashboard($this->getModel(), $this);
+        $adminDashboardView->output();
     }
 
+    public function ViewProfile(){
+        $viewPath = VIEWS_PATH . 'pages/ViewProfile.php';
+        require_once $viewPath;
+        $viewProfileView = new ViewProfile($this->getModel(), $this);
+        $viewProfileView->output();
+    }
 }
+

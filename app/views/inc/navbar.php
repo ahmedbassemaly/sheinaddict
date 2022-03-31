@@ -38,6 +38,7 @@
             <?php else : ?>
               <li><a class="dropdown-item" href="<?php echo URLROOT . 'users/login'; ?>">Login</a></li>
               <li><a class="dropdown-item" href="<?php echo URLROOT . 'users/register'; ?>">Sign Up</a></li>
+              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/ViewProfile'; ?>">View Profile</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -45,7 +46,9 @@
            
           </ul>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="<?php echo URLROOT . 'pages/adminDashboard'; ?>">Admin</a>
+        </li>
       </ul>
       <a class="navbar-brand" href="<?php echo URLROOT . 'public'; ?>"><?php echo SITENAME; ?></a>
 
