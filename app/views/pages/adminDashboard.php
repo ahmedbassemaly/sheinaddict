@@ -10,7 +10,7 @@ class adminDashboard extends View{
             <div class="cards">
                 <div class="card-single">
                     <div>
-                        <h1>#</h1>
+                        <h1>43</h1>
                         <span>Customers</span>
                     </div>
                     <div>
@@ -19,7 +19,7 @@ class adminDashboard extends View{
                 </div>
                 <div class="card-single">
                     <div>
-                        <h1>#</h1>
+                        <h1>22</h1>
                         <span>Orders</span>
                     </div>
                     <div>

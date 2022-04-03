@@ -9,3 +9,4 @@ class PostModel extends model
         return $this->db->resultSet();
     }
 }
+?>

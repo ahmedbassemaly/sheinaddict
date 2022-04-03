@@ -122,5 +122,11 @@ class Pages extends Controller
         $shippingView->output();
     }
 
+    public function productInfo(){
+        $viewPath = VIEWS_PATH . 'pages/productInfo.php';
+        require_once $viewPath;
+        $productInfoView = new productInfo($this->getModel(), $this);
+        $productInfoView->output();
+    }
 }
 

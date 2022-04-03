@@ -20,7 +20,7 @@
     ?>
     <!---------------------------------- SHOP BY GENDER CATEGORY START---------------------------------->
       <div class="card" style="width:300px">
-        <img class="card-img-top" id="myImg" src = "<?php echo ImageRoot . "subCategory/subCategory-".$i.".png" ; ?>" alt="Card image" >
+        <a href="<?php echo URLROOT . 'pages/productInfo';?>" ><img class="card-img-top" id="myImg" src = "<?php echo ImageRoot . "subCategory/subCategory-".$i.".png" ; ?>" alt="Card image" ></a>
   
           <div class="card-body">
             <h4 class="card-title"> <?php echo "AHMED";?> </h4>

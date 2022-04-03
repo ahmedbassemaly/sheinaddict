@@ -27,3 +27,33 @@
     padding-top:10%;
     color:#95705F;
 }
+
+.topnav {
+    background-color: #95705F;
+    margin-left:19%;
+    overflow:hidden;
+    height:7%;
+    margin-top:0;
+}
+.topnav a {
+    color: #f2f2f2;
+    padding:1% 1%;
+    text-decoration: none;
+    font-size: 17px;
+    margin-left:2%;
+    font-family: "Lucida Handwriting", cursive;
+    margin-top:2%;
+
+}
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.name{
+    float:right;
+    color:white;
+    padding: 1% 1%;
+    margin-right:5%;
+    font-family: "Lucida Handwriting", cursive;
+    font-size:150%;
+}
