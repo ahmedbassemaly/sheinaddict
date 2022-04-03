@@ -10,7 +10,7 @@
             </li>
             <br>
             <li>
-                <a href="#"><i class="fa-solid fa-shirt"></i> Products</a>
+                <a href="<?php echo URLROOT . 'pages/viewProducts'; ?> "><i class="fa-solid fa-shirt"></i> Products</a>
             </li>
             <br>
             <li>

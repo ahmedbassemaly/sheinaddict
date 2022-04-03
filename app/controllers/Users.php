@@ -66,6 +66,13 @@ class Users extends Controller
                 } else {
                     die('Error in sign up');
                 }
+                if ($registerModel->editUserData()) {
+                    //header('location: ' . URLROOT . 'users/login');
+                    flash('register_success', 'You have registered successfully');
+                    redirect('users/Index');
+                } else {
+                    die('Error in updating profile');
+                }
             }
         }
         // Load form

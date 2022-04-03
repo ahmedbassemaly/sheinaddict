@@ -36,7 +36,7 @@ class ViewProfile extends view{
                     </div>
                 </div>
                 <div class="edit">
-                    <button type="button">Edit Profile</button>
+                <a href="<?php echo URLROOT . 'pages/editProfile'; ?>"><button type="button">Edit Profile</button></a>
                 </div>
 
             </div>
