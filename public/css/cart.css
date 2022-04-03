@@ -1,0 +1,36 @@
+img {
+    max-width: 120%;
+    max-height: 120%;
+   }
+
+a.cart{
+    color:black
+}
+
+p.lead{
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card{
+    margin-bottom: 2%;
+    margin-top: 3%;
+    /* max-height: 80%; */
+}
+
+
+.dropdown-item-checked::before {
+    position: absolute;
+    left: .4rem;
+    content: '✓ ';
+    font-weight: 600;
+  }
+
+/* a.selected 
+{
+    color: red;
+} */
+
+.btn{
+    background-color: #d2b7a4;
+}

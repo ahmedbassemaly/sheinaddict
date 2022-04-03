@@ -25,35 +25,33 @@ EOT;
 
 <div class="FAQ-row">
   <div class="col-sm-3">
-    <div class="card">
+    <a class="card stretched-link text-decoration-none" href="<?php echo URLROOT . 'pages/shipping'; ?>">
       <div class="card-body">
           <div class="icons">
-          <i class="fas fa-shipping-fast fa-5x"></i>
-  </div>
-        <h5 class="card-title">Shipping Policy</h5>
-        
+            <i class="fas fa-shipping-fast fa-5x"></i>
+          </div>
+          <h5 class="card-title">Shipping Policy</h5>
       </div>
-    </div>
+    </a>
   </div>
   <div class="col-sm-3">
-    <div class="card">
+    <a class="card stretched-link text-decoration-none" href="<?php echo URLROOT . 'pages/shipping'; ?>" >
       <div class="card-body">
-      <img src= "<?php echo ImageRoot . 'size.jpg' ; ?>"/></img>
+        <img src= "<?php echo ImageRoot . 'size.jpg' ; ?>"/></img>
         <h5 class="card-title">Measurment Chart</h5>
       </div>
-    </div>
+    </a>
   </div>
   <div class="col-sm-3">
-    <div class="card">
+    <a class="card stretched-link text-decoration-none" href="<?php echo URLROOT . 'pages/payment'; ?>">
       <div class="card-body">
-      <div class="icons">
-        <i class="fa fa-money fa-5x"></i>
-      </div>
+        <div class="icons">
+          <i class="fa fa-money fa-5x"></i>
+        </div>
         <h5 class="card-title">Payment Methods</h5>
       </div>
-    </div>
+    </a>
   </div>
-</div>
 </div>
 
 <?php
