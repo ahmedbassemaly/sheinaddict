@@ -6,38 +6,58 @@ class Users extends Controller
         $registerModel = $this->getModel();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Process form
-            $registerModel->setName(trim($_POST['name']));
-            $registerModel->setEmail(trim($_POST['email']));
+            $registerModel->setFName(trim($_POST['fname']));
+            $registerModel->setLName(trim($_POST['lname']));
+            $registerModel->setMobile(trim($_POST['phone']));
+            $registerModel->setEmail(trim($_POST['Email']));
             $registerModel->setPassword(trim($_POST['password']));
             $registerModel->setConfirmPassword(trim($_POST['confirm_password']));
+            $registerModel->setAddress(trim($_POST['address']));
+            
 
             //validation
-            if (empty($registerModel->getName())) {
-                $registerModel->setNameErr('Please enter a name');
+            if (empty($registerModel->getFName())) {
+                $registerModel->setFNameErr('Please enter your first name');
+            }
+            if (empty($registerModel->getLName())) {
+                $registerModel->setLNameErr('Please enter your last name');
             }
             if (empty($registerModel->getEmail())) {
                 $registerModel->setEmailErr('Please enter an email');
-            } elseif ($registerModel->emailExist($_POST['email'])) {
+            } elseif ($registerModel->emailExist($_POST['Email'])) {
                 $registerModel->setEmailErr('Email is already registered');
             }
             if (empty($registerModel->getPassword())) {
                 $registerModel->setPasswordErr('Please enter a password');
-            } elseif (strlen($registerModel->getPassword()) < 4) {
-                $registerModel->setPasswordErr('Password must contain at least 4 characters');
+            } elseif (strlen($registerModel->getPassword()) < 8) {
+                $registerModel->setPasswordErr('Password must contain at least 8 characters');
             }
 
             if ($registerModel->getPassword() != $registerModel->getConfirmPassword()) {
                 $registerModel->setConfirmPasswordErr('Passwords do not match');
             }
+            
+            if (empty($registerModel->getAddress())) {
+                $registerModel->setAddressErr('Please enter address');
+            }
+            if (empty($registerModel->getMobile())) {
+                $registerModel->setMobileErr('Please enter your mobile number');
+            } elseif(strlen($registerModel->getMobile()) < 11){
+                $registerModel->setMobileErr('Mobile number must not be less than 11 characters check again');
+            }
 
             if (
-                empty($registerModel->getNameErr()) &&
+                empty($registerModel->getFNameErr()) &&
+                empty($registerModel->getLNameErr())&&
                 empty($registerModel->getEmailErr()) &&
                 empty($registerModel->getPasswordErr()) &&
-                empty($registerModel->getConfirmPasswordErr())
+                empty($registerModel->getConfirmPasswordErr())&&
+                empty($registerModel->getAddressErr())&&
+                empty($registerModel->getMobileErr())
             ) {
-                //Hash Password
-                $registerModel->setPassword(password_hash($registerModel->getPassword(), PASSWORD_DEFAULT));
+                // //Hash Password
+                // $registerModel->setPassword(password_hash($registerModel->getPassword(), PASSWORD_DEFAULT));
+
 
                 if ($registerModel->signup()) {
                     //header('location: ' . URLROOT . 'users/login');
@@ -82,12 +102,15 @@ class Users extends Controller
                 empty($userModel->getPasswordErr())
             ) {
                 //Check login is correct
+                
                 $loggedUser = $userModel->login();
                 if ($loggedUser) {
+                    // echo "Bravo";
                     //create related session variables
                     $this->createUserSession($loggedUser);
                     die('Success log in User');
                 } else {
+                    // echo "no bravo";
                     $userModel->setPasswordErr('Password is not correct');
                 }
             }
@@ -102,8 +125,8 @@ class Users extends Controller
 
     public function createUserSession($user)
     {
-        $_SESSION['user_id'] = $user->id;
-        $_SESSION['user_name'] = $user->name;
+        $_SESSION['user_id'] = $user->user_id;
+        $_SESSION['user_name'] = $user->firstName;
         //header('location: ' . URLROOT . 'pages');
         redirect('pages');
     }

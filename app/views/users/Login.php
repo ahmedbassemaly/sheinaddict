@@ -15,11 +15,15 @@ class Login extends View
 
   private function printForm()
   {
+    /********** Backend Login **********/
+    $action = URLROOT . 'users/login';
+    $registerUrl = URLROOT . 'users/Register';
+    /********** Backend Login **********/
     ?>
     <br>
     <div class="login">
     
-      <form action="" method="POST" class="formcontainer">
+      <form action="<?php echo $action;?>" method="post"class="formcontainer">
         <br>
         <h2>Login</h2>
         <div class="form__field">
@@ -33,7 +37,6 @@ class Login extends View
         </div>
       </form>
       <p class="acc"> Don't have an account yet?<a style="color:blue;" href = "<?php echo URLROOT . 'users/register';?>"> Sign Up here!</a></p>
-      <?php echo "<a style='color:blue;' href='".URLROOT."pages/editProfile'> Profile </a>"; ?>
       <br>
   </div>
     <br><br>
@@ -62,13 +65,12 @@ class Login extends View
   {
     $label = str_replace("_", " ", $fieldName);
     $label = ucwords($label);
-    $text = <<<EOT
+    ?>
     <div class="form-group">
       <label for="$fieldName"> $label: <sup>*</sup></label>
       <input type="$type" name="$fieldName" class="form-control form-control-lg $valid" id="$fieldName" value="$val">
       <span class="invalid-feedback">$err</span>
     </div>
-EOT;
-    echo $text;
+<?php
   }
 }

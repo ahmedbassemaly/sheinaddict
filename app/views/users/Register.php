@@ -16,10 +16,15 @@ class Register extends view
 
   private function printForm()
   {
+    /********** Backend SignUp **********/
+    $action = URLROOT . 'users/register';
+    $loginUrl = URLROOT . 'users/login';
+    /********** Backend SignUp **********/
+    
     ?>
     <div class="register">
     <link rel="stylesheet" href="<?php echo URLROOT . 'css/register.css'; ?>">
-      <form action="" method="POST" class="formcontainer">
+      <form action="<?php echo $action ?>" method="POST" class="formcontainer">
         <br>
         <h2>Sign Up</h2>
         <div class="form__field">
@@ -61,11 +66,19 @@ class Register extends view
 
   private function printName()
   {
-    $val = $this->model->getName();
-    $err = $this->model->getNameErr();
+    $val = $this->model->getFName();
+    $err = $this->model->getFNameErr();
     $valid = (!empty($err) ? 'is-invalid' : '');
 
     $this->printInput('text', 'name', $val, $err, $valid);
+  }
+  private function printLName()
+  {
+    $val = $this->model->getLName();
+    $err = $this->model->getLNameErr();
+    $valid = (!empty($err) ? 'is-invalid' : '');
+
+    $this->printInput('text', 'last_name', $val, $err, $valid);
   }
   private function printEmail()
   {
@@ -75,7 +88,14 @@ class Register extends view
 
     $this->printInput('email', 'email', $val, $err, $valid);
   }
+  private function printMobile()
+  {
+    $val = $this->model->getMobile();
+    $err = $this->model->getMobileErr();
+    $valid = (!empty($err) ? 'is-invalid' : '');
 
+    $this->printInput('text', 'mobile', $val, $err, $valid);
+  }
   private function printPassword()
   {
     $val = $this->model->getPassword();
@@ -91,6 +111,14 @@ class Register extends view
     $valid = (!empty($err) ? 'is-invalid' : '');
 
     $this->printInput('password', 'confirm_password', $val, $err, $valid);
+  }
+  private function printAddress()
+  {
+    $val = $this->model->getAddress();
+    $err = $this->model->getAddressErr();
+    $valid = (!empty($err) ? 'is-invalid' : '');
+
+    $this->printInput('text', 'address', $val, $err, $valid);
   }
 
   private function printInput($type, $fieldName, $val, $err, $valid)

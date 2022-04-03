@@ -1,9 +1,12 @@
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <?php
   
   class editProfile extends View{
     public function output(){
+        $this->model->editUserData();
         require APPROOT . '/views/inc/header.php';
         ?>
             <link rel="stylesheet" href="<?php echo URLROOT . 'css/editProfile.css'; ?>">

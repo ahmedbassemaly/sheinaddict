@@ -53,7 +53,7 @@ class UserModel extends model
         $this->passwordErr = $passwordErr;
     }
 
-    public function findUserByEmail($email)
+    public function findUserByEmail($email)//selects emails from database
     {
         $this->dbh->query('select * from users where email= :email');
         $this->dbh->bind(':email', $email);

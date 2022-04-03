@@ -44,10 +44,10 @@ class Index extends View
                     </div>
                     <div class="effect-text">
                         <div class="inner">
-                            <h2><a class="index" href="#">Women</a></h2>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat velit qui quos repellat nulla soluta exceptu</p>
+                            <h2><a href="#">Women</a></h2>
+                            <p style="color:black">Dress like it's the last day of your life</p>
                             <div class="effect-btn">
-                                <a href="#" class="btn"><i class="fa fa-eye" aria-hidden="true"></i> Read More</a>
+                                <a href="<?php echo URLROOT . 'pages/category'; ?>" class="btn"><i class="fa fa-eye" aria-hidden="true"></i> View More</a>
                             </div>
                         </div>
                     </div>
@@ -61,10 +61,10 @@ class Index extends View
                     </div>
                     <div class="effect-text">
                         <div class="inner">
-                            <h2><a class="index" href="#">Men</a></h2>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat velit qui quos repellat nulla cum soluta exceptu</p>
+                            <h2><a href="#">Men</a></h2>
+                            <p style="color:black">Clothes and manners do not make the man; but when he is made, they greatly improve his appearance.</p>
                             <div class="effect-btn">
-                                <a href="#" class="btn"><i class="fa fa-eye"></i> Read More</a>
+                                <a href="<?php echo URLROOT . 'pages/category'; ?>" class="btn"><i class="fa fa-eye"></i> View More</a>
                             </div>
                         </div>
                     </div>
@@ -78,10 +78,10 @@ class Index extends View
                     </div>
                     <div class="effect-text">
                         <div class="inner">
-                            <h2><a class="index" href="#">Kids</a></h2>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat velit qui quos repellat nulla cum soluta exceptu</p>
+                            <h2><a href="#">Kids</a></h2>
+                            <p style="color:white">Life isn't perfect, but your child's outfit can be</p>
                             <div class="effect-btn">
-                                <a href="#" class="btn"><i class="fa fa-eye"></i> Read More</a>
+                                <a href="<?php echo URLROOT . 'pages/category'; ?>" class="btn"><i class="fa fa-eye"></i> View More</a>
                             </div>
                         </div>
                     </div>
