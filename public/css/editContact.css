@@ -1,0 +1,49 @@
+.box-1{
+    text-align: center;
+    position: relative;
+}
+.FAQ-row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 22%;
+    max-height: 70%;
+}
+.card{
+    width:90%;
+    justify-content: left; 
+}
+.card-body{
+    margin: auto;
+    justify-content: left; 
+}
+img {
+    margin-left: 20%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    width: 50%;
+    height: 50%;
+    justify-content: center; 
+}
+input[type="text"]{
+    border-radius: 40px;
+    border-color:#99725f;
+    margin-bottom: 3%;
+}
+input[type=file]::file-selector-button {
+    border-radius: 50px;
+    border-color:#99725f;
+    /* margin-bottom: 3%; */
+    text-align: center;
+    cursor: pointer;
+    background: white;
+}
+#fileUpload{
+    border-radius: 50px;
+    border-color:#99725f;
+    margin-bottom: 7%;
+    text-align: center;
+    cursor: pointer;
+    background: white;
+}

@@ -44,11 +44,11 @@
                     <label>Category:</label>
                 </div>
                 <div class="col-lg-6">
-                    <input type='radio' id="category" value="Women">
+                    <input type='radio' name="category" value="Women" checked>
                     <label for="Women">Women</label>
-                    <input type='radio' id="category" value="Men">
+                    <input type='radio' name="category" value="Men">
                     <label for="Men">Men</label>
-                    <input type='radio' id="category" value="Kids">
+                    <input type='radio' name="category" value="Kids">
                     <label for="Kids">Kids</label>
                 </div>
             </div><br>
@@ -59,12 +59,13 @@
                 </div>
                 <div class="col-lg-3">
                     <select name="subcategory" id="subcategory">
-                        <option value="T-Shirt">T-Shirt</option>
-                        <option value="Pants">Pants</option>
+                        <option value="T-Shirt">T-Shirts</option>
+                        <option value="Pants">Bottoms</option>
                         <option value="Dresses">Dresses</option>
                         <option value="Blouses">Blouses</option>
-                        <option value="Jackets">Jackets and Blazers</option>
-                        <option value="Activewear">Activewear</option>
+                        <option value="Jackets">Hoodies & Sweatshirts</option>
+                        <option value="Activewear">Jackets</option>
+                        <option value="Activewear">Shoes</option>
                     </select></label>
                 </div>
             </div><br>
@@ -111,6 +112,7 @@
                         <option value="square">Square</option>
                     </select></label>
                 </div>
+
                 <div class="col-lg-3">
                     <label for="material">Material:
                 </div>
@@ -129,8 +131,44 @@
                         <option value="crepe">Crepe</option>
                     </select></label>
                 </div>
+            </div><br><br>
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <label for="color">Color:
+                </div>
+                <div class="col-lg-9">
+                    <input type="checkbox" id="color" name="black" value="Black">
+                    <label for="black"> Black</label>&nbsp
+                    <input type="checkbox" id="color" name="white" value="White">
+                    <label for="white"> White</label>&nbsp
+                    <input type="checkbox" id="color" name="blue" value="Blue">
+                    <label for="red"> Blue</label>&nbsp
+                    <input type="checkbox" id="color" name="red" value="Red">
+                    <label for="red"> Red</label>&nbsp
+                    <input type="checkbox" id="color" name="beige" value="Beige">
+                    <label for="red"> Beige</label>&nbsp
+                    <input type="checkbox" id="color" name="pink" value="Pink">
+                    <label for="red"> Pink</label>&nbsp
+                    <input type="checkbox" id="color" name="green" value="Green">
+                    <label for="red"> Green</label>&nbsp
+                    <input type="checkbox" id="color" name="grey" value="Grey">
+                    <label for="red"> Grey</label>&nbsp
+                    <input type="checkbox" id="color" name="yellow" value="Yellow">
+                    <label for="red"> Yellow</label>&nbsp
+                    <input type="checkbox" id="color" name="purple" value="Purple">
+                    <label for="red"> Purple</label>&nbsp
+                    <input type="checkbox" id="color" name="orange" value="Orange">
+                    <label for="red"> Orange</label>&nbsp
+                    <input type="checkbox" id="color" name="mahogany" value="Mahogany">
+                    <label for="red"> Mahogany</label>&nbsp
+                    <input type="checkbox" id="color" name="brown" value="Brown">
+                    <label for="red"> Brown</label>&nbsp
+                    <input type="checkbox" id="color" name="teal" value="Teal">
+                    <label for="red"> Teal</label>
+                </label></div>
             </div><br>
-               
+
             <div class="row">
                 <div class="col-lg-6">
                     <label for="images">Add Images to this Product:

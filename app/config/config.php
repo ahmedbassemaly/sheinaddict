@@ -9,7 +9,7 @@ define('DB_NAME', 'sheinaddict');
 //echo dirname(dirname(__FILE__));
 define('APPROOT', dirname(dirname(__FILE__)));
 // URL Root
-define('URLROOT', 'http://localhost/sheinaddict/public/');
+define('URLROOT', 'http://localhost:8080/sheinaddict/public/');
 // Site Name
 define('SITENAME', 'Shein Addict');
 
@@ -20,4 +20,4 @@ define('VIEWS_PATH', '../app/views/');
 
 //Images Root
 // define('ImageRoot', '../app/views/images/');
-define('ImageRoot', 'http://localhost/sheinaddict/app/views/images/');
+define('ImageRoot', 'http://localhost:8080/sheinaddict/app/views/images/');

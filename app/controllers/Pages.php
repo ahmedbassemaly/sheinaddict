@@ -86,5 +86,25 @@ class Pages extends Controller
         $subCategoryView->output();
     }
 
+    public function contact(){
+        $viewPath = VIEWS_PATH . 'pages/contact.php';
+        require_once $viewPath;
+        $contactView = new contact($this->getModel(), $this);
+        $contactView->output();
+    }
+
+    public function editContact(){
+        $viewPath = VIEWS_PATH . 'pages/editContact.php';
+        require_once $viewPath;
+        $editContactView = new editContact($this->getModel(), $this);
+        $editContactView->output();
+    }
+
+    public function viewProducts(){
+        $viewPath = VIEWS_PATH . 'pages/viewProducts.php';
+        require_once $viewPath;
+        $viewProductsView = new viewProducts($this->getModel(), $this);
+        $viewProductsView->output();
+    }
 }
 

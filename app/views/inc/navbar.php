@@ -11,16 +11,14 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="<?php echo URLROOT . 'public'; ?>">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT . 'pages/about'; ?>">About Us</a>
-        </li>
          
-        <li class="nav-item">  
-          <a class="nav-link" href="<?php echo URLROOT . 'pages/contact'; ?>">Contact</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT . 'pages/FAQ'; ?>">FAQ</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Men</a></li>
+              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Women</a></li>
+              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Kids</a></li>   
+          </ul>
         </li>
 
 		 <li class="nav-item dropdown">
@@ -42,23 +40,18 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-            <?php endif; ?>
-           
+            <?php endif; ?>           
           </ul>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="<?php echo URLROOT . 'pages/FAQ'; ?>">FAQ</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="<?php echo URLROOT . 'pages/adminDashboard'; ?>">Admin</a>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Men</a></li>
-              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Women</a></li>
-              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Kids</a></li>   
-          </ul>
-        </li>
-        
+        </li> 
+        <li class="nav-item">  
+          <a class="nav-link" href="<?php echo URLROOT . 'pages/contact'; ?>">Contact</a>
+        </li>       
       </ul>
       <a class="navbar-brand" href="<?php echo URLROOT . 'public'; ?>"><?php echo SITENAME; ?></a>
 

@@ -129,7 +129,43 @@
                         <option value="crepe">Crepe</option>
                     </select></label>
                 </div>
-            </div><br>
+            </div><br><br>
+
+<div class="row">
+    <div class="col-lg-3">
+        <label for="color">Color:
+    </div>
+    <div class="col-lg-9">
+        <input type="checkbox" id="color" name="black" value="Black">
+        <label for="black"> Black</label>&nbsp
+        <input type="checkbox" id="color" name="white" value="White">
+        <label for="white"> White</label>&nbsp
+        <input type="checkbox" id="color" name="blue" value="Blue">
+        <label for="red"> Blue</label>&nbsp
+        <input type="checkbox" id="color" name="red" value="Red">
+        <label for="red"> Red</label>&nbsp
+        <input type="checkbox" id="color" name="beige" value="Beige">
+        <label for="red"> Beige</label>&nbsp
+        <input type="checkbox" id="color" name="pink" value="Pink">
+        <label for="red"> Pink</label>&nbsp
+        <input type="checkbox" id="color" name="green" value="Green">
+        <label for="red"> Green</label>&nbsp
+        <input type="checkbox" id="color" name="grey" value="Grey">
+        <label for="red"> Grey</label>&nbsp
+        <input type="checkbox" id="color" name="yellow" value="Yellow">
+        <label for="red"> Yellow</label>&nbsp
+        <input type="checkbox" id="color" name="purple" value="Purple">
+        <label for="red"> Purple</label>&nbsp
+        <input type="checkbox" id="color" name="orange" value="Orange">
+        <label for="red"> Orange</label>&nbsp
+        <input type="checkbox" id="color" name="mahogany" value="Mahogany">
+        <label for="red"> Mahogany</label>&nbsp
+        <input type="checkbox" id="color" name="brown" value="Brown">
+        <label for="red"> Brown</label>&nbsp
+        <input type="checkbox" id="color" name="teal" value="Teal">
+        <label for="red"> Teal</label>
+    </label></div>
+</div><br>
                
             <div class="row">
                 <div class="col-lg-3">

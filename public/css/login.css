@@ -1,8 +1,8 @@
-body{
+/* body{
     background: rgb(211,188,180);
     background: linear-gradient(274deg, rgba(211,188,180,1) 0%,
     rgba(222,204,195,1) 38%, rgba(193,168,159,1) 66%);
-}
+} */
 
 .login{
     border:20%;
@@ -11,8 +11,8 @@ body{
     text-align: center;
     width: 50%;
     margin:0 auto;
-    background-color: white;
-    box-shadow: 0px 8px 60px -10px rgba(13,28,39,0.6);
+    background-color: #fcfcfb;
+    box-shadow: 0px 4px 8px 3px #eeeded;
 }
 .acc{
     font-size:80%;

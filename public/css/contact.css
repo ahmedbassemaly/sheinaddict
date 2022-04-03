@@ -1,0 +1,28 @@
+.box-1{
+    text-align: center;
+    position: relative;
+}
+.FAQ-row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 22%;
+    max-height: 70%;
+}
+.card{
+    width:90%;
+    justify-content: center; 
+}
+.card-body{
+    margin: 10%;
+    justify-content: center; 
+}
+img {
+    margin-left: 20%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    width: 50%;
+    height: 50%;
+    justify-content: center; 
+}
