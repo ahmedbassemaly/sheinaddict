@@ -5,6 +5,8 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/a8598e67d0.js" crossorigin="anonymous"></script>
+
+
 <nav class="navbar navbar-expand-lg navbar-dark mb-4">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,14 +18,8 @@
           <a class="nav-link active" aria-current="page" href="<?php echo URLROOT . 'public'; ?>">Home</a>
         </li>
          
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Men</a></li>
-              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Women</a></li>
-              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Kids</a></li>   
-          </ul>
-        </li>
+        
+        
 
 		 <li class="nav-item dropdown">
 
@@ -49,12 +45,16 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
+              
             <?php endif; ?>           
           </ul>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT . 'pages/about'; ?>">About Us</a>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Men</a></li>
+              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Women</a></li>
+              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Kids</a></li>   
+          </ul>
         </li>
          
         <li class="nav-item">  
@@ -64,14 +64,17 @@
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT . 'pages/FAQ'; ?>">FAQ</a>
         </li>
-        
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<?php echo URLROOT . 'pages/adminDashboard'; ?>">Admin</a>
-        </li> 
-        <li class="nav-item">  
-          <a class="nav-link" href="<?php echo URLROOT . 'pages/contact'; ?>">Contact</a>
-        </li>       
+          <?php if (isset($_SESSION['user_id'])):?>
+            <?php if ($_SESSION['user_id']==1):?>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="<?php echo URLROOT . 'pages/adminDashboard'; ?>">Admin</a>
+              </li>
+            <?php else:?>
+            <?php endif;?>
+          <?php endif;?>
+
+          
       </ul>
       <a class="navbar-brand" href="<?php echo URLROOT . 'public'; ?>"><?php echo SITENAME; ?></a>
 
@@ -81,7 +84,7 @@
             <span class='badge badge-warning' id='lblCartCount'> 5 </span>
           </a>
       </div>
-
+      
       <div class="search-container">
         <!-- <form action="/search" method="get"> -->
           <input class="search expandright" id="searchright" type="search"  placeholder="Search">

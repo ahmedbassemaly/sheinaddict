@@ -1,8 +1,9 @@
-/* body{
-    background: rgb(211,188,180);
+body{
+    /* background: rgb(211,188,180);
     background: linear-gradient(274deg, rgba(211,188,180,1) 0%,
-    rgba(222,204,195,1) 38%, rgba(193,168,159,1) 66%);
-} */
+    rgba(222,204,195,1) 38%, rgba(193,168,159,1) 66%); */
+    background:#f8f4e1;
+}
 
 .login{
     border:20%;
@@ -18,7 +19,7 @@
     font-size:80%;
     color:black; 
 }
-input[type="text"],[type="password"]{
+input[type="text"],[type="password"],[type="email"]{
     width:64%;
     padding:1%;
     background-color: white;
@@ -38,4 +39,7 @@ input[type="submit"]{
     text-decoration: none;
     margin-top: 4%;
     cursor: pointer;
+}
+input[type="submit"]:hover{
+    background:#927c74;
 }

@@ -1,3 +1,9 @@
+body{
+    /* background: rgb(211,188,180);
+    background: linear-gradient(274deg, rgba(211,188,180,1) 0%,rgba(222,204,195,1) 38%, rgba(193,168,159,1) 66%); */
+    background:#f8f4e1;
+  }
+
 label{
     color: black;
     font-weight:500;

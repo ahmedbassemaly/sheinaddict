@@ -29,27 +29,33 @@ class Register extends view
         <h2>Sign Up</h2>
         <div class="form__field">
           
-            <input type="text" id="txt" name="fname" placeholder="First Name">
-            <input type="text" id="txt" name="lname" placeholder="Last Name">
+            <!-- <input type="text" id="txt" name="fname" placeholder="First Name"> -->
+            <?php $this->printName();?>
+            <!-- <input type="text" id="txt" name="lname" placeholder="Last Name"> -->
+            <?php $this->printLName();?>
           
         </div>
         <div class="form__field">
           
-            <input type="text" id="Email" name="Email" placeholder="Email" class='input-line full-width'>
+            <!-- <input type="text" id="Email" name="Email" placeholder="Email" class='input-line full-width'> -->
+            <?php $this->printEmail();?>
           
         </div>
         <div class="form__field">
           
-            <input type="password" id="password" name="password" placeholder="Password">
+            <!-- <input type="password" id="password" name="password" placeholder="Password"> -->
+            <?php $this->printPassword();?>
           
         </div>
           
-            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
-          
+            <!-- <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password"> -->
+            <?php $this->printConfirmPassword();?>
         <div class="form__field">
           
-            <input type="text" id="phone" name="phone" placeholder="Phone Number">
-            <input type="text" id="address" name="address" placeholder="Address">
+            <!-- <input type="text" id="phone" name="phone" placeholder="Phone Number"> -->
+            <?php $this->printMobile();?>
+            <!-- <input type="text" id="address" name="address" placeholder="Address"> -->
+            <?php $this->printAddress();?>
           
         </div>
         <div class="form__field">
@@ -70,7 +76,7 @@ class Register extends view
     $err = $this->model->getFNameErr();
     $valid = (!empty($err) ? 'is-invalid' : '');
 
-    $this->printInput('text', 'name', $val, $err, $valid);
+    $this->printInput('text', 'fname', $val, $err, $valid,'First Name');
   }
   private function printLName()
   {
@@ -78,7 +84,7 @@ class Register extends view
     $err = $this->model->getLNameErr();
     $valid = (!empty($err) ? 'is-invalid' : '');
 
-    $this->printInput('text', 'last_name', $val, $err, $valid);
+    $this->printInput('text', 'lname', $val, $err, $valid,'Last Name');
   }
   private function printEmail()
   {
@@ -86,7 +92,7 @@ class Register extends view
     $err = $this->model->getEmailErr();
     $valid = (!empty($err) ? 'is-invalid' : '');
 
-    $this->printInput('email', 'email', $val, $err, $valid);
+    $this->printInput('email', 'Email', $val, $err, $valid,'Email');
   }
   private function printMobile()
   {
@@ -94,7 +100,7 @@ class Register extends view
     $err = $this->model->getMobileErr();
     $valid = (!empty($err) ? 'is-invalid' : '');
 
-    $this->printInput('text', 'mobile', $val, $err, $valid);
+    $this->printInput('text', 'phone', $val, $err, $valid,'Phone Number');
   }
   private function printPassword()
   {
@@ -102,7 +108,7 @@ class Register extends view
     $err = $this->model->getPasswordErr();
     $valid = (!empty($err) ? 'is-invalid' : '');
 
-    $this->printInput('password', 'password', $val, $err, $valid);
+    $this->printInput('password', 'password', $val, $err, $valid,'Password');
   }
   private function printConfirmPassword()
   {
@@ -110,7 +116,7 @@ class Register extends view
     $err = $this->model->getConfirmPasswordErr();
     $valid = (!empty($err) ? 'is-invalid' : '');
 
-    $this->printInput('password', 'confirm_password', $val, $err, $valid);
+    $this->printInput('password', 'confirm_password', $val, $err, $valid,'Confirm Password');
   }
   private function printAddress()
   {
@@ -118,19 +124,16 @@ class Register extends view
     $err = $this->model->getAddressErr();
     $valid = (!empty($err) ? 'is-invalid' : '');
 
-    $this->printInput('text', 'address', $val, $err, $valid);
+    $this->printInput('text', 'address', $val, $err, $valid,'Address');
   }
 
-  private function printInput($type, $fieldName, $val, $err, $valid)
+  private function printInput($type, $fieldName, $val, $err, $valid,$placeholder)
   {
     $label = str_replace("_", " ", $fieldName);
     $label = ucwords($label);
     $text = <<<EOT
-    <div class="form-group">
-      <label for="$fieldName"> $label: <sup>*</sup></label>
-      <input type="$type" name="$fieldName" class="form-control form-control-lg $valid" id="$fieldName" value="$val">
+      <input type="$type" id="txt" name="$fieldName" placeholder="$placeholder" class='$valid'>
       <span class="invalid-feedback">$err</span>
-    </div>
 EOT;
     echo $text;
   }

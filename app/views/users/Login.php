@@ -27,11 +27,13 @@ class Login extends View
         <br>
         <h2>Login</h2>
         <div class="form__field">
-            <input type="text" id="Email" name="email" placeholder="Email" class='input-line full-width'>
+            <!-- <input type="text" id="Email" name="email" placeholder="Email" class='input-line full-width'> -->
+            <?php $this->printEmail();?>
         </div>
         <div class="form__field">
-            <input type="password" id="password" name="password" placeholder="Password">
-        </div>
+            <!-- <input type="password" id="password" name="password" placeholder="Password"> -->
+            <?php $this->printPassword();?>
+  </div>
         <div class="form__field">
             <input type="submit" value="Login" id="submit" name="submit">
         </div>
@@ -49,7 +51,7 @@ class Login extends View
     $err = $this->model->getEmailErr();
     $valid = (!empty($err) ? 'is-invalid' : '');
 
-    $this->printInput('email', 'email', $val, $err, $valid);
+    $this->printInput('email', 'email', $val, $err, $valid,'Email');
   }
 
   private function printPassword()
@@ -58,19 +60,17 @@ class Login extends View
     $err = $this->model->getPasswordErr();
     $valid = (!empty($err) ? 'is-invalid' : '');
 
-    $this->printInput('password', 'password', $val, $err, $valid);
+    $this->printInput('password', 'password', $val, $err, $valid,'Password');
   }
 
-  private function printInput($type, $fieldName, $val, $err, $valid)
+  private function printInput($type, $fieldName, $val, $err, $valid,$placeholder)
   {
     $label = str_replace("_", " ", $fieldName);
     $label = ucwords($label);
     ?>
-    <div class="form-group">
-      <label for="$fieldName"> $label: <sup>*</sup></label>
-      <input type="$type" name="$fieldName" class="form-control form-control-lg $valid" id="$fieldName" value="$val">
-      <span class="invalid-feedback">$err</span>
-    </div>
+      <input type="<?php echo $type;?>" id="txt" name="<?php echo $fieldName;?>" placeholder="<?php echo $placeholder; ?>" class='<?php echo $valid; ?>'>
+      <span class="invalid-feedback"><?php echo $err;?></span>
+    
 <?php
   }
 }

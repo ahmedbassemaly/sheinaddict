@@ -1,3 +1,10 @@
+body{
+    /* background: rgb(211,188,180);
+    background: linear-gradient(274deg, rgb(238, 228, 225) 0%,
+    rgb(253, 235, 226) 38%, rgb(172, 167, 165) 66%); */
+    background:#f8f4e1;
+}
+
 .register{
     border:20%;
     border-color: #C1A89F;
@@ -14,7 +21,7 @@
     font-size:80%;
     color:black; 
 }
-input[type="text"],[type="password"]{
+input[type="text"],[type="password"],[name="Email"]{
     width:64%;
     padding:1%;
     background-color: white;
@@ -53,8 +60,11 @@ input[type="submit"]{
     color: white;
     border-radius:20px;
     padding: 10px 25px;
-    background: #C1A89F;
+    background: #d8b2a5;
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
+}
+input[type="submit"]:hover{
+    background:#9c8780;
 }
