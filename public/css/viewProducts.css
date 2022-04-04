@@ -39,3 +39,28 @@ body {
     opacity: 0.9;
     background-color: #95705F;
   }
+.btn{
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #d2b7a4;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius:50px;
+    margin-top:5%;
+    margin-left:18%;
+}
+.btn1{
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #d2b7a4;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius:50px;
+    margin-top:5%;
+}

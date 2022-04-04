@@ -22,6 +22,11 @@ class viewProducts extends View{
         $getDescription=$this->model->getDescription();
         $getSubCategory=$this->model->getSubCategory();
         $i=0;
+        ?>
+        <div class="col-md-10">
+        <a href="<?php echo URLROOT . 'pages/addProduct'; ?>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add Product</a>
+        </div>
+        <?php
         while($i<12){
         ?>
         <div class="container d-flex justify-content-center mt-50 mb-50">
@@ -45,7 +50,7 @@ class viewProducts extends View{
                             <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
                                 <h3 class="mb-0 font-weight-semibold">Price: <?php echo"$".$getPrice;?></h3>
                                 <div> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                                    <div class="text-muted"></div> <button type="button" class="btn btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i> Edit Product</button>
+                                    <div class="text-muted"></div> <button type="button" class="btn1 btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i> Edit Product</button>
                             </div>
                         </div>
                     </div>
