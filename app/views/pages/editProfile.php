@@ -6,7 +6,7 @@
   
   class editProfile extends View{
     public function output(){
-        $this->model->editUserData();
+        // $this->model->editUserData();
         require APPROOT . '/views/inc/header.php';
 
         ?>
