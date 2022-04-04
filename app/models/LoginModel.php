@@ -11,7 +11,7 @@ class LoginModel extends UserModel
 
         $record = $this->dbh->single();
         $hash_pass = $record->password;
-        
+
         //Hash Password
         echo password_hash($this->password, PASSWORD_DEFAULT)."<br>";
         // echo $hash_pass;

@@ -115,6 +115,9 @@ class Users extends Controller
                     // echo "Bravo";
                     //create related session variables
                     $this->createUserSession($loggedUser);
+                    if($_SESSION['userType_id']=="1"){
+                        redirect('pages/adminDashboard');
+                    }
                     die('Success log in User');
                 } else {
                     // echo "no bravo";
@@ -134,6 +137,7 @@ class Users extends Controller
     {
         $_SESSION['user_id'] = $user->user_id;
         $_SESSION['user_name'] = $user->firstName;
+        $_SESSION['userType_id'] = $user->userType_id;
         //header('location: ' . URLROOT . 'pages');
         redirect('pages');
     }
