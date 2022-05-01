@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo URLROOT . 'css/admin.css'; ?>">
+<title>Dashboard</title>
 <?php
 class adminDashboard extends View{
     public function output(){

@@ -18,6 +18,10 @@ body {
 }
 .container{
     margin-left:30%;
+    margin-bottom:30%;
+}
+.profile-card{
+    margin-bottom:30%;
 }
 .row{
     width: 100%;

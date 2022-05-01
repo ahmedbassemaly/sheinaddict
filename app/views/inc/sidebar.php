@@ -34,6 +34,10 @@
             <li>
                 <a href="<?php echo URLROOT . 'pages/editContact'; ?>"><i class="fa-solid fa-phone"></i> Edit Contact Us</a>
             </li>
+            <br>
+            <li>
+                <a href="<?php echo URLROOT . 'pages/editFAQ'; ?>"><i class="fa-solid fa-circle-question"></i> Edit FAQ</a>
+            </li>
         </ul>
     </div>
 </div>

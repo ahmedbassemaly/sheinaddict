@@ -128,5 +128,12 @@ class Pages extends Controller
         $productInfoView = new productInfo($this->getModel(), $this);
         $productInfoView->output();
     }
+
+    public function editFAQ(){
+        $viewPath = VIEWS_PATH . 'pages/editFAQ.php';
+        require_once $viewPath;
+        $editFAQView = new editFAQ($this->getModel(), $this);
+        $editFAQView->output();
+    }
 }
 

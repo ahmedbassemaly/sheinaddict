@@ -1,0 +1,59 @@
+body{
+    background:#f8f4e1;
+}
+.box-1{
+    text-align: center;
+    position: relative;
+}
+.FAQ-row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 22%;
+    max-height: 70%;
+}
+.card{
+    width:90%;
+    justify-content: left; 
+    height:100%;
+    margin-bottom:10%;
+    
+}
+.card-body{
+    margin: auto;
+    justify-content: left; 
+    height:100%;
+    margin-bottom:10%;
+    
+}
+label{
+    font-size:120%;
+}
+textarea{
+    display:flex;
+    border-radius: 2%;
+    border-color:#99725f;
+    margin-bottom: 3%;
+    margin-right: 3%;
+    height:120%;
+    
+}
+input[type="submit"]{
+    text-decoration:none;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:white;
+    outline: 2px solid white;
+    padding:1% 2%;
+    position:relative;
+    overflow:hidden;
+    transition:color 1s;
+}
+input:hover[type="submit"]{
+    color:#f8f4e1;
+}
+.button{
+    display:flex;
+    justify-content:center;
+}
