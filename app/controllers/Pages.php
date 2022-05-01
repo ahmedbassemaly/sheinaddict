@@ -20,6 +20,34 @@ class Pages extends Controller
 
     public function editProfile()
     {
+        $editProfile = $this->getModel();
+        // echo$_SERVER['REQUEST_METHOD'];
+        // var_dump($_SERVER['REQUEST_METHOD']);
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
+
+            $editProfile->setFname($_POST['Fname']); 
+            $editProfile->setLname($_POST['Lname']);
+            $editProfile->setEmail($_POST['Email']);
+            $editProfile->setPhoneNo($_POST['PhoneNo']);
+            $editProfile->setAddress($_POST['Address']);
+            $result=$editProfile->editUserData($_SESSION['user_id']);
+            
+
+            #_________________filter email_________________#
+                // $oldEmail = $email;
+                // $email = filter_var($email,FILTER_SANITIZE_EMAIL);
+                
+                // if(!filter_var($email , FILTER_VALIDATE_EMAIL) === false && $email===$oldEmail)
+                // {
+                //     return true;
+                // }
+                // else{
+                //     return false;
+                // }
+        
+        }
+
         $viewPath = VIEWS_PATH . 'pages/editProfile.php';
         require_once $viewPath;
         $editProfileView = new editProfile($this->getModel(), $this);

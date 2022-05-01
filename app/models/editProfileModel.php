@@ -1,41 +1,89 @@
 <?php
 class editProfileModel extends Model{
-    //Database Connection
-    // public function editUserData(){
-    //     // if(isset($_POST['submit'])){
-    //         $Fname = $_POST['Fname'];
-    //         $LName = $_POST['Lname'];
-    //         $PhoneNo = $_POST['PhoneNo'];
-    //         $Email = $_POST['Email'];
-    //         $Address = $_POST['Address'];
+    // Database Connection
 
-    //     //     $query = "UPDATE users 
-    //     //         SET 'firstName' = :Fname, 'lastName' = :LName, 'phoneNumber'=:PhoneNo, 'email' = :Email, 'Address'= :Address
-    //     //         WHERE user_id='".$_SESSION['user_id'] ."' ";
+    protected $firstName;
+    protected $lastName;
+    protected $phoneNumber;
+    protected $email;
+    protected $Address;
 
-    //     //     $result = $conn->query($query);
-    //     //     if (!$result)
-    //     //         throw new Exception($query);
+    public function __construct(){
+        parent::__construct();
+        $this->firstName = "";
+        $this->lastName = "";
+        $this->phoneNumber = "";
+        $this->email = "";
+        $this->Address = "";
+    }
 
-    //     //     $_SESSION['firstname'] = $Fname;
-    //     //     $_SESSION['lastname'] = $LName;
-    //     //     $_SESSION['phoneNumber'] = $PhoneNo;
-    //     //     $_SESSION['email'] = $Email;
-    //     //     $_SESSION['address'] = $Address;
 
-    //     $this->dbh->query("UPDATE users 
-    //     SET 'firstName' = $Fname, 'lastName' = $LName, 'phoneNumber'=$PhoneNo, 'email' = $Email, 'Address'= $Address
-    //     WHERE user_id='".$_SESSION['user_id'] ."' ");
-    //     $this->dbh->bind(':fname', $this->Fname);
-    //     $this->dbh->bind(':lname', $this->Lname);
-    //     $this->dbh->bind(':mob', $this->mobile);
-    //     $this->dbh->bind(':email', $this->email);
-    //     $this->dbh->bind(':pass', $this->password);
-    //     $this->dbh->bind(':addr', $this->address); 
+    public function getFname($id){
+        $this->dbh->query("SELECT firstName FROM users WHERE `user_id`=:id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->firstName;
+    }
 
+    public function setFname($firstName){
+        $this->firstName = $firstName;
+    }
+
+    public function getLname($id){
+        $this->dbh->query("SELECT lastName FROM users WHERE `user_id`=:id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->lastName;
+    }
+
+    public function setLname($lastName){
+        $this->lastName = $lastName;
+    }
+
+
+    public function getPhoneNo($id){
+        $this->dbh->query("SELECT phoneNumber FROM users WHERE `user_id`=:id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->phoneNumber;
+    }
+
+    public function setPhoneNo($phoneNumber){
+        $this->phoneNumber = $phoneNumber;
+    }
+
+
+    public function getEmail($id){
+        $this->dbh->query("SELECT email FROM users WHERE `user_id`=:id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->email;
+    }
+
+    public function setEmail($email){
+        $this->email = $email;
+    }
+
+    public function getAddress($id){
+        $this->dbh->query("SELECT Address FROM users WHERE `user_id`=:id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->Address;
+    }
+
+    public function setAddress($Address){
+        $this->Address = $Address;
+    }
+
+    public function editUserData($id){
+
+        $this->dbh->query("UPDATE users SET `firstName`=:firstName, `lastName`=:lastName, `phoneNumber`=:phoneNumber, `email`=:email, `Address`=:Address WHERE `user_id`=:id");
         
-    //     return $this->dbh->execute();
-    //     }
-     }
+        $this->dbh->bind(':firstName',$this->firstName);
+        $this->dbh->bind(':lastName',$this->lastName);
+        $this->dbh->bind(':phoneNumber',$this->phoneNumber);
+        $this->dbh->bind(':email',$this->email);
+        $this->dbh->bind(':Address',$this->Address);
+        $this->dbh->bind(':id',$id);
+
+        return $this->dbh->execute();
+        
+    }
+}
 
 ?>

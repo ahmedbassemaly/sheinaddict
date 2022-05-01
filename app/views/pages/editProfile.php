@@ -12,7 +12,7 @@
         ?>
             <link rel="stylesheet" href="<?php echo URLROOT . 'css/editProfile.css'; ?>">
 
-        <form action="<?php echo URLROOT . 'pages/Index'; ?>" method="post">
+        <form action="" method="POST">
         <div class="card" >
         <div id="centerEditForm">
             <div class="row">
@@ -22,29 +22,29 @@
             <div class="row">
                 <div class="col-lg-6">
                     <label>First Name:<br></label>
-                    <input type="text" name='Fname' id="Fname" placeholder="Bob" class="form-control" required>
+                    <input type="text" name='Fname' id='Fname' value="<?php echo $this->model->getFname($_SESSION['user_id']) ?>" class="form-control" required>
                 </div>
                 <div class="col-lg-6" id=margin-bottom>
                     <label>Last Name:</label>
-                    <input type="text" name='LName' id="Lname" placeholder="Smith" class="form-control" >
+                    <input type="text" name='Lname' id="Lname" value="<?php echo $this->model->getLname($_SESSION['user_id']) ?>" class="form-control" >
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-lg-12" id=margin-bottom>
                     <label>Email:</label>
-                    <input type="text" name='Email' id="Email" placeholder="Smith@email.com" class="form-control" >  
+                    <input type="text" name='Email' id="Email" value="<?php echo $this->model->getEmail($_SESSION['user_id']) ?>" class="form-control" >  
                 </div>
             </div>    <div id="usernameMessage"></div> <div id="usernameMessage"></div>
 
             <div class="row">
                 <div class="col-lg-6">
                     <label>Phone Number:</label>
-                    <input type="text" name='PhoneNo' id="PhoneNo" placeholder="123456789" class="form-control" pattern="[0-5]{3}[0-9]{8}"> 
+                    <input type="text" name='PhoneNo' id="PhoneNo" value="<?php echo $this->model->getPhoneNo($_SESSION['user_id']) ?>" class="form-control" pattern="[0-5]{3}[0-9]{8}"> 
                 </div>
                 <div class="col-lg-6" id=margin-bottom>
                     <label>Adress:</label>
-                    <input type='text' name='Address' id="Address"placeholder="ex: Cairo" class="form-control" > 
+                    <input type='text' name='Address' id="Address" value="<?php echo $this->model->getAddress($_SESSION['user_id']) ?>" class="form-control" > 
                 </div>
                 <p><button type="submit" name ="submit" id="submit">Update Profile</button></p>
             </div>
