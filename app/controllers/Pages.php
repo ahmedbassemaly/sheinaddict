@@ -122,6 +122,54 @@ class Pages extends Controller
     }
 
     public function editContact(){
+            $editContact=$this->getModel();
+            if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $id=$_POST['submit'];
+                $image="card{$id}0";
+                $card="card{$id}1";
+                $link="card{$id}2";
+                $editContact->setCaption($_POST[$card]);
+                $editContact->setLink($_POST[$link]);
+
+                /******************************************************Image Validation******************************************************/
+                $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/";
+                $fileName1=$root.basename($_FILES[$image]['name']);
+                $file_name = $_FILES[$image]['name'];
+                $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                $extension= array("jpeg","jpg","png");
+
+                if(!empty($file_name)){
+                    if(in_array($file_ext,$extension)===false){
+                    ?>
+                        <div class="text-center fixed-top" style="margin-top:550px;">  
+                          <button class="btn btn-danger" id="Db" style="width:50%"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> extension not allowed,please choose a JPEG,JPG or a PNG file </button>
+                        </div>
+                        <?php
+                        $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+                    }else{
+                        ?>
+                        <div class="text-center fixed-top" style="margin-top:550px;">  
+                          <button class="btn btn-success" id="Db" style="width:50%"> Image and data updated successfully</button>
+                        </div>
+                        <?php
+                        move_uploaded_file($_FILES[$image]['tmp_name'],$fileName1);
+                        $editContact->setContactImage (basename($_FILES[$image]['name']));
+                        $result=$editContact->editContact($_POST['submit']);
+                    }
+                }else{
+                    ?>
+                    <div class="text-center fixed-top" style="margin-top:550px;">  
+                      <button class="btn btn-success" id="Db" style="width:50%"> Data updated successfully</button>
+                    </div>
+                    <?php
+                    $result=$editContact->editContact($_POST['submit']);
+                }
+                /******************************************************Image Validation end******************************************************/
+                // if(!$result){
+                //     echo "<script> alert('{$_POST[$card]}') </script>";
+                // }
+            }
+    
         $viewPath = VIEWS_PATH . 'pages/editContact.php';
         require_once $viewPath;
         $editContactView = new editContact($this->getModel(), $this);
