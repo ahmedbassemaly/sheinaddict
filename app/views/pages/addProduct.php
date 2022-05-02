@@ -12,9 +12,11 @@
     }
 
     public function printForm(){
+        $action = URLROOT . '/pages/addProductColors';
         ?>
         <link rel="stylesheet" href="<?php echo URLROOT . 'css/product.css'; ?>">
-            
+        
+        <form action="<?php echo $action;?>" method="POST">
         <div class="card" >
         <div id="centerEditForm">
             <div class="row">
@@ -138,53 +140,43 @@
                     <label for="color">Color:
                 </div>
                 <div class="col-lg-9">
-                    <input type="checkbox" id="color" name="black" value="Black">
+                    <input type="checkbox" id="black" name="color[]" value="Black" >
                     <label for="black"> Black</label>&nbsp
-                    <input type="checkbox" id="color" name="white" value="White">
+                    <input type="checkbox" id="white" name="color[]" value="White">
                     <label for="white"> White</label>&nbsp
-                    <input type="checkbox" id="color" name="blue" value="Blue">
-                    <label for="red"> Blue</label>&nbsp
-                    <input type="checkbox" id="color" name="red" value="Red">
+                    <input type="checkbox" id="blue" name="color[]" value="Blue">
+                    <label for="blue"> Blue</label>&nbsp
+                    <input type="checkbox" id="red" name="color[]" value="Red">
                     <label for="red"> Red</label>&nbsp
-                    <input type="checkbox" id="color" name="beige" value="Beige">
-                    <label for="red"> Beige</label>&nbsp
-                    <input type="checkbox" id="color" name="pink" value="Pink">
-                    <label for="red"> Pink</label>&nbsp
-                    <input type="checkbox" id="color" name="green" value="Green">
-                    <label for="red"> Green</label>&nbsp
-                    <input type="checkbox" id="color" name="grey" value="Grey">
-                    <label for="red"> Grey</label>&nbsp
-                    <input type="checkbox" id="color" name="yellow" value="Yellow">
-                    <label for="red"> Yellow</label>&nbsp
-                    <input type="checkbox" id="color" name="purple" value="Purple">
-                    <label for="red"> Purple</label>&nbsp
-                    <input type="checkbox" id="color" name="orange" value="Orange">
-                    <label for="red"> Orange</label>&nbsp
-                    <input type="checkbox" id="color" name="mahogany" value="Mahogany">
-                    <label for="red"> Mahogany</label>&nbsp
-                    <input type="checkbox" id="color" name="brown" value="Brown">
-                    <label for="red"> Brown</label>&nbsp
-                    <input type="checkbox" id="color" name="teal" value="Teal">
-                    <label for="red"> Teal</label>
+                    <input type="checkbox" id="beige" name="color[]" value="Beige" >
+                    <label for="beige"> Beige</label>&nbsp
+                    <input type="checkbox" id="pink" name="color[]" value="Pink">
+                    <label for="pink"> Pink</label>&nbsp
+                    <input type="checkbox" id="green" name="color[]" value="Green">
+                    <label for="green"> Green</label>&nbsp
+                    <input type="checkbox" id="grey" name="color[]" value="Grey">
+                    <label for="grey"> Grey</label>&nbsp
+                    <input type="checkbox" id="yellow" name="color[]" value="Yellow">
+                    <label for="yellow"> Yellow</label>&nbsp
+                    <input type="checkbox" id="purple" name="color[]" value="Purple">
+                    <label for="purple"> Purple</label>&nbsp
+                    <input type="checkbox" id="orange" name="color[]" value="Orange">
+                    <label for="orange"> Orange</label>&nbsp
+                    <input type="checkbox" id="mahogany" name="color[]" value="Maroon">
+                    <label for="mahogany"> Maroon</label>&nbsp
+                    <input type="checkbox" id="brown" name="color[]" value="Brown">
+                    <label for="brown"> Brown</label>&nbsp
+                    <input type="checkbox" id="teal" name="color[]" value="Teal">
+                    <label for="teal"> Teal</label>
                 </label></div>
             </div><br>
 
             <div class="row">
-                <div class="col-lg-6">
-                    <label for="images">Add Images to this Product:
-                </div>
-                <div class="col-lg-6">
-                    <label id="fileUpload"> <input type="file" name="fileToUpload"> </label>
-                    <input type="submit" value="Upload Image" id="fileUpload" name="submit">
-                </div>
+                <button type="submit" name ="submit" id="submit">Next</button>
             </div> 
-
-            <div class="row">
-               <button type="submit" name ="submit" id="submit">Add Product</button>
-            </div>
         </div>
     </div>
-    
+    </form>
         
     <?php
     }

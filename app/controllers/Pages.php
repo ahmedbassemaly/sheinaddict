@@ -76,6 +76,10 @@ class Pages extends Controller
     }
     public function addProduct()
     {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            echo "Hi";
+        }
+
         $viewPath = VIEWS_PATH . 'pages/addProduct.php';
         require_once $viewPath;
         $addProductView = new addProduct($this->getModel(), $this);
@@ -210,6 +214,14 @@ class Pages extends Controller
         require_once $viewPath;
         $editFAQView = new editFAQ($this->getModel(), $this);
         $editFAQView->output();
+    }
+
+    public function addProductColors()
+    {
+        $viewPath = VIEWS_PATH . 'pages/addProductColors.php';
+        require_once $viewPath;
+        $addProductColorsView = new addProductColors($this->getModel(), $this);
+        $addProductColorsView->output();
     }
 }
 
