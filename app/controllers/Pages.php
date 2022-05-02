@@ -232,12 +232,12 @@ class Pages extends Controller
         $productInfoView->output();
     }
 
-    public function editFAQ(){
-        $viewPath = VIEWS_PATH . 'pages/editFAQ.php';
-        require_once $viewPath;
-        $editFAQView = new editFAQ($this->getModel(), $this);
-        $editFAQView->output();
-    }
+    // public function editFAQ(){
+    //     $viewPath = VIEWS_PATH . 'pages/editFAQ.php';
+    //     require_once $viewPath;
+    //     $editFAQView = new editFAQ($this->getModel(), $this);
+    //     $editFAQView->output();
+    // }
 
     public function addProductColors()
     {
