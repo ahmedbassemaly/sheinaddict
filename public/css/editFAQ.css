@@ -8,24 +8,17 @@ body{
 .FAQ-row{
     display: flex;
     flex-wrap: wrap;
-    margin-top: 5%;
     margin-bottom: 5%;
-    margin-left: 22%;
     max-height: 70%;
+    max-width: 230%;
 }
-.card{
-    width:90%;
+.FAQBox{
+    width:230%;
     justify-content: left; 
-    height:100%;
-    margin-bottom:10%;
-    
-}
-.card-body{
-    margin: auto;
-    justify-content: left; 
-    height:100%;
-    margin-bottom:10%;
-    
+    height:70%;
+    margin-top:1% ;
+    margin-bottom:5%;
+    margin-left:17%;
 }
 label{
     font-size:120%;
@@ -38,6 +31,10 @@ textarea{
     margin-right: 3%;
     height:120%;
     
+}
+.FAQName{
+    margin-top: 5%;
+    margin-left:5%;
 }
 input[type="submit"]{
     text-decoration:none;
@@ -56,4 +53,17 @@ input:hover[type="submit"]{
 .button{
     display:flex;
     justify-content:center;
+}
+#updateFAQ{
+    border-radius: 50px;
+    border-color:#99725f;
+    margin-top:-5%;
+    margin-bottom: 7%;
+    margin-left: 5%;
+    text-align: center;
+    cursor: pointer;
+    background: white;
+}
+.cardBorders{
+    margin-bottom:-7%;
 }

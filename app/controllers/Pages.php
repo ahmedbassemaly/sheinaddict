@@ -61,6 +61,22 @@ class Pages extends Controller
         $FAQView = new FAQ($this->getModel(), $this);
         $FAQView->output();
     }    
+
+    public function editFAQ(){
+        $editFAQ=$this->getModel();
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $id=$_POST['submit'];
+            $helpText="helpText{$id}";
+            $editFAQ->setHelpText($_POST[$helpText]);
+            $result=$editFAQ->editFAQ($_POST['submit']);
+        }
+
+        $viewPath = VIEWS_PATH . 'pages/editFAQ.php';
+        require_once $viewPath;
+        $editFAQView = new editFAQ($this->getModel(), $this);
+        $editFAQView->output();
+    }
+
     public function adminDashboard(){
         $viewPath = VIEWS_PATH . 'pages/adminDashboard.php';
         require_once $viewPath;
@@ -196,6 +212,13 @@ class Pages extends Controller
 
     public function shipping()
     {
+        $editShipping=$this->getModel();
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $id=$_POST['submit'];
+            $helpText="helpText{$id}";
+            $editShipping->setHelpText($_POST[$helpText]);
+        }
+
         $viewPath = VIEWS_PATH . 'pages/shipping.php';
         require_once $viewPath;
         $shippingView = new shipping($this->getModel(), $this);

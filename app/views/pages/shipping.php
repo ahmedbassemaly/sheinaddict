@@ -5,22 +5,23 @@ class shipping extends view
 {
     public function output(){
 
-        $title = $this->model->title;
-        $subtitle_1 = $this->model->subtitle_1;
-        $subtitle_2 = $this->model->subtitle_2;
-        $text_1 = $this->model->text_1;
-        $text_2 = $this->model->text_2;
+        
+        // $subtitle_1 = $this->model->subtitle_1;
+        // $subtitle_2 = $this->model->subtitle_2;
+        // $text_1 = $this->model->text_1;
+        // $text_2 = $this->model->text_2;
+
+        $id=$_GET['id'];
+        $helpMethod = $this->model->getHelpMethod($id);
+        $helpText=$this->model->getHelpText($id);
 
         require APPROOT . '/views/inc/header.php';
         $text = <<<EOT
         <div class="containter-shipping">
         <div class="title">
-          <h1> $title</h1>
+          <h1> FAQ $helpMethod</h1>
         </div>
-        <h4> $subtitle_1</h4>
-        <p class="text">$text_1</p>
-        <h4> $subtitle_2</h4>
-        <p class="text">$text_2</p>
+        <h4>$helpText </h4>
         </div>
       </div>
     EOT;
