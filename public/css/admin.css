@@ -5,7 +5,7 @@
     display:grid;
     grid-template-columns: repeat(4,1fr);
     grid-gap:5%;
-    
+    text-align:center;
 
 }
 .card-single{
@@ -14,14 +14,45 @@
     background:white;
     border-radius:5%;
     box-shadow: 0px 8px 40px -10px rgba(13,28,39,0.6);
+    text-align:center;
+    padding-right:5%;
+    padding-top:3%;
+    padding-bottom:2%;
+}
+.card-single1{
+    display:flex;
+    justify-content:space-between;
+    background:white;
+    border-radius:5%;
+    box-shadow: 0px 8px 40px -10px rgba(13,28,39,0.6);
+    text-align:center;
+    padding-right:5%;
+    padding-top:3%;
+    padding-bottom:2%;
 }
 .card-single div:first-child span{
     font-size:100%;
     color:#95705F;
     box-shadow: 30%;
+    margin-left:104%;
     
 }
 .card-single div:last-child span{
+    font-size:200%;
+    padding-right:10%;
+    padding-top:10%;
+    color:#95705F;
+    margin-top:5%;
+    margin-right:5%;
+}
+.card-single1 div:first-child span{
+    font-size:100%;
+    color:#95705F;
+    box-shadow: 30%;
+    margin-left: 200%;
+    
+}
+.card-single1 div:last-child span{
     font-size:200%;
     padding-right:10%;
     padding-top:10%;
@@ -56,4 +87,10 @@
     margin-right:5%;
     font-family: "Lucida Handwriting", cursive;
     font-size:150%;
+}
+.card-single h1{
+    margin-left:140%;
+}
+.card-single1 h1{
+    margin-left:230%;
 }

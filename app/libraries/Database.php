@@ -77,6 +77,12 @@ class Database
         return $this->stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function resultFetchCol()
+    {
+        $this->execute();
+        return $this->stmt->fetchAll( PDO::FETCH_COLUMN);
+    }
+    
     // Get single record as object
     public function single()
     {
@@ -89,4 +95,6 @@ class Database
     {
         return $this->stmt->rowCount();
     }
+
+    
 }

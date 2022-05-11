@@ -11,16 +11,16 @@ class adminDashboard extends View{
             <div class="cards">
                 <div class="card-single">
                     <div>
-                        <h1>43</h1>
+                        <h1><?php echo $this->model->getCustomer();?></h1>
                         <span>Customers</span>
                     </div>
                     <div>
-                        <span style><i class="fa-solid fa-user"></i></span>
+                        <span><i class="fa-solid fa-user"></i></span>
                     </div>
                 </div>
-                <div class="card-single">
+                <div class="card-single1">
                     <div>
-                        <h1>22</h1>
+                        <h1><?php echo $this->model->getOrders();?></h1>
                         <span>Orders</span>
                     </div>
                     <div>
