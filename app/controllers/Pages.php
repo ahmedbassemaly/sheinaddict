@@ -92,8 +92,36 @@ class Pages extends Controller
     }
     public function addProduct()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            echo "Hi";
+        if(isset($_POST['addProduct'])){
+            $addProduct=$this->getModel();
+            $addProduct->setName($_POST['name']);
+            $addProduct->setPrice($_POST['price']);
+            $addProduct->setQuantity($_POST['quantity']);
+            $addProduct->setCategoryName($_POST['category']);
+            $addProduct->setsubCategory($_POST['subcategory']);
+            $addProduct->setStyle($_POST['style']);
+            $addProduct->setSeason($_POST['season']);
+            $addProduct->setNeckline($_POST['neckline']);
+            $addProduct->setMaterial($_POST['material']);
+            $addProduct->setColor($_POST['color']);
+            $addProduct->setImages($_FILES);
+            /*************IMAGES*************/
+            $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
+            if(!empty($_POST['color'])) {
+                foreach($_POST['color'] as $value){
+                    //echo "Chosen color : ".$value.'<br/>';
+                        for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
+                            $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
+                            $file_name = $_FILES['fileToUpload'.$value]['name'][$i];
+                            $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                            move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
+                            //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
+                        }
+                    }
+                }
+            /*************IMAGES*************/
+            $result=$addProduct->insertProduct($_FILES);
+
         }
 
         $viewPath = VIEWS_PATH . 'pages/addProduct.php';
@@ -238,13 +266,5 @@ class Pages extends Controller
     //     $editFAQView = new editFAQ($this->getModel(), $this);
     //     $editFAQView->output();
     // }
-
-    public function addProductColors()
-    {
-        $viewPath = VIEWS_PATH . 'pages/addProductColors.php';
-        require_once $viewPath;
-        $addProductColorsView = new addProductColors($this->getModel(), $this);
-        $addProductColorsView->output();
-    }
 }
 

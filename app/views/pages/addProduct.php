@@ -12,11 +12,12 @@
     }
 
     public function printForm(){
-        $action = URLROOT . '/pages/addProductColors';
+        // $action = URLROOT . '/pages/addProductColors';
+        $action = URLROOT . '/pages/viewProducts';
         ?>
         <link rel="stylesheet" href="<?php echo URLROOT . 'css/product.css'; ?>">
         
-        <form action="<?php echo $action;?>" method="POST">
+        <form action="" method="POST" enctype='multipart/form-data'>
         <div class="card" >
         <div id="centerEditForm">
             <div class="row">
@@ -47,11 +48,11 @@
                 </div>
                 <div class="col-lg-6">
                     <input type='radio' name="category" value="Women" checked>
-                    <label for="Women">Women</label>
+                        <label for="Women">Women</label>
                     <input type='radio' name="category" value="Men">
-                    <label for="Men">Men</label>
+                        <label for="Men">Men</label>
                     <input type='radio' name="category" value="Kids">
-                    <label for="Kids">Kids</label>
+                        <label for="Kids">Kids</label>
                 </div>
             </div><br>
             
@@ -61,13 +62,20 @@
                 </div>
                 <div class="col-lg-3">
                     <select name="subcategory" id="subcategory">
+                    <script>
+                        $('#myform input[type=radio]').on('change', function(event) {
+                        var result = $(this).val();
+                        $('#result').html(result);
+                    })
+                    </script>
                         <option value="T-Shirt">T-Shirts</option>
-                        <option value="Pants">Bottoms</option>
+                        <option value="Hoodies & Sweatshirts">Hoodies & Sweatshirts</option>
+                        <option value="Jackets">Jackets</option>
+                        <option value="Co-ords">Co-ords</option>
+                        <option value="Bottoms">Bottoms</option>
+                        <option value="Shoes">Shoes</option>
                         <option value="Dresses">Dresses</option>
                         <option value="Blouses">Blouses</option>
-                        <option value="Jackets">Hoodies & Sweatshirts</option>
-                        <option value="Activewear">Jackets</option>
-                        <option value="Activewear">Shoes</option>
                     </select></label>
                 </div>
             </div><br>
@@ -131,6 +139,8 @@
                         <option value="leather">Leather</option>
                         <option value="velvet">Velvet</option>
                         <option value="crepe">Crepe</option>
+                        <option value="fabric">Fabric</option>
+                        <option value="polyster">Polyster</option>
                     </select></label>
                 </div>
             </div><br><br>
@@ -140,45 +150,79 @@
                     <label for="color">Color:
                 </div>
                 <div class="col-lg-9">
-                    <input type="checkbox" id="black" name="color[]" value="Black" >
+                    <input type="checkbox" id="Black" name="color[]" value="Black" >
                     <label for="black"> Black</label>&nbsp
-                    <input type="checkbox" id="white" name="color[]" value="White">
+                    <input type="checkbox" id="White" name="color[]" value="White">
                     <label for="white"> White</label>&nbsp
-                    <input type="checkbox" id="blue" name="color[]" value="Blue">
+                    <input type="checkbox" id="Blue" name="color[]" value="Blue">
                     <label for="blue"> Blue</label>&nbsp
-                    <input type="checkbox" id="red" name="color[]" value="Red">
+                    <input type="checkbox" id="Red" name="color[]" value="Red">
                     <label for="red"> Red</label>&nbsp
-                    <input type="checkbox" id="beige" name="color[]" value="Beige" >
+                    <input type="checkbox" id="Beige" name="color[]" value="Beige" >
                     <label for="beige"> Beige</label>&nbsp
-                    <input type="checkbox" id="pink" name="color[]" value="Pink">
+                    <input type="checkbox" id="Pink" name="color[]" value="Pink">
                     <label for="pink"> Pink</label>&nbsp
-                    <input type="checkbox" id="green" name="color[]" value="Green">
+                    <input type="checkbox" id="Green" name="color[]" value="Green">
                     <label for="green"> Green</label>&nbsp
-                    <input type="checkbox" id="grey" name="color[]" value="Grey">
+                    <input type="checkbox" id="Grey" name="color[]" value="Grey">
                     <label for="grey"> Grey</label>&nbsp
-                    <input type="checkbox" id="yellow" name="color[]" value="Yellow">
+                    <input type="checkbox" id="Yellow" name="color[]" value="Yellow">
                     <label for="yellow"> Yellow</label>&nbsp
-                    <input type="checkbox" id="purple" name="color[]" value="Purple">
+                    <input type="checkbox" id="Purple" name="color[]" value="Purple">
                     <label for="purple"> Purple</label>&nbsp
-                    <input type="checkbox" id="orange" name="color[]" value="Orange">
+                    <input type="checkbox" id="Orange" name="color[]" value="Orange">
                     <label for="orange"> Orange</label>&nbsp
-                    <input type="checkbox" id="mahogany" name="color[]" value="Maroon">
+                    <input type="checkbox" id="Maroon" name="color[]" value="Maroon">
                     <label for="mahogany"> Maroon</label>&nbsp
-                    <input type="checkbox" id="brown" name="color[]" value="Brown">
+                    <input type="checkbox" id="Brown" name="color[]" value="Brown">
                     <label for="brown"> Brown</label>&nbsp
-                    <input type="checkbox" id="teal" name="color[]" value="Teal">
+                    <input type="checkbox" id="Teal" name="color[]" value="Teal">
                     <label for="teal"> Teal</label>
                 </label></div>
             </div><br>
 
+            <div id="colorForm"></div>
+
             <div class="row">
-                <button type="submit" name ="submit" id="submit">Next</button>
-            </div> 
+                <button type="submit" name ="addProduct" id="submit">Add Product</button>
+            </div> <br>
+
         </div>
     </div>
+            
+
     </form>
-        
+    
+        <script>
+            /******************************Colors******************************/
+            myString="";
+            var images=[];
+            //`+$(this).val()+
+            $('input[type="checkbox"]').change(function(){
+                var checks = $('input[type="checkbox"]:checked').map(function() {
+                    myString+=`<div class='row'>
+                                <div class='col-lg-6' id=margin-bottom>
+                                    <div class='row'>
+                                        <div class='col-lg-3'>
+                                            <label for='images'><h4> `+$(this).attr('id')+` </h4>
+                                        </div>
+                                        <div class='col-lg-9'>
+                                        <label id='fileUpload'> <input type='file' name="fileToUpload`+$(this).attr('id')+`[]" multiple='multiple'> </label>
+                                           
+                                        </div>
+                                    </div> 
+                                </div>               
+                            </div>`
+                }).get()
+                $('#colorForm').html(myString);
+                myString="";
+            })
+            function colorForm(color){}
+            /******************************Colors******************************/
+        </script>
+
     <?php
     }
 }
 ?>
+

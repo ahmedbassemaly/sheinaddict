@@ -26,6 +26,24 @@ body {
 .row{
     width: 100%;
 }
+button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background: #d2b7a4;
+    text-align: center;
+    cursor: pointer;
+    width: auto;
+    font-size: 18px;
+    border-radius:50px;
+    margin-top:5%;
+    margin-left: 50%;
+  }
+button:hover{
+  opacity: 0.9;
+  background-color: #95705F;
+}
 .card button {
     border: none;
     outline: 0;
@@ -39,7 +57,7 @@ body {
     border-radius:50px;
     margin-top:5%;
   }
-.card button:hover {
+.card button:hover{
     opacity: 0.9;
     background-color: #95705F;
   }

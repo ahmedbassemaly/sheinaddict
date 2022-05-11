@@ -24,7 +24,12 @@ class viewProducts extends View{
         $i=0;
         ?>
         <div class="col-md-10">
-        <a href="<?php echo URLROOT . 'pages/addProduct'; ?>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add Product</a>
+
+        <?php $action = URLROOT . '/pages/addProduct'; ?>
+        <form method="post" action="<?php echo $action;?>">
+            <button type="submit" value="addProduct" name ="submit" id="submit">Add Product</button>
+        </form>
+        <!-- <a href="<?php echo URLROOT . 'pages/addProduct'; ?>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add Product</a> -->
         </div>
         <?php
         while($i<12){
