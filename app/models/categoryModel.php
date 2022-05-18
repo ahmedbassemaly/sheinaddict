@@ -118,13 +118,13 @@ class categoryModel extends Model{
             return $this->dbh->single()->rating;
         }
     }
-    public function getDescription($id,$category){
-        if($category == 'Men'){
-            $this->dbh->query("SELECT `rating` from products WHERE (`product_id`) = :id AND  (`categoryName` = 'Men')");
-            $this->dbh->bind(':id',$id);
-            return $this->dbh->single()->rating;
-        }
-    }
+    // public function getDescription($id,$category){
+    //     if($category == 'Men'){
+    //         $this->dbh->query("SELECT `rating` from products WHERE (`product_id`) = :id AND  (`categoryName` = 'Men')");
+    //         $this->dbh->bind(':id',$id);
+    //         return $this->dbh->single()->rating;
+    //     }
+    // }
     public function getImage($id,$category){
         if($category == 'Men'){
             $this->dbh->query("SELECT image.image FROM products JOIN image ON image.product_id=products.product_id WHERE products.categoryName = 'Men' AND image.product_id=:id AND image.image LIKE '%FRONT%' GROUP BY products.product_id");
@@ -142,9 +142,10 @@ class categoryModel extends Model{
             return $this->dbh->resultSet();
         }
     }
-    public function getSubCategory(){
-        return array("Bottoms","Hoodies <br>&Sweatshirts","T-shirts","Shoes","Jackets","Co-ords");
-    }
+
+ public function getSubCategory(){
+     return array("Bottoms","Hoodies/Sweatshirts","T-shirt","Shoes","Jackets","Co-ords","Dresses","Blouses");
+ }
 
 }
 ?>
