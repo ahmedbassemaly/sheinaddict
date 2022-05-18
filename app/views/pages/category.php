@@ -20,23 +20,28 @@
   
 
   <?php
-  $i=0;
-  $getPrice=$this->model->getPrice();
-  $getName=$this->model->getName();
-  $getQuantity=$this->model->getQuantity();
-  $getDescription=$this->model->getDescription();
+  $i=1;
+  // $getPrice=$this->model->getPrice();
+  // $getName=$this->model->getName();
+  // $getQuantity=$this->model->getQuantity();
+  // $getDescription=$this->model->getDescription();
   $getSubCategory=$this->model->getSubCategory();
-
-
-  while($i<12){
+  $id=$_GET["categoryName"];
+  
+  $result=$this->model->getProduct($id);
+  
+  // while($i<$this->model->getNum($i,$id)){
+    foreach($result as $product){
   ?>
   <!---------------------------------- SHOP BY GENDER CATEGORY START---------------------------------->
     <div class="card" style="width:300px">
-      <img class="card-img-top" id="myImg" src = "<?php echo ImageRoot . "category/category-".$i.".png" ; ?>" alt="Card image" >
-
+    <?php
+    foreach($this->model->getImage($product->product_id,$id) as $image){ ?>
+      <img class="card-img-top" id="myImg" alt="image not found" src = "<?php echo ImageRoot . "addProduct/".$image->image; ?>" alt="Card image" >
+      <?php }?>
         <div class="card-body">
-          <h4 class="card-title"> <?php echo $getName[$i];?> </h4>
-            <p class="card-text" style="height:70px"> <?php echo $getDescription[0];?> </p>
+          <h4 class="card-title"> <?php echo $this->model->getName($product->product_id,$id);?> </h4>
+            <!-- <p class="card-text" style="height:70px"> <?php echo $getDescription[0];?> </p> -->
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -44,9 +49,22 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <p class="quantity" style="font-size:13px;color:black;font-style: italic;">Quantity: <?php echo $getQuantity;?> </p>
+            <p class="quantity" style="font-size:13px;color:black;font-style: italic;">Quantity: <?php echo $this->model->getQuantity($product->product_id,$id);?> </p>
+            <?php
+            if($_SESSION['userType_id']==2){
+              ?>
             <a href="#" class="btn btn-primary">Add to cart</a>
-            <div id="price"><?php echo"$".$getPrice;?> </div>
+            <?php
+            }
+            ?>
+            <?php
+            if($_SESSION['userType_id']==1){
+              ?>
+            <a href="#" class="btn btn-primary">Edit Product</a>
+            <?php
+            }
+            ?>
+            <div id="price"><?php echo"EGP ".$this->model->getPrice($product->product_id,$id);?> </div>
         </div>
     </div>
         <?php
