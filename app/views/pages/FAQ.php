@@ -26,6 +26,7 @@ EOT;
 <div class="FAQ-row">
   <div class="col-sm-3">
     <a class="card stretched-link text-decoration-none" href="<?php echo URLROOT . 'pages/shipping?id=1'; ?>">
+    <!-- <a class="card stretched-link text-decoration-none" href="<?php echo URLROOT . 'pages/shipping'; ?>"> -->
       <div class="card-body">
           <div class="icons">
             <i class="fas fa-shipping-fast fa-5x"></i>
@@ -35,7 +36,8 @@ EOT;
     </a>
   </div>
   <div class="col-sm-3">
-    <a class="card stretched-link text-decoration-none" href="<?php echo URLROOT . 'pages/shipping?id=2'; ?>" >
+    <a class="card stretched-link text-decoration-none" href="<?php echo URLROOT . 'pages/measurement?id=2'; ?>" >
+    <!-- <a class="card stretched-link text-decoration-none" href="<?php echo URLROOT . 'pages/measurement'; ?>" > -->
       <div class="card-body">
         <img src= "<?php echo ImageRoot . 'size.jpg' ; ?>"/></img>
         <h5 class="card-title" id="2">Measurment Chart</h5>
@@ -43,7 +45,8 @@ EOT;
     </a>
   </div>
   <div class="col-sm-3">
-    <a class="card stretched-link text-decoration-none" href="<?php echo URLROOT . 'pages/payment?id=3'; ?>">
+    <!-- <a class="card stretched-link text-decoration-none" href="<?php echo URLROOT . 'pages/payment?id=3'; ?>"> -->
+    <a class="card stretched-link text-decoration-none" href="<?php echo URLROOT . 'pages/payment'; ?>">
       <div class="card-body">
         <div class="icons">
           <i class="fa fa-money fa-5x"></i>

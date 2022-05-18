@@ -21,3 +21,7 @@ define('VIEWS_PATH', '../app/views/');
 //Images Root
 // define('ImageRoot', '../app/views/images/');
 define('ImageRoot', 'http://localhost/sheinaddict/app/views/images/');
+
+//Images Root for uploads ~used in edit FAQ~
+// define('ImageRoot2', '../app/views/images/uploads');
+define('ImageRoot2', 'http://localhost/sheinaddict/app/views/images/uploads/');

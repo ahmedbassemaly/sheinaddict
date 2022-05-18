@@ -21,36 +21,36 @@ class editFAQ extends View{
         
         <form action="" method="POST" enctype='multipart/form-data'>
 
-        <label class="FAQName"><b>Shipping Policy</b></label>
+        <label class="FAQName"><a href="<?php echo URLROOT . 'pages/editShipping'; ?>">Shipping</a> </label>
         <div class="cardBorders">
             <div class="FAQ-row">
                 <div class="col-sm-3">
                     <div class="FAQBox">
-                            <textarea style="resize:none;" name="helpText1" rows="8.5" cols="100"><?php echo $this->model->getHelpText(1); ?> </textarea>
+                            <textarea style="resize:none;" name="helpText1" rows="8.5" cols="100"><?php echo $this->model->getHelpMethod(1); ?> </textarea>
                     </div>
                 </div>
             </div>
             <button type="submit" value="1" id="updateFAQ" name="submit">Update FAQ </button>
         </div>
 
-        <label class="FAQName"><b>Measurement Chart</b></label>
+        <label class="FAQName"><a href="<?php echo URLROOT . 'pages/editMeasurement'; ?>">Measuremnt Chart</a></label>
         <div class="cardBorders">
             <div class="FAQ-row">
                 <div class="col-sm-3">
                     <div class="FAQBox">
-                            <textarea style="resize:none;" name="helpText2" rows="8.5" cols="100"><?php echo $this->model->getHelpText(2); ?> </textarea>
+                            <textarea style="resize:none;" name="helpText2" rows="8.5" cols="100"><?php echo $this->model->getHelpMethod(2); ?> </textarea>
                     </div>
                 </div>
             </div>
             <button type="submit" value="2" id="updateFAQ" name="submit">Update FAQ </button>
         </div>
 
-        <label class="FAQName"><b>Payment Method</b></label>
+        <label class="FAQName"><a href="<?php echo URLROOT . 'pages/editPayment'; ?>">Payment Method</a> </label>
         <div class="cardBorders">
             <div class="FAQ-row">
                 <div class="col-sm-3">
                     <div class="FAQBox">
-                            <textarea style="resize:none;" name="helpText3" rows="8.5" cols="100"><?php echo $this->model->getHelpText(3); ?> </textarea>
+                            <textarea style="resize:none;" name="helpText3" rows="8.5" cols="100"><?php echo $this->model->getHelpMethod(3); ?> </textarea>
                     </div>
                 </div>
             </div>
