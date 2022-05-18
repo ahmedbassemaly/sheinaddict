@@ -266,5 +266,12 @@ class Pages extends Controller
     //     $editFAQView = new editFAQ($this->getModel(), $this);
     //     $editFAQView->output();
     // }
+
+    public function viewCustomers(){
+        $viewPath = VIEWS_PATH . 'pages/viewCustomers.php';
+        require_once $viewPath;
+        $viewCustomersView = new viewCustomers($this->getModel(), $this);
+        $viewCustomersView->output();
+    }
 }
 

@@ -29,7 +29,7 @@
             </li>
             <br>
             <li>
-                <a href="#"><i class="fa-solid fa-user"></i> Customers</a><br>
+                <a href="<?php echo URLROOT . 'pages/viewCustomers'; ?>"><i class="fa-solid fa-user"></i> Customers</a><br>
             </li>
             <li>
                 <a href="<?php echo URLROOT . 'pages/editContact'; ?>"><i class="fa-solid fa-phone"></i> Edit Contact Us</a>

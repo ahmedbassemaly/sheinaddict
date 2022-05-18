@@ -1,0 +1,11 @@
+.heading {
+    text-align: center;
+    font-style: italic;
+    font-family: "Lucida Handwriting", cursive;
+    font-size: 30px;
+    color: black;
+}
+
+.table {
+    max-width: 100%;
+}
