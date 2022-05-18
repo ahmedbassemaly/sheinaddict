@@ -105,7 +105,7 @@ class Pages extends Controller
             $addProduct->setMaterial($_POST['material']);
             $addProduct->setColor($_POST['color']);
             $addProduct->setImages($_FILES);
-            /*************IMAGES*************/
+            /**IMAGES**/
             $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
             if(!empty($_POST['color'])) {
                 foreach($_POST['color'] as $value){
@@ -119,7 +119,7 @@ class Pages extends Controller
                         }
                     }
                 }
-            /*************IMAGES*************/
+            /**IMAGES**/
             $result=$addProduct->insertProduct($_FILES);
 
         }
@@ -395,11 +395,12 @@ class Pages extends Controller
     }
 
 
-    public function viewCustomers(){
-        $viewPath = VIEWS_PATH . 'pages/viewCustomers.php';
+    public function addProductColors()
+    {
+        $viewPath = VIEWS_PATH . 'pages/addProductColors.php';
         require_once $viewPath;
-        $viewCustomersView = new viewCustomers($this->getModel(), $this);
-        $viewCustomersView->output();
+        $addProductColorsView = new addProductColors($this->getModel(), $this);
+        $addProductColorsView->output();
     }
 }
 

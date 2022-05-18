@@ -1,0 +1,118 @@
+body{
+    background:#f8f4e1;
+}
+.box-1{
+    text-align: center;
+    position: relative;
+}
+
+.newContainer{
+    text-align: center;
+    width:100%;
+    height:10%;
+    margin-top:1% ;
+    margin-bottom:3%;
+    
+}
+
+.newContainer11{
+    width:100%;
+    height:70%;
+    /* margin-top:1% ;
+    margin-bottom:3%; */
+    /* padding-left: 10%; */
+    float: right;
+    
+}
+
+input[type=text] {
+    text-align: center;
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 20px;
+  }
+
+
+  textarea{
+    display:flex;
+    border-radius: 2%;
+    border-color:#99725f;
+    height:15%;
+    width: 40%;
+    
+}
+input[type="submit"]{
+    text-decoration:none;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:white;
+    outline: 2px solid white;
+    padding:1% 2%;
+    position:relative;
+    overflow:hidden;
+    transition:color 1s;
+}
+input:hover[type="submit"]{
+    color:#f8f4e1;
+}
+.button{
+    display:flex;
+    justify-content:center;
+}
+
+
+.child{
+    /* display: inline-block; */
+    max-height: max-content;
+    width: 70%;
+    float: right;
+}
+
+.upload-button{
+    margin-left:5% ;
+    margin-top: 30%;
+}
+
+
+.image-container-1{
+    /* margin-left: 30%; */
+    float:right;
+    /* display: flex; */
+    height: 30%;
+	width: 45%;
+    border: 1px solid #cccccc;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .image-container-1{
+    display: none;
+    width: 100%;
+
+} */
+
+/* ______________________________________DRAG IMG_________________________________________ */
+
+#image-container {
+	display: block;
+	height: 50%;
+	width: 20%;
+	margin-left: 5%;
+	overflow: hidden;
+	border: 1px solid #cccccc;
+	box-sizing: border-box;
+	position: relative;
+	cursor: move;
+    float: left;
+}
+
+#drag-image {
+	left: 0;
+	pointer-events: none;
+	position: relative;
+	top: 0;
+	-moz-user-select: none;
+}
