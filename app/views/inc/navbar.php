@@ -51,9 +51,9 @@
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Men</a></li>
-              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Women</a></li>
-              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category'; ?>">Kids</a></li>   
+              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category?categoryName=Men'; ?>">Men</a></li>
+              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category?categoryName=Women'; ?>">Women</a></li>
+              <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category?categoryName=Kids'; ?>">Kids</a></li>   
           </ul>
         </li>
          
