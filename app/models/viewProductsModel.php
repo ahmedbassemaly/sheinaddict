@@ -1,37 +1,67 @@
 <?php
 class viewProductsModel extends Model{
- //Database Connection
-    public function viewProducts(){
+    protected $product_id;
+    protected $productName;
+    protected $productPrice;
+    protected $category;
+    protected $quantity;
+    protected $subCategory;   
+    protected $rating;
 
+    public function __construct(){
+        parent::__construct();
+        $productName="";
+        $categrory="";
+        $productPrice="";
+        $quantity="";
+        $subCategory="";
+        $rating="";
     }
-    public function getName(){
-
-    return array(
-        "Men's t-shirt","Men's trousers","Men's hoodie","Men's jacket",
-        "Kid's pijama","Kid's T-shirt","Kid's clothes","Kid's Half Button",
-        "Women's t-shirt","Women's dress","Women's trousers","Women's t-shirt"
-    );
-    }
-
-    public function getPrice(){
-        return 12.99;
-    }
-
-    public function getRating(){
-
-    }
-
-    public function getQuantity(){
-        return 5;
+    public function getProduct($id){
+        $this->dbh->query("SELECT * FROM products WHERE `categoryName`='Men'");
+        $record=$this->dbh->execute();
+        return $this->dbh->resultSet();
     }
 
-    public function getDescription(){
-        //Season
-        return array("Color:Coffee Brown<br>Style:Casual<br>Neckline:Hooded<br>Material:Polyester");
+    public function getNum(){
+        $this->dbh->query("SELECT * FROM products");
+        $this->dbh->execute();
+        return $this->dbh->rowCount();
     }
-
-    public function getSubCategory(){
-        return array("Bottoms","Hoodies <br>&Sweatshirts","T-shirts","Shoes","Jackets","Co-ords");
+    public function getName($id){
+        $this->dbh->query("SELECT `name` FROM products WHERE `product_id` = :id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->name;
+    }
+    public function getPrice($id){
+        $this->dbh->query("SELECT `price` FROM products WHERE `product_id` = :id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->price;
+    }
+    public function getQuantity($id){
+        $this->dbh->query("SELECT `quantity` FROM products WHERE `product_id` = :id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->quantity;
+    }
+    // public function getImage($id){
+    //     $this->dbh->query("SELECT image.image FROM products JOIN image ON image.product_id=products.product_id WHERE image.product_id=:id AND image.image LIKE '%FRONT%' GROUP BY products.product_id");
+    //     $this->dbh->bind(':id',$id);
+    //     return $this->dbh->resultSet();
+    // }
+    public function getImage($id){
+        $this->dbh->query("SELECT image.image FROM products JOIN image ON image.product_id=products.product_id WHERE image.product_id=:id AND image.image LIKE '%FRONT%' GROUP BY products.product_id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->resultSet();
+    }
+    public function getCategoryName($id){
+        $this->dbh->query("SELECT `categoryName` FROM products WHERE `product_id` = :id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->categoryName;
+    }
+    public function getSubCategory($id){
+        $this->dbh->query("SELECT `subCategory` FROM products WHERE `product_id` = :id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->subCategory;
     }
  }
 ?>

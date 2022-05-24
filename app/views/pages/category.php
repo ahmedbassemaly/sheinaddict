@@ -38,6 +38,7 @@
       <?php }?>
         <div class="card-body">
           <h4 class="card-title"> <?php echo $this->model->getName($product->product_id,$id);?> </h4>
+          
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>

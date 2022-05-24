@@ -143,6 +143,78 @@ class categoryModel extends Model{
         }
     }
 
+
+
+    public function getStyle($id,$category){
+        if($category=='Men'){
+            $this->dbh->query("SELECT description.style FROM description JOIN products ON description.product_id=products.product_id WHERE products.categoryName='Men' GROUP BY products.product_id");
+            $this->dbh->bind(':subCategory',$subCategory);
+            return $this->dbh->resultFetchCol();
+        }
+        if($category=='Women'){
+            $this->dbh->query("SELECT description.style FROM description JOIN products ON description.product_id=products.product_id WHERE products.categoryName='Women' GROUP BY products.product_id");
+            $this->dbh->bind(':subCategory',$subCategory);
+            return $this->dbh->resultFetchCol();
+        }
+        if($category=='Kids'){
+            $this->dbh->query("SELECT description.style FROM description JOIN products ON description.product_id=products.product_id WHERE products.categoryName='Kids' GROUP BY products.product_id");
+            $this->dbh->bind(':subCategory',$subCategory);
+            return $this->dbh->resultFetchCol();
+        }
+    }
+    public function getSeason($id,$category){
+        if($category == 'Men'){
+            $this->dbh->query("SELECT description.season FROM description JOIN products ON description.product_id=products.product_id WHERE products.categoryName='Men' GROUP BY products.product_id");
+            $this->dbh->bind(':subCategory',$subCategory);
+            return $this->dbh->resultFetchCol();
+        }
+        if($category == 'Women'){
+            $this->dbh->query("SELECT description.season FROM description JOIN products ON description.product_id=products.product_id WHERE products.categoryName='Women' GROUP BY products.product_id");
+            $this->dbh->bind(':subCategory',$subCategory);
+            return $this->dbh->resultFetchCol();
+        }
+        if($category == 'Kids'){
+            $this->dbh->query("SELECT description.season FROM description JOIN products ON description.product_id=products.product_id WHERE products.categoryName='Kids' GROUP BY products.product_id");
+            $this->dbh->bind(':subCategory',$subCategory);
+            return $this->dbh->resultFetchCol();
+        }
+    }
+    public function getNeckline($id,$category){
+        if($category == 'Men'){
+            $this->dbh->query("SELECT description.neckline FROM description JOIN products ON description.product_id=products.product_id WHERE products.categoryName='Men' GROUP BY products.product_id");
+            $this->dbh->bind(':subCategory',$subCategory);
+            return $this->dbh->resultFetchCol();
+        }
+        if($category == 'Women'){
+            $this->dbh->query("SELECT description.neckline FROM description JOIN products ON description.product_id=products.product_id WHERE products.categoryName='Women' GROUP BY products.product_id");
+            $this->dbh->bind(':subCategory',$subCategory);
+            return $this->dbh->resultFetchCol();
+        }
+        if($category == 'Kids'){
+            $this->dbh->query("SELECT description.neckline FROM description JOIN products ON description.product_id=products.product_id WHERE products.categoryName='Kids' GROUP BY products.product_id");
+            $this->dbh->bind(':subCategory',$subCategory);
+            return $this->dbh->resultFetchCol();
+        }
+    }
+    public function getMaterial($id,$category){
+        if($category == 'Men'){
+            $this->dbh->query("SELECT description.material FROM description JOIN products ON description.product_id=products.product_id WHERE products.categoryName='Men' GROUP BY products.product_id");
+            $this->dbh->bind(':subCategory',$subCategory);
+            return $this->dbh->resultFetchCol();
+        }
+        if($category == 'Women'){
+            $this->dbh->query("SELECT description.material FROM description JOIN products ON description.product_id=products.product_id WHERE products.categoryName='Women' GROUP BY products.product_id");
+            $this->dbh->bind(':subCategory',$subCategory);
+            return $this->dbh->resultFetchCol();
+        }
+        if($category == 'Kids'){
+            $this->dbh->query("SELECT description.material FROM description JOIN products ON description.product_id=products.product_id WHERE products.categoryName='Kids' GROUP BY products.product_id");
+            $this->dbh->bind(':subCategory',$subCategory);
+            return $this->dbh->resultFetchCol();
+        }
+    }
+
+
  public function getSubCategory(){
      return array("Bottoms","Hoodies/Sweatshirts","T-shirt","Shoes","Jackets","Co-ords","Dresses","Blouses");
  }
