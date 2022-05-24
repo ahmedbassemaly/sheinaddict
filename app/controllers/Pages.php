@@ -394,13 +394,12 @@ class Pages extends Controller
         $productInfoView->output();
     }
 
-
-    public function addProductColors()
+    public function viewCustomers()
     {
-        $viewPath = VIEWS_PATH . 'pages/addProductColors.php';
+        $viewPath = VIEWS_PATH . 'pages/viewCustomers.php';
         require_once $viewPath;
-        $addProductColorsView = new addProductColors($this->getModel(), $this);
-        $addProductColorsView->output();
+        $viewCustomersView = new viewCustomers($this->getModel(), $this);
+        $viewCustomersView->output();
     }
 }
 
