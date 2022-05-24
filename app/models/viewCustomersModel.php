@@ -32,6 +32,10 @@ class viewCustomersModel extends model{
         //     $this->dbh->bind(`:orderNum`, $this->order_id);
         //     return $this->dbh->execute();           
         // }
+        public function getID(){
+            $this->dbh->query("SELECT user_id FROM users WHERE `userType_id`=2");
+            return $this->dbh->resultFetchCol();
+        }
 
         public function getFname($id){
             $this->dbh->query("SELECT firstName FROM users WHERE `user_id` = :id AND `userType_id`=2");
