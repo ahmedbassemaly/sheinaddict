@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title> View Customers </title>
 
 <?php
   
@@ -32,51 +33,29 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>Basma</td>
-                <td>Dessouky</td>
-                <td>0112345642</td>
-                <td>basma@gmail.com</td>
+            <?php
+            $i=0;
+            $x=2;
+            while($i< $this->model->getCustomer()){
+              ?>
+              <tr>
+                <td><?php echo $i+1 ?></td>
+                <td><?php echo $this->model->getFName($x);?></td>
+                <td><?php echo $this->model->getLName($x);?></td>
+                <td><?php echo $this->model->getPhone($x);?></td>
+                <td><?php echo $this->model->getEmail($x);?></td>
                 <td>4</td>
                 <td>No</td>
             </tr>
+            <?php
+            $x++;
+            $i++;
+            }
+            ?>
             </tbody>
         </table>
         </div>
-        <!-- <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Phone Number</th>
-      <th scope="col">Order Number</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table> -->
-        <?php
+      <?php
     }
 }
 ?>
