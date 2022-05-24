@@ -11,25 +11,37 @@ class shipping extends view
         // $text_1 = $this->model->text_1;
         // $text_2 = $this->model->text_2;
 
-        $id=$_GET['id'];
-        $helpMethod = $this->model->getHelpMethod($id);
-        $helpText=$this->model->getHelpText($id);
+        // $helpMethod = $this->model->getHelpMethod($id);
+        // $helpText=$this->model->getHelpText($id);
 
-        require APPROOT . '/views/inc/header.php';
-        $text = <<<EOT
-        <div class="containter-shipping">
+        $title = $this->model->getTitle();
+        $subtitle = $this->model->getSubtitle_1();
+        $text=$this->model->getText();
+
+    require APPROOT . '/views/inc/header.php';
+    ?>
+
+    <div class="containter-shipping">
         <div class="title">
-          <h1> FAQ $helpMethod</h1>
+          <h1> <?php echo $title ?> </h1>
         </div>
-        <h4>$helpText </h4>
-        </div>
-      </div>
-    EOT;
-        echo $text;
-?>
-  
-  <?php
-    require APPROOT . '/views/inc/footer.php';
- }
+    
+      <!-- <img src= "<?php echo ImageRoot . 'payment.png' ; ?>" style="float:left"/></img> -->
+
+        <?php
+        foreach($subtitle as $value){
+        ?>
+          <p class="text"> <?php echo $value ?> </p>
+          <p class="text"> <?php echo $text ?> </p>
+
+        <?php
+            }
+        ?>
+    </div>
+
+<?php
+
+require APPROOT . '/views/inc/footer.php';
+  }
 }
 ?>

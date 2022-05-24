@@ -66,8 +66,8 @@ class Pages extends Controller
         $editFAQ=$this->getModel();
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $id=$_POST['submit'];
-            $helpText="helpText{$id}";
-            $editFAQ->setHelpText($_POST[$helpText]);
+            // $helpText="helpText{$id}";
+            // $editFAQ->setHelpText($_POST[$helpText]);
             $result=$editFAQ->editFAQ($_POST['submit']);
         }
 
@@ -105,7 +105,7 @@ class Pages extends Controller
             $addProduct->setMaterial($_POST['material']);
             $addProduct->setColor($_POST['color']);
             $addProduct->setImages($_FILES);
-            /*************IMAGES*************/
+            /**IMAGES**/
             $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
             if(!empty($_POST['color'])) {
                 foreach($_POST['color'] as $value){
@@ -119,7 +119,7 @@ class Pages extends Controller
                         }
                     }
                 }
-            /*************IMAGES*************/
+            /**IMAGES**/
             $result=$addProduct->insertProduct($_FILES);
 
         }
@@ -243,14 +243,148 @@ class Pages extends Controller
         $editShipping=$this->getModel();
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $id=$_POST['submit'];
-            $helpText="helpText{$id}";
-            $editShipping->setHelpText($_POST[$helpText]);
+            // $helpText="helpText{$id}";
+            // $editShipping->setHelpText($_POST[$helpText]);
         }
 
         $viewPath = VIEWS_PATH . 'pages/shipping.php';
         require_once $viewPath;
         $shippingView = new shipping($this->getModel(), $this);
         $shippingView->output();
+    }
+
+    public function measurement()
+    {
+        $viewPath = VIEWS_PATH . 'pages/measurement.php';
+        require_once $viewPath;
+        $measurementView = new measurement($this->getModel(), $this);
+        $measurementView->output();
+    }
+
+    public function payment()
+    {
+        $viewPath = VIEWS_PATH . 'pages/payment.php';
+        require_once $viewPath;
+        $paymentView = new payment($this->getModel(), $this);
+        $paymentView->output();
+    }
+
+    public function editShipping(){
+
+        $editShipping = $this->getModel();
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
+            $editShipping->setTitle($_POST['title']);
+            $id=[1,8];
+            for($i=0;$i < count($id);$i++){
+            $subtitle="subtitle{$id[$i]}";
+            $text="text{$id[$i]}";
+            $editShipping->setSubtitle_1($_POST[$subtitle]);
+            $editShipping->setText($_POST[$text]);
+            $result=$editShipping->editShipping($id[$i]);
+            }  
+        }
+        $viewPath = VIEWS_PATH . 'pages/editShipping.php';
+        require_once $viewPath;
+        $editShippingView = new editShipping($this->getModel(), $this);
+        $editShippingView->output();
+    }
+
+    public function editPayment(){
+
+        $editPayment = $this->getModel();
+
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
+
+            $target_dir =$_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/uploads/";
+            $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    
+            // Check if image file is a actual image or fake image
+            if(isset($_POST["submit"])) {
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            //   if($check !== false) {
+            //     echo "File is an image - " . $check["mime"] . ".";
+            //     $uploadOk = 1;
+            //   } else {
+            //     echo "File is not an image.";
+            //     $uploadOk = 0;
+            //   }
+            }
+    
+            // Check if file already exists
+            if (file_exists($target_file)) {
+            echo "Sorry, file already exists.";
+            $uploadOk = 0;
+            }
+    
+            // Check file size
+            if ($_FILES["fileToUpload"]["size"] > 500000) {
+            echo "Sorry, your file is too large.";
+            $uploadOk = 0;
+            }
+    
+            // Allow certain file formats
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif" ) {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+            }
+    
+            // Check if $uploadOk is set to 0 by an error
+            if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+            // if everything is ok, try to upload file
+            } else {
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+            }
+            
+            $editPayment->setTitle($_POST['title']);
+            $editPayment->setImage($_FILES["fileToUpload"]["name"]);
+            $id=[6,7];
+            for($i=0;$i < count($id);$i++){
+                $text="text{$id[$i]}";
+                $editPayment->setText($_POST[$text]);
+                $result=$editPayment->editShipping($id[$i]);
+            }  
+        }
+
+       
+        $viewPath = VIEWS_PATH . 'pages/editPayment.php';
+        require_once $viewPath;
+        $editPaymentView = new editPayment($this->getModel(), $this);
+        $editPaymentView->output();
+    }
+
+    public function editMeasurement(){
+
+        $editMeasurement = $this->getModel();
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
+            $editMeasurement->setTitle($_POST['title']);
+            $editMeasurement->setSubtitle_1($_POST['subtitle_1']);
+            $editMeasurement->setImage($_FILES["fileToUpload"]["name"]);
+            $id=[2,3,4,5];
+            for($i=0; $i<count($id); $i++){
+                $subtitle_2="subtitle{$id[$i]}";
+                $text="text{$id[$i]}";
+                $editMeasurement->setSubtitle_2($_POST[$text]);
+                $editMeasurement->setText($_POST[$text]);
+                $result=$editMeasurement->editMeasurement($id[$i]);
+            }  
+        }
+
+       
+        $viewPath = VIEWS_PATH . 'pages/editMeasurement.php';
+        require_once $viewPath;
+        $editMeasurementView = new editMeasurement($this->getModel(), $this);
+        $editMeasurementView->output();
     }
 
     public function productInfo(){
@@ -260,18 +394,13 @@ class Pages extends Controller
         $productInfoView->output();
     }
 
-    // public function editFAQ(){
-    //     $viewPath = VIEWS_PATH . 'pages/editFAQ.php';
-    //     require_once $viewPath;
-    //     $editFAQView = new editFAQ($this->getModel(), $this);
-    //     $editFAQView->output();
-    // }
 
-    public function viewCustomers(){
-        $viewPath = VIEWS_PATH . 'pages/viewCustomers.php';
+    public function addProductColors()
+    {
+        $viewPath = VIEWS_PATH . 'pages/addProductColors.php';
         require_once $viewPath;
-        $viewCustomersView = new viewCustomers($this->getModel(), $this);
-        $viewCustomersView->output();
+        $addProductColorsView = new addProductColors($this->getModel(), $this);
+        $addProductColorsView->output();
     }
 }
 

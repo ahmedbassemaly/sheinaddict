@@ -20,23 +20,24 @@
   
 
   <?php
-  $i=0;
-  $getPrice=$this->model->getPrice();
-  $getName=$this->model->getName();
-  $getQuantity=$this->model->getQuantity();
-  $getDescription=$this->model->getDescription();
+  $i=1;
   $getSubCategory=$this->model->getSubCategory();
-
-
-  while($i<12){
+  $id=$_GET["categoryName"];
+  $_SESSION['categoryName']=$_GET["categoryName"];
+  
+  $result=$this->model->getProduct($id);
+  
+  
+    foreach($result as $product){
   ?>
   <!---------------------------------- SHOP BY GENDER CATEGORY START---------------------------------->
     <div class="card" style="width:300px">
-      <img class="card-img-top" id="myImg" src = "<?php echo ImageRoot . "category/category-".$i.".png" ; ?>" alt="Card image" >
-
+    <?php
+    foreach($this->model->getImage($product->product_id,$id) as $image){ ?>
+      <img class="card-img-top" id="myImg" alt="image not found" src = "<?php echo ImageRoot . "addProduct/".$image->image; ?>" alt="Card image" >
+      <?php }?>
         <div class="card-body">
-          <h4 class="card-title"> <?php echo $getName[$i];?> </h4>
-            <p class="card-text" style="height:70px"> <?php echo $getDescription[0];?> </p>
+          <h4 class="card-title"> <?php echo $this->model->getName($product->product_id,$id);?> </h4>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -44,9 +45,22 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <p class="quantity" style="font-size:13px;color:black;font-style: italic;">Quantity: <?php echo $getQuantity;?> </p>
+            <p class="quantity" style="font-size:13px;color:black;font-style: italic;">Quantity: <?php echo $this->model->getQuantity($product->product_id,$id);?> </p>
+            <?php
+            if($_SESSION['userType_id']==2){
+              ?>
             <a href="#" class="btn btn-primary">Add to cart</a>
-            <div id="price"><?php echo"$".$getPrice;?> </div>
+            <?php
+            }
+            ?>
+            <?php
+            if($_SESSION['userType_id']==1){
+              ?>
+            <a href="#" class="btn btn-primary">Edit Product</a>
+            <?php
+            }
+            ?>
+            <div id="price"><?php echo"EGP ".$this->model->getPrice($product->product_id,$id);?> </div>
         </div>
     </div>
         <?php
@@ -61,22 +75,40 @@
     <h3>Shop By Category</h3>
     <div id="shopByCategory">
     <?php 
+    
+    if($_SESSION['categoryName']=='Men'){
     $j=0;
     while($j<6){ ?>
-      <div id="shopBySingleCategory">
-        <a href="<?php echo URLROOT . 'pages/subCategory'; ?>">
-          <div class="row">
-            <div class="column">
-              <img id="imageShopByCategory" width="250%" src = "<?php echo ImageRoot . "shopByCategory/shopByCategory_".$j.".png" ; ?>" alt="Card image" >
-              <div id="textShopByCategory" > <?php echo $getSubCategory[$j]?> </div>
+        <div id="shopBySingleCategory">
+          <a href="<?php echo URLROOT . 'pages/subCategory?subCategoryName='.$getSubCategory[$j]; ?>">
+            <div class="row">
+              <div class="column">
+                <input type="image" width="250%" name="imgbtn" src = "<?php echo ImageRoot . "shopByCategory/shopByCategory_".$j.".png" ; ?>"  alt="Tool Tip">
+                <div id="textShopByCategory" > <?php echo $getSubCategory[$j]?> </div>
+              </div>
             </div>
-          </div>
-          
-        </a>
-      </div>
-      
+          </a>
+        </div>
       <?php
       $j++;
+      }
+    }
+    else{
+      $i=0;
+    while($i<8){ ?>
+        <div id="shopBySingleCategory">
+          <a href="<?php echo URLROOT . 'pages/subCategory?subCategoryName='.$getSubCategory[$i]; ?>">
+            <div class="row">
+              <div class="column">
+                <input type="image" width="250%" name="imgbtn" src = "<?php echo ImageRoot . "shopByCategory/shopByCategory_".$i.".png" ; ?>"  alt="Tool Tip">
+                <div id="textShopByCategory" > <?php echo $getSubCategory[$i]?> </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      <?php
+      $i++;
+      }
     }
     ?>
     </div> 
