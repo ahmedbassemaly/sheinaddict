@@ -2,11 +2,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js%22%3E</script>"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js%22%3E</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title> View Customers </title>
 
 <?php
-
+  
   class viewCustomers extends View{
     public function output(){
         //$title = $this->model->title;
@@ -19,7 +19,7 @@
         ?>
         <div class="container">
         <link rel="stylesheet" href="<?php echo URLROOT . 'css/viewCustomers.css'; ?>">
-        <br><h2 class="heading">Customers Info</h2> <br><br>
+        <br><h2 class="heading">Customers Info</h2> <br><br>       
         <table class="table table-hover">
             <thead>
             <tr>
