@@ -19,7 +19,7 @@
     $subCategoryName=$_GET['subCategoryName'];
     $categoryName = isset($_SESSION['categoryName']) ? $_SESSION['categoryName'] : 'Women';
 
-    ?>  <h6 class="heading"><?php echo $subCategoryName; ?><br></h6>  <?php
+    ?>  <h6 class="heading"><?php echo $categoryName."-".$subCategoryName; ?><br></h6>  <?php
         
         if(empty($this->model->getName($subCategoryName,$categoryName))){?>
           <h4 class="heading"> <?php echo "No data to show"; ?><br></h4>  <?php
@@ -27,15 +27,18 @@
         else{
         for($i=0;$i<count($this->model->getName($subCategoryName,$categoryName));$i++){
           $product=$this->model->getName($subCategoryName,$categoryName)[$i];
+          
+        for($x=0;$x<count($this->model->getColor($subCategoryName,$product->product_id));$x++){
+          $color=$this->model->getColor($subCategoryName,$product->product_id)[$x];
     ?>
     <!---------------------------------- SHOP BY GENDER CATEGORY START---------------------------------->
       <div class="card" style="width:300px">
         <?php foreach($this->model->getImage($subCategoryName,$product->product_id) as $image){ ?>
-          <a href="<?php echo URLROOT . 'pages/productInfo';?>" ><img class="card-img-top" id="myImg" src = "<?php echo ImageRoot."addProduct/".$image->image ; ?>" alt="Card image" ></a>
+          <a href="<?php echo URLROOT . 'pages/productInfo?product_id='.$product->product_id.'&color_id='.$color->color_id;?>" ><img class="card-img-top" id="myImg" src = "<?php echo ImageRoot."addProduct/".$image->image ; ?>" alt="Card image" ></a>
         <?php } ?>
 
           <div class="card-body" style="height:auto">
-              <h4 class="card-title"> <?php echo $product->name;?>                                              </h4> 
+              <h4 class="card-title"><?php echo $product->name;?>                                               </h4> 
               <h4 class="card-text"> <?php echo "Style: ".$this->model->getStyle($subCategoryName)[$i];?>       </h4>
               <h4 class="card-text"> <?php echo "Season: ".$this->model->getSeason($subCategoryName)[$i];?>     </h4>
               <h4 class="card-text"> <?php echo "Neckline: ".$this->model->getNeckline($subCategoryName)[$i];?> </h4>
@@ -43,7 +46,7 @@
 
               <h4 class="card-text">Colors available:
                 <?php foreach($this->model->getColor($subCategoryName,$product->product_id) as $color){ ?>
-                  <?php echo $color->colorName.",";?> 
+                  <?php echo $color->colorName." ".$color->color_id.",";?>
                 <?php } ?>
               </h4>
 
@@ -67,6 +70,7 @@
           <?php
       }
     }
+  }
       ?>
       <!---------------------------------- SHOP BY GENDER CATEGORY END---------------------------------->
 <?php

@@ -7,28 +7,29 @@ class productInfo extends View{
         require APPROOT . '/views/inc/header.php';
         ?>
 
+        <?php $product_id=$_GET['product_id']; $color_id=$_GET['color_id'];
+        //echo $this->model->getImage($product_id)[0];?>
+
         <div class="flex-box">
             <div class="left">
                 <div class="big-img">
-                    <img width= "23%" src="<?php echo ImageRoot . "info/info-0.png";?>">
+                    <?php foreach($this->model->getImageFront($product_id,$color_id) as $imageFront){ ?>
+                    <img width= "23%" src="<?php echo ImageRoot ."addProduct/".$imageFront->image;?>">
                 </div>
+                <?php } ?>
                 <div class="images">
+                    <?php //for($i=0;$i<4;$i++)
+                        foreach($this->model->getImage($product_id,$color_id) as $image){ ?>
                     <div class="small-img">
-                        <img src="<?php echo ImageRoot . "info/info-0.png";?>" onclick="showImg(this.src)">
+                        <?php //echo $product_id." ".$color_id. ?>
+                        <img src="<?php echo ImageRoot ."addProduct/".$image->image ; ?>" onclick="showImg(this.src)">
                     </div>
-                    <div class="small-img">
-                        <img src="<?php echo ImageRoot . "info/info-1.png";?>" onclick="showImg(this.src)">
-                    </div>
-                    <div class="small-img">
-                        <img src="<?php echo ImageRoot . "info/info-2.png";?>" onclick="showImg(this.src)">
-                    </div>
-                    <div class="small-img">
-                        <img src="<?php echo ImageRoot . "info/info-3.png";?>" onclick="showImg(this.src)">
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
+
             <div class="right">
-                <div class="pname">Name Here</div>
+                <div class="pname"><?php echo $this->model->getName($product_id); ?></div>
                 <div class="rating">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -36,7 +37,17 @@ class productInfo extends View{
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </div>
-                <div class="price">$150</div>
+
+                <div class="description">
+                <h6 class="card-text"> <?php echo "Style: ".$this->model->getStyle($product_id);?>       </h6>
+                <h6 class="card-text"> <?php echo "Season: ".$this->model->getSeason($product_id);?>     </h6>
+                <h6 class="card-text"> <?php echo "Neckline: ".$this->model->getNeckline($product_id);?> </h6>
+                <h6 class="card-text"> <?php echo "Material: ".$this->model->getMaterial($product_id);?> </h6>
+                </div>
+
+                <div class="price"><?php echo "EGP ".$this->model->getPrice($product_id); ?></div>
+
+
                 <div class="size">
                     <p>Size</p>
                     <div class="psize active">S</div>
@@ -44,9 +55,10 @@ class productInfo extends View{
                     <div class="psize">L</div>
                     <div class="psize">XL</div>  
                 </div>
+
                 <div class="quantity">
-                    <p>Quantity</p>
-                    <input type="number" min="1" max="50" value="1">
+                    <p>In Stock: </p> <div> <?php echo $this->model->getQuantity($product_id); ?> </div>
+                    <!-- <input type="number" min="1" max="50" value="1"> -->
                     <!-- max will be from database -->
                 </div>
                 <div class="btn-box">
@@ -81,12 +93,14 @@ class productInfo extends View{
             <h6>Customer Name</h6>
             <p>I like this product!</p>
         </div>
+
         <script>
             let bigImg= document.querySelector('.big-img img');
             function showImg(pic){
                 bigImg.src=pic;
             }
             </script>
+            
             <script>
             $(document).ready(function() {
             jQuery('.open').on('click', function() {

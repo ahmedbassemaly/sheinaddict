@@ -82,7 +82,7 @@ class subCategoryModel extends model{
 
     /************************************COLOR************************************/
     public function getColor($subCategory,$product_id){
-        $this->dbh->query("SELECT colors.colorName FROM colors JOIN description ON colors.color_id=description.color_id JOIN products ON description.product_id=products.product_id WHERE products.subCategory=:subCategory AND products.product_id=:product_id");
+        $this->dbh->query("SELECT colors.colorName,colors.color_id FROM colors JOIN description ON colors.color_id=description.color_id JOIN products ON description.product_id=products.product_id WHERE products.subCategory=:subCategory AND products.product_id=:product_id");
         $this->dbh->bind(':subCategory',$subCategory);
         $this->dbh->bind(':product_id',$product_id);
         return $this->dbh->resultSet();
