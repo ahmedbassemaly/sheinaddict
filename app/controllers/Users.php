@@ -56,7 +56,7 @@ class Users extends Controller
                 empty($registerModel->getMobileErr())
             ) {
                 // //Hash Password
-                // $registerModel->setPassword(password_hash($registerModel->getPassword(), PASSWORD_DEFAULT));
+                 $registerModel->setPassword(password_hash($registerModel->getPassword(), PASSWORD_DEFAULT));
 
 
                 if ($registerModel->signup()) {
