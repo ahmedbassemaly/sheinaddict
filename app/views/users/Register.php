@@ -22,7 +22,7 @@ class Register extends view
     /********** Backend SignUp **********/
     
     ?>
-    <div class="register">
+    <div class="register" style="margin-top: 5%;">
     <link rel="stylesheet" href="<?php echo URLROOT . 'css/register.css'; ?>">
       <form action="<?php echo $action ?>" method="POST" class="formcontainer">
         <br>

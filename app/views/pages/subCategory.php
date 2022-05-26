@@ -13,7 +13,7 @@
     public function subCategory(){
         ?>
         <link rel="stylesheet" href="<?php echo URLROOT . 'css/category.css'; ?>">
-        <h1 class="heading">Sub Category Page</h1>
+        <h1 class="heading" style="margin-top:5%;">Sub Category Page</h1>
         <?php
     $i=0;
     $subCategoryName=$_GET['subCategoryName'];

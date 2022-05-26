@@ -7,7 +7,7 @@ class ViewProfile extends view{
         require APPROOT . '/views/inc/header.php';
         ?>
         <div class="text" >
-            <h4 style="color:black";>Your Profile</h4>
+            <h4 style="color:black;margin-top:7%;";>Your Profile</h4>
         </div>
         <div class="container">
             <div class="profile-card" >

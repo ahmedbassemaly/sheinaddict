@@ -33,6 +33,7 @@ body{
 }
 
 .sub-heading{
+    margin-top: 5%;
     text-align: center;
     font-style: italic;
     font-family: "Lucida Handwriting", cursive;
