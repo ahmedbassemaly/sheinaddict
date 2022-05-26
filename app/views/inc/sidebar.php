@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?php echo URLROOT . 'css/sidebar.css'; ?>">
 <script src="https://kit.fontawesome.com/a8598e67d0.js" crossorigin="anonymous"></script>
-<div class="sidebar">
-    <h1>Shein Addict</h1><br><br>
+<div class="sidebarAdmin">
+    <h1 style="margin-top: 15%;">Shein Addict</h1><br><br>
     <hr>
     <div class="links-container">
         <ul style="list-style: none;">

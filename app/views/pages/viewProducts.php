@@ -5,14 +5,13 @@
 class viewProducts extends View{
     public function output()
     {
-    //$title = $this->model->title;;
     // require APPROOT . '/views/inc/adminnavbar.php';
-    // require APPROOT . '/views/inc/sidebar.php';
+    require APPROOT . '/views/inc/sidebar.php';
     require APPROOT . '/views/inc/header.php';
     
     $this->printForm();
-    // require APPROOT . '/views/inc/footer.php';
 
+    // require APPROOT . '/views/inc/footer.php';
     }
  
     public function printForm(){
@@ -22,7 +21,7 @@ class viewProducts extends View{
 
         <?php $action = URLROOT . '/pages/addProduct'; ?>
         <form method="post" action="<?php echo $action;?>">
-            <button type="submit" value="addProduct" name ="submit" id="submit">Add Product</button>
+            <button type="submit" value="addProduct" name ="submit" id="addProduct">Add Product</button>
         </form>
         <!-- <a href="<?php echo URLROOT . 'pages/addProduct'; ?>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add Product</a> -->
         </div>
