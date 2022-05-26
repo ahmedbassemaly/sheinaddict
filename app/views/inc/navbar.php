@@ -1,13 +1,13 @@
 
   <!-- jQuery library -->
+<link rel="stylesheet" href="<?php echo URLROOT . 'css/admin.css'; ?>">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css'>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/a8598e67d0.js" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://kit.fontawesome.com/a8598e67d0.js" crossorigin="anonymous"></script>
-
-
-<nav class="navbar navbar-expand-lg navbar-dark mb-4">
+<div id="fixedNav">
+<nav  class="navbar navbar-expand-lg navbar-dark mb-4 navbar">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -97,3 +97,4 @@
       </div>
 
 </nav>
+</div>
