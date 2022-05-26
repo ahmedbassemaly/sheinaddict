@@ -38,6 +38,10 @@
       <?php }?>
         <div class="card-body">
           <h4 class="card-title"> <?php echo $this->model->getName($product->product_id,$id);?> </h4>
+          <h4 class="card-text"> <?php echo "Style: ".$this->model->getStyle($product->product_id,$id);?>       
+              <h4 class="card-text"> <?php echo "Season: ".$this->model->getSeason($product->product_id,$id);?>     </h4>
+              <h4 class="card-text"> <?php echo "Neckline: ".$this->model->getNeckline($product->product_id,$id);?> </h4>
+              <h4 class="card-text"> <?php echo "Material: ".$this->model->getMaterial($product->product_id,$id);?> </h4>
           
             <div class="stars">
                 <i class="fas fa-star"></i>

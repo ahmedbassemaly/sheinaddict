@@ -63,5 +63,25 @@ class viewProductsModel extends Model{
         $this->dbh->bind(':id',$id);
         return $this->dbh->single()->subCategory;
     }
+    public function getStyle($id){
+        $this->dbh->query("SELECT description.style FROM description JOIN products ON description.product_id=products.product_id WHERE description.product_id=:id GROUP BY products.product_id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->style;
+    }
+    public function getNeckline($id){
+        $this->dbh->query("SELECT description.neckline FROM description JOIN products ON description.product_id=products.product_id WHERE description.product_id=:id GROUP BY products.product_id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->neckline;
+    }
+    public function getMaterial($id){
+        $this->dbh->query("SELECT description.material FROM description JOIN products ON description.product_id=products.product_id WHERE description.product_id=:id GROUP BY products.product_id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->material;
+    }
+    public function getSeason($id){
+        $this->dbh->query("SELECT description.season FROM description JOIN products ON description.product_id=products.product_id WHERE description.product_id=:id GROUP BY products.product_id");
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->season;
+    }
  }
 ?>

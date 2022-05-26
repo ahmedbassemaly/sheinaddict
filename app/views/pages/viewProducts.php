@@ -53,7 +53,9 @@ class viewProducts extends View{
                                         <?php }?>
                                     <li class="list-inline-item"><?php echo $this->model->getSubCategory($i); ?></li>
                                 </ul>
-                                
+                                <h6> <?php echo "Style: ". $this->model->getStyle($i);?></h6><h6> <?php echo "Neckline: ".$this->model->getNeckline($i);?></h6><h6><?php echo "Material: ".$this->model->getMaterial($i);?></h6><h6><?php echo "Season: ".$this->model->getSeason($i);?></h6>
+                                    
+                                    
                                 <ul class="list-inline list-inline-dotted mb-0">
                                     <li class="quantity" style="font-size:13px;color:black;font-style: italic;">Quantity: <?php echo $this->model->getQuantity($i);?> </li>
                                 </ul>
