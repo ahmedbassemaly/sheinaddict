@@ -14,7 +14,8 @@
     public function printForm(){
         ?>
         <link rel="stylesheet" href="<?php echo URLROOT . 'css/product.css'; ?>">
-            
+        
+        <form action="" method="POST" enctype='multipart/form-data'>
         <div class="card" >
         <div id="centerEditForm">
             <div class="row">
@@ -59,12 +60,20 @@
                 </div>
                 <div class="col-lg-3">
                     <select name="subcategory" id="subcategory">
-                        <option value="T-Shirt">T-Shirt</option>
-                        <option value="Pants">Pants</option>
+                    <script>
+                        $('#myform input[type=radio]').on('change', function(event) {
+                        var result = $(this).val();
+                        $('#result').html(result);
+                    })
+                    </script>
+                        <option value="T-Shirt">T-Shirts</option>
+                        <option value="Hoodies & Sweatshirts">Hoodies & Sweatshirts</option>
+                        <option value="Jackets">Jackets</option>
+                        <option value="Co-ords">Co-ords</option>
+                        <option value="Bottoms">Bottoms</option>
+                        <option value="Shoes">Shoes</option>
                         <option value="Dresses">Dresses</option>
                         <option value="Blouses">Blouses</option>
-                        <option value="Jackets">Jackets and Blazers</option>
-                        <option value="Activewear">Activewear</option>
                     </select></label>
                 </div>
             </div><br>
@@ -131,51 +140,41 @@
                 </div>
             </div><br><br>
 
-<div class="row">
-    <div class="col-lg-3">
-        <label for="color">Color:
-    </div>
-    <div class="col-lg-9">
-        <input type="checkbox" id="color" name="black" value="Black">
-        <label for="black"> Black</label>&nbsp
-        <input type="checkbox" id="color" name="white" value="White">
-        <label for="white"> White</label>&nbsp
-        <input type="checkbox" id="color" name="blue" value="Blue">
-        <label for="red"> Blue</label>&nbsp
-        <input type="checkbox" id="color" name="red" value="Red">
-        <label for="red"> Red</label>&nbsp
-        <input type="checkbox" id="color" name="beige" value="Beige">
-        <label for="red"> Beige</label>&nbsp
-        <input type="checkbox" id="color" name="pink" value="Pink">
-        <label for="red"> Pink</label>&nbsp
-        <input type="checkbox" id="color" name="green" value="Green">
-        <label for="red"> Green</label>&nbsp
-        <input type="checkbox" id="color" name="grey" value="Grey">
-        <label for="red"> Grey</label>&nbsp
-        <input type="checkbox" id="color" name="yellow" value="Yellow">
-        <label for="red"> Yellow</label>&nbsp
-        <input type="checkbox" id="color" name="purple" value="Purple">
-        <label for="red"> Purple</label>&nbsp
-        <input type="checkbox" id="color" name="orange" value="Orange">
-        <label for="red"> Orange</label>&nbsp
-        <input type="checkbox" id="color" name="mahogany" value="Mahogany">
-        <label for="red"> Mahogany</label>&nbsp
-        <input type="checkbox" id="color" name="brown" value="Brown">
-        <label for="red"> Brown</label>&nbsp
-        <input type="checkbox" id="color" name="teal" value="Teal">
-        <label for="red"> Teal</label>
-    </label></div>
-</div><br>
-               
             <div class="row">
                 <div class="col-lg-3">
-                    <label for="images">Add Images to Product:
+                    <label for="color">Color:
                 </div>
-                <div class="col-lg-3">
-                    <label id="fileUpload"> <input type="file" name="fileToUpload"> </label>
-                    <input type="submit" value="Upload Image" id="fileUpload" name="submit">
-                </div>
-            </div><br> 
+                <div class="col-lg-9">
+                    <input type="checkbox" id="Black" name="color[]" value="Black" >
+                    <label for="black"> Black</label>&nbsp
+                    <input type="checkbox" id="White" name="color[]" value="White">
+                    <label for="white"> White</label>&nbsp
+                    <input type="checkbox" id="Blue" name="color[]" value="Blue">
+                    <label for="blue"> Blue</label>&nbsp
+                    <input type="checkbox" id="Red" name="color[]" value="Red">
+                    <label for="red"> Red</label>&nbsp
+                    <input type="checkbox" id="Beige" name="color[]" value="Beige" >
+                    <label for="beige"> Beige</label>&nbsp
+                    <input type="checkbox" id="Pink" name="color[]" value="Pink">
+                    <label for="pink"> Pink</label>&nbsp
+                    <input type="checkbox" id="Green" name="color[]" value="Green">
+                    <label for="green"> Green</label>&nbsp
+                    <input type="checkbox" id="Grey" name="color[]" value="Grey">
+                    <label for="grey"> Grey</label>&nbsp
+                    <input type="checkbox" id="Yellow" name="color[]" value="Yellow">
+                    <label for="yellow"> Yellow</label>&nbsp
+                    <input type="checkbox" id="Purple" name="color[]" value="Purple">
+                    <label for="purple"> Purple</label>&nbsp
+                    <input type="checkbox" id="Orange" name="color[]" value="Orange">
+                    <label for="orange"> Orange</label>&nbsp
+                    <input type="checkbox" id="Maroon" name="color[]" value="Maroon">
+                    <label for="mahogany"> Maroon</label>&nbsp
+                    <input type="checkbox" id="Brown" name="color[]" value="Brown">
+                    <label for="brown"> Brown</label>&nbsp
+                    <input type="checkbox" id="Teal" name="color[]" value="Teal">
+                    <label for="teal"> Teal</label>
+                </label></div>
+            </div><br>
 
             <div class="row">
                 <div class="col-lg-3">
@@ -193,6 +192,35 @@
             </div>
         </div>
     </div>
+    </form>
+        
+    <script>
+        /******************************Colors******************************/
+        myString="";
+        var images=[];
+        //`+$(this).val()+
+        $('input[type="checkbox"]').change(function(){
+            var checks = $('input[type="checkbox"]:checked').map(function() {
+                myString+=`<div class='row'>
+                            <div class='col-lg-6' id=margin-bottom>
+                                <div class='row'>
+                                    <div class='col-lg-3'>
+                                        <label for='images'><h4> `+$(this).attr('id')+` </h4>
+                                    </div>
+                                    <div class='col-lg-9'>
+                                    <label id='fileUpload'> <input type='file' name="fileToUpload`+$(this).attr('id')+`[]" multiple='multiple'> </label>
+                                        
+                                    </div>
+                                </div> 
+                            </div>               
+                        </div>`
+            }).get()
+            $('#colorForm').html(myString);
+            myString="";
+        })
+        function colorForm(color){}
+        /******************************Colors******************************/
+    </script>
     
         
     <?php

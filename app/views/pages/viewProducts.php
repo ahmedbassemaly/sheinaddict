@@ -62,8 +62,13 @@ class viewProducts extends View{
                             <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
                                 <h3 class="mb-0 font-weight-semibold">Price: <?php echo"EGP ".$this->model->getPrice($i);?></h3>
                                 <div> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                                    <div class="text-muted"></div> <button type="button" class="btn1 btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i> Edit Product</button>
-                            </div>
+                                    <!-- <div class="text-muted"></div> <button type="button" class="btn1 btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i><a href="<?php echo URLROOT . 'pages/editProduct'; ?>"> Edit Product</a></button> -->
+                                    <?php $action1 = URLROOT . '/pages/editProduct'; ?>
+                                    <form method="post" action="<?php echo $action1;?>">
+                                        <button type="submit" value="editProduct" name ="submit" id="editProduct">Edit Product</button>
+                                    </form>
+                            
+                                </div>
                         </div>
                     </div>
                 </div>
