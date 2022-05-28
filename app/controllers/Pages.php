@@ -173,6 +173,13 @@ class Pages extends Controller
 
     public function subCategory()
     {
+        $subCategory=$this->getModel();
+        // $subCategoryName=$_GET['subCategoryName'];
+        // $categoryName = $_SESSION['categoryName'];
+        // $get_id=$subCategory->getName($subCategoryName,$categoryName);
+        
+       
+       
         $viewPath = VIEWS_PATH . 'pages/subCategory.php';
         require_once $viewPath;
         $subCategoryView = new subCategory($this->getModel(), $this);
@@ -405,6 +412,22 @@ class Pages extends Controller
     }
 
     public function productInfo(){
+
+        $productInfo = $this->getModel();
+        if (isset($_GET['colorid'])){
+    
+            echo $_GET['colorid'];
+            $colorid = $_GET['colorid'];
+            echo $colorid;
+               
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                // echo $_SERVER['REQUEST_METHOD'];
+                $productid = $_POST['addtocart'];
+                $productInfo->insertIntoCart($_SESSION['user_id'], $productid, $colorid);
+            }
+        }
+
+
         $viewPath = VIEWS_PATH . 'pages/productInfo.php';
         require_once $viewPath;
         $productInfoView = new productInfo($this->getModel(), $this);
@@ -418,5 +441,6 @@ class Pages extends Controller
         $viewCustomersView = new viewCustomers($this->getModel(), $this);
         $viewCustomersView->output();
     }
+
 }
 

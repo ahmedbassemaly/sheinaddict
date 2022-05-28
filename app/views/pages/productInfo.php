@@ -47,7 +47,7 @@ class productInfo extends View{
 
                 <div class="price"><?php echo "EGP ".$this->model->getPrice($product_id); ?></div>
 
-
+        
                 <div class="size">
                     <p>Size</p>
                     <div class="psize active">S</div>
@@ -56,14 +56,35 @@ class productInfo extends View{
                     <div class="psize">XL</div>  
                 </div>
 
+                <div>
+                <?php
+                $colorID = $this->model->getColorID($product_id);
+                $color=$this->model->getColor($product_id);
+                for($i=0;$i<count($color); $i++){
+                    ?>
+                    <a href="<?php echo URLROOT .'pages/productInfo?product_id='.$product_id.'&color_id='.$color_id.'&colorid='. $colorID[$i];?>"><div id="myDiv" class="circle turquoise" style="background-color:<?php echo $color[$i]?>" > </div></a>
+                    <?php
+                  echo $color[$i];
+                }?>
+
+            </div>
+
+
                 <div class="quantity">
                     <p>In Stock: </p> <div> <?php echo $this->model->getQuantity($product_id); ?> </div>
                     <!-- <input type="number" min="1" max="50" value="1"> -->
                     <!-- max will be from database -->
                 </div>
+
+            <form action="" method="POST">
                 <div class="btn-box">
-                    <button class="cart-btn">Add to Cart</button>
+                <!-- <a href="<?php echo URLROOT .'pages/productInfo?product_id='.$product_id.'&color_id='.$color_id.'&addproduct_id='.$product_id ?>" class="btn btn-primary">Add to cart</a> -->
+                <button type="submit" name="addtocart" value="<?php echo $product_id ?>">Add To Cart</button>
                 </div>
+
+            </form>
+
+
                 <div class="btn-box">
                     <button class="rating-btn">Rate Product!</button>
                 </div>

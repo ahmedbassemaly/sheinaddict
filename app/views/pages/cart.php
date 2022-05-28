@@ -18,14 +18,21 @@ class cart extends view
           <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
         </div>
 
+      <?php 
+      $cart=$this->model->getProductName($_SESSION['user_id']);
+      $userID=$_SESSION['user_id'];
+      echo $userID;
+      for($i=0; $i<4; $i++) {
+         echo $this->model->getProductName($_SESSION['user_id'])[$i]
+        ?>
         <div class="card">
           <div class="card-body">
             <div class="row d-flex justify-content-between align-items-center">
               <div class="col-md-2 col-lg-2 col-xl-2">
-                <img src="<?php echo ImageRoot . 'hoodie.jpeg' ; ?>">
+                <img src="<?php echo ImageRoot . 'top.jpg' ; ?>">
               </div>
               <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-normal mb-2">Basic T-shirt</p>
+                <p class="lead fw-normal mb-2"><?php echo $cart[0]; ?></p>
                 <p class="lead">Size: M <br>Color:Grey</p>
               </div>
               <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
@@ -51,108 +58,8 @@ class cart extends view
             </div>
           </div>
         </div>
+        <?php } ?>
 
-        <div class="card">
-          <div class="card-body">
-            <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-2 col-lg-2 col-xl-2">
-              <img src="<?php echo ImageRoot . 'cargo-pants.jpg' ; ?>">
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                <p class="lead">Size: M <br>Color: Grey</p>
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                  <i class="fas fa-minus"></i>
-                </button>
-
-                <input id="form1" min="0" name="quantity" value="2" type="number"
-                  class="form-control form-control-sm" />
-
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                <h5 class="mb-0">$499.00</h5>
-              </div>
-              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <a class="cart" href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card ">
-          <div class="card-body">
-            <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-2 col-lg-2 col-xl-2">
-              <img src="<?php echo ImageRoot . 'nike.jpg' ; ?>">
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                <p class="lead">Size: M <br> Color: Grey</p>
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                  <i class="fas fa-minus"></i>
-                </button>
-
-                <input id="form1" min="0" name="quantity" value="2" type="number"
-                  class="form-control form-control-sm" />
-
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                <h5 class="mb-0">$499.00</h5>
-              </div>
-              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <a class="cart" href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-2 col-lg-2 col-xl-2">
-              <img src="<?php echo ImageRoot . 'top.jpg' ; ?>">
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                <p class="lead">Size:M <br>Color: Grey</p>
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                  <i class="fas fa-minus"></i>
-                </button>
-
-                <input id="form1" min="0" name="quantity" value="2" type="number"
-                  class="form-control form-control-sm" />
-
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                <h5 class="mb-0">$499.00</h5>
-              </div>
-              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <a class="cart" href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div class="card">
           <div class="card-body p-4 d-flex flex-row">

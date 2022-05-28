@@ -14,9 +14,14 @@ class productInfoModel extends Model{
 
     //color
     protected $color=[];
+    protected $colorName;
+    protected $colo_id;
 
     //image
     protected $image=[];
+
+    //cart
+    protected $size;
 
     public function __construct(){
         parent::__construct();
@@ -31,8 +36,12 @@ class productInfoModel extends Model{
         $this->material = "";
 
         $this->color = array();
+        $this->colorName = "";
+        $this->color_id = "";
 
         $this->image = array();
+
+        $this->size="";
     }
 
     /************************************PRODUCT************************************/
@@ -102,5 +111,29 @@ class productInfoModel extends Model{
     //     $this->dbh->bind(':product_id',$product_id);
     //     return $this->dbh->resultSet();
     // }
+
+    public function getColor($product_id){
+        $this->dbh->query("SELECT c.colorName FROM colors c, products p, description d Where p.product_id= d.product_id AND c.color_id = d.color_id AND p.product_id=:product_id");
+        $this->dbh->bind(':product_id',$product_id);
+        return $this->dbh->resultFetchCol();
+    }
+
+    public function getColorID($product_id){
+        $this->dbh->query("SELECT c.color_id FROM colors c, products p, description d Where p.product_id= d.product_id AND c.color_id = d.color_id AND p.product_id=:product_id");
+        $this->dbh->bind(':product_id',$product_id);
+        return $this->dbh->resultFetchCol();
+    }
+
+
+   /************************************ ADD TO CART ************************************/ 
+    public function insertIntoCart($userID,$productID,$color){
+
+        $this->dbh->query("INSERT INTO cart(`user_id`, `product_id`, `size`, `color_id`) VALUES(:userID, :productID, :size, :colorID)");
+        $this->dbh->bind(':userID',$userID);
+        $this->dbh->bind(':productID',$productID);
+        $this->dbh->bind(':size',$this->size);
+        $this->dbh->bind(':colorID',$color);
+        $this->dbh->execute();
+    }
 }
 ?>

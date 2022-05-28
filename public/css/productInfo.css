@@ -1,5 +1,5 @@
 body{
-     background:#f8f4e1;
+     background:#f8f8ff !important;
 }
 .flex-box{
     display:flex;
@@ -176,3 +176,22 @@ body{
     font-weight: 100;
     font-style: italic;
 }
+
+/* COLOR PICKER */
+
+
+.circle {
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  display:inline-block;
+  position: relative;
+  margin-top: 10%;
+}
+
+.circle:focus {
+    border-color: #232323;
+    outline: none;
+  }
+  
+/* .turquoise    { background-color: white; } */

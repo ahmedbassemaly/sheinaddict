@@ -1,5 +1,5 @@
 <?php
-class subCategoryModel extends model{
+class subCategoryModel extends Model{
     //Product
     protected $name;
     protected $price;
@@ -101,6 +101,7 @@ class subCategoryModel extends model{
         $this->dbh->bind(':subCategory',$subCategory);
         $result=$this->dbh->execute();
     }
+
 
 
 }
