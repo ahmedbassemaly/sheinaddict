@@ -8,10 +8,8 @@ class viewProducts extends View{
     // require APPROOT . '/views/inc/adminnavbar.php';
     require APPROOT . '/views/inc/sidebar.php';
     require APPROOT . '/views/inc/header.php';
-    
     $this->printForm();
-
-    // require APPROOT . '/views/inc/footer.php';
+    //require APPROOT . '/views/inc/footer.php';
     }
  
     public function printForm(){

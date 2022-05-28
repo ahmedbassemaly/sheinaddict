@@ -1,4 +1,6 @@
 .heading {
+    margin-top: 13%;
+    margin-left:1%;
     text-align: center;
     font-style: italic;
     font-family: "Lucida Handwriting", cursive;
@@ -7,5 +9,7 @@
 }
 
 .table {
-    max-width: 100%;
+    margin-left:5%;
+    /* margin-top:8%; */
+    max-width: 120%;
 }

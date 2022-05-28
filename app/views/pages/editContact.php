@@ -38,10 +38,10 @@ function checkValidImage(image){
 class editContact extends View{
     public function output()
     {
-    //$title = $this->model->title;;
+    require APPROOT . '/views/inc/sidebar.php';
     require APPROOT . '/views/inc/header.php';
     $this->printForm();
-    require APPROOT . '/views/inc/footer.php';
+    //require APPROOT . '/views/inc/footer.php';
     }
     
     public function printForm(){

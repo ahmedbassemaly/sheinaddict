@@ -2,6 +2,7 @@ body{
     background:#f8f4e1;
 }
 .box-1{
+    margin-top: 5%;
     text-align: center;
     position: relative;
 }
@@ -10,7 +11,7 @@ body{
     flex-wrap: wrap;
     margin-top: 5%;
     margin-bottom: 5%;
-    margin-left: 22%;
+    margin-left: 30%;
     max-height: 70%;
 }
 .card{
@@ -19,6 +20,7 @@ body{
 }
 .card-body{
     margin: auto;
+    width: auto;
     justify-content: left; 
 }
 img {

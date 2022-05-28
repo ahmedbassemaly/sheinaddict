@@ -7,19 +7,20 @@ class editFAQ extends View{
     public function output()
     {
     //$title = $this->model->title;;
+    require APPROOT . '/views/inc/sidebar.php';
     require APPROOT . '/views/inc/header.php';
     $this->printForm();
     echo "<br><br><br><br>";
-    require APPROOT . '/views/inc/footer.php';
+    //require APPROOT . '/views/inc/footer.php';
     }
     
     public function printForm(){
         ?>
-        <div class="box-1">
+        <div class="box-1" style="margin-top:5%;">
             <h1> Edit FAQ </h1>
         </div>
         
-        <form action="" method="POST" enctype='multipart/form-data'>
+        <form action="" method="POST" enctype='multipart/form-data' style="margin-left:22%;">
 
         <label class="FAQName"><a href="<?php echo URLROOT . 'pages/editShipping'; ?>">Shipping</a> </label>
         <div class="cardBorders">
