@@ -54,7 +54,7 @@
             <p class="quantity" style="font-size:13px;color:black;font-style: italic;">Quantity: <?php echo $this->model->getQuantity($product->product_id,$id);?> </p>
 
             <?php if(empty($_SESSION['userType_id'])){
-            ?> <a href="<?php echo URLROOT . '/users/Register'; ?>" class="btn btn-primary">Add to Cart</a>
+            ?> <a href="<?php echo URLROOT . '/users/Register'; ?>" class="btn btn-primary">View Product</a>
             <?php } 
              else if($_SESSION['userType_id']==1){ 
             ?> <a href="<?php echo URLROOT . '/pages/editProduct'; ?>" class="btn btn-primary">Edit Product</a>
