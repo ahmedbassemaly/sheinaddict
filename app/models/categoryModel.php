@@ -8,6 +8,8 @@ class categoryModel extends Model{
     protected $subCategory;   
     protected $rating;
 
+    protected $color;
+
 
     public function __construct(){
         parent::__construct();
@@ -17,6 +19,7 @@ class categoryModel extends Model{
         $quantity="";
         $subCategory="";
         $rating="";
+        $color="";
     }
     public function getProduct($category){
         if($category == 'Men'){
@@ -213,6 +216,13 @@ class categoryModel extends Model{
             return $this->dbh->single()->material;
         }
     }
+    /************************************COLOR************************************/
+    public function getColor($product_id){
+        $this->dbh->query("SELECT colors.color_id FROM colors JOIN description ON colors.color_id=description.color_id JOIN products ON description.product_id=products.product_id WHERE products.product_id=:product_id");
+        $this->dbh->bind(':product_id',$product_id);
+        return $this->dbh->resultFetchCol();
+    }
+
 
 
  public function getSubCategory(){

@@ -29,6 +29,7 @@
   
   
     foreach($result as $product){
+      //$color=$this->model->getColor($product->product_id);
   ?>
   <!---------------------------------- SHOP BY GENDER CATEGORY START---------------------------------->
     <div class="card" style="width:300px">
@@ -51,20 +52,17 @@
                 <i class="fas fa-star-half-alt"></i>
             </div>
             <p class="quantity" style="font-size:13px;color:black;font-style: italic;">Quantity: <?php echo $this->model->getQuantity($product->product_id,$id);?> </p>
-            <?php
-            if($_SESSION['userType_id']==2){
-              ?>
-            <a href="#" class="btn btn-primary">Add to cart</a>
-            <?php
-            }
-            ?>
-            <?php
-            if($_SESSION['userType_id']==1){
-              ?>
-            <a href="#" class="btn btn-primary">Edit Product</a>
-            <?php
-            }
-            ?>
+
+            <?php if(empty($_SESSION['userType_id'])){
+            ?> <a href="<?php echo URLROOT . '/users/Register'; ?>" class="btn btn-primary">Add to Cart</a>
+            <?php } 
+             else if($_SESSION['userType_id']==1){ 
+            ?> <a href="<?php echo URLROOT . '/pages/editProduct'; ?>" class="btn btn-primary">Edit Product</a>
+            <?php }
+            else{ 
+            ?> <a href="<?php echo URLROOT . 'pages/productInfo?product_id='.$product->product_id.'&color_id='.$this->model->getColor($product->product_id)[0];?>" class="btn btn-primary">View Product</a>
+            <?php } ?>
+
             <div id="price"><?php echo"EGP ".$this->model->getPrice($product->product_id,$id);?> </div>
         </div>
     </div>
