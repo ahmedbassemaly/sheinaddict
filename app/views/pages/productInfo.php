@@ -5,6 +5,7 @@
 class productInfo extends View{
     public function output(){
         require APPROOT . '/views/inc/header.php';
+        echo "<br><br><br>";
         ?>
 
         <?php $product_id=$_GET['product_id']; $color_id=$_GET['color_id'];
@@ -47,14 +48,26 @@ class productInfo extends View{
 
                 <div class="price"><?php echo "EGP ".$this->model->getPrice($product_id); ?></div>
 
+        <?php
         
+        $size_arr=['S','M','L','XL'];
+
+        ?>
                 <div class="size">
                     <p>Size</p>
-                    <div class="psize active">S</div>
-                    <div class="psize">M</div>
+                    <?php foreach($size_arr as $size){ ?>
+                    <div class="psize" onclick="size()"><?php echo $size ?></div>
+                    <?php } ?>
+                    <!-- <div class="psize">M</div>
                     <div class="psize">L</div>
-                    <div class="psize">XL</div>  
+                    <div class="psize">XL</div>   -->
                 </div>
+
+                <script>
+                    function size() {
+                    return 
+                    }
+                </script>
 
                 <div>
                 <?php
@@ -62,7 +75,7 @@ class productInfo extends View{
                 $color=$this->model->getColor($product_id);
                 for($i=0;$i<count($color); $i++){
                     ?>
-                    <a href="<?php echo URLROOT .'pages/productInfo?product_id='.$product_id.'&color_id='.$color_id.'&colorid='. $colorID[$i];?>"><div id="myDiv" class="circle turquoise" style="background-color:<?php echo $color[$i]?>" > </div></a>
+                    <a href="<?php echo URLROOT .'pages/productInfo?product_id='.$product_id.'&color_id='.$color_id.'&colorid='. $colorID[$i];?>"><div class="circle" style="background-color:<?php echo $color[$i];?>" > </div></a>
                     <?php
                   echo $color[$i];
                 }?>
