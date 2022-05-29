@@ -19,11 +19,11 @@ class cart extends view
         </div>
 
       <?php 
+      
       $cart=$this->model->getProductName($_SESSION['user_id']);
       $userID=$_SESSION['user_id'];
-      echo $userID;
-      for($i=0; $i<4; $i++) {
-         echo $this->model->getProductName($_SESSION['user_id'])[$i]
+
+      for($i=0; $i<count($cart); $i++){
         ?>
         <div class="card">
           <div class="card-body">
@@ -32,8 +32,8 @@ class cart extends view
                 <img src="<?php echo ImageRoot . 'top.jpg' ; ?>">
               </div>
               <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-normal mb-2"><?php echo $cart[0]; ?></p>
-                <p class="lead">Size: M <br>Color:Grey</p>
+                <p class="lead fw-normal mb-2"><?php echo $cart[$i]; ?></p>
+                <p class="lead">Size: M <br>Color: <?php echo $this->model->getProductColor($_SESSION['user_id'])[$i]; ?></p>
               </div>
               <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                 <button class="btn btn-link px-2"
@@ -58,8 +58,7 @@ class cart extends view
             </div>
           </div>
         </div>
-        <?php } ?>
-
+<?php } ?>
 
         <div class="card">
           <div class="card-body p-4 d-flex flex-row">
@@ -94,7 +93,8 @@ class cart extends view
   
   <?php
     require APPROOT . '/views/inc/footer.php';
- }
+//  }
+}
 }
 ?>
 
