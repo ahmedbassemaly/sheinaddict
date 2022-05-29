@@ -256,6 +256,7 @@ class Pages extends Controller
     }
     public function cart()
     {
+        $cart = $this->getModel();
         $viewPath = VIEWS_PATH . 'pages/cart.php';
         require_once $viewPath;
         $cartView = new cart($this->getModel(), $this);

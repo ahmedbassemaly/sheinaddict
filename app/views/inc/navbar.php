@@ -81,7 +81,11 @@
       <div class="cart-icon">
           <a href="<?php echo URLROOT . 'pages/cart'; ?>">
             <i class="las la-shopping-cart la-2x" style="color: white"></i>
-            <span class='badge badge-warning' id='lblCartCount'> 5 </span>
+            <?php if(!empty($_SESSION['user_id'])){ ?>
+            <!-- <span class='badge badge-warning' id='lblCartCount'><?php //echo count($this->model->getNumberOfCartItems($_SESSION['user_id']))?> </span> -->
+            <span class='badge badge-warning' id='lblCartCount'>5</span>
+
+            <?php } ?>
           </a>
       </div>
       
