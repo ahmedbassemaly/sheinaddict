@@ -90,6 +90,7 @@ class Pages extends Controller
         $viewProfileView = new ViewProfile($this->getModel(), $this);
         $viewProfileView->output();
     }
+
     public function addProduct()
     {
         if(isset($_POST['addProduct'])){
@@ -146,6 +147,42 @@ class Pages extends Controller
 
     public function editProduct()
     {
+        $editProduct=$this->getModel();
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $editProduct->setName($_POST['name']);
+            $editProduct->setPrice($_POST['price']);
+            $editProduct->setQuantity($_POST['quantity']);
+            $editProduct->setCategoryName($_POST['categoryName']);
+            $editProduct->setSubCategory($_POST['subcategory']);
+
+            $editProduct->setStyle($_POST['style']);
+            $editProduct->setSeason($_POST['season']);
+            $editProduct->setNeckline($_POST['neckline']);
+            $editProduct->setMaterial($_POST['material']);
+
+            $editProduct->setColor($_POST['color']);
+
+            $editProduct->setImages($_FILES);
+
+            $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
+            if(!empty($_POST['color'])) {
+                foreach($_POST['color'] as $value){
+                    //echo "Chosen color : ".$value.'<br/>';
+                        for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
+                            $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
+                            $file_name = $_FILES['fileToUpload'.$value]['name'][$i];
+                            $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                            move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
+                            //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
+                        }
+                    }
+                }
+
+            $result=$editProduct->editProduct($_POST);
+        }
+        
+
         $viewPath = VIEWS_PATH . 'pages/editProduct.php';
         require_once $viewPath;
         $editProductView = new editProduct($this->getModel(), $this);

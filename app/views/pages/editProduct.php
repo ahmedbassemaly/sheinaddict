@@ -12,6 +12,8 @@
     }
 
     public function printForm(){
+        $productID=$_GET['product_id'];
+        // $colorName=$_GET['colorName'];
         ?>
         <link rel="stylesheet" href="<?php echo URLROOT . 'css/product.css'; ?>">
         
@@ -25,18 +27,18 @@
             <div class="row">
                 <div class="col-lg-12">
                     <label>Name:<br></label>
-                    <input type="text" name='name' id="name" class="form-control" required>
+                    <input type="text" name='name' id="name" class="form-control" value="<?php echo $this->model->getName($productID);?>">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-lg-6" id=margin-bottom>
                     <label>Price:</label>
-                    <input type="text" name='price' id="price" class="form-control" required>
+                    <input type="text" name='price' id="price" class="form-control" value="<?php echo $this->model->getPrice($productID);?>">
                 </div>
                 <div class="col-lg-6" id=margin-bottom>
                     <label>Quantity:</label>
-                    <input type="text" name='quantity' id="quantity" class="form-control" required>  
+                    <input type="text" name='quantity' id="quantity" class="form-control" value="<?php echo $this->model->getQuantity($productID);?>">  
                 </div>               
             </div>
 
@@ -45,11 +47,11 @@
                     <label>Category:</label>
                 </div>
                 <div class="col-lg-6">
-                    <input type="radio" id="category" value="Women">
+                    <input type="radio" id="category" name="categoryName" value="Women" <?php echo ($this->model->getCategoryName($productID)=='Women')?'checked':'' ?>>
                     <label for="Women">Women</label>
-                    <input type="radio" id="category" value="Men">
+                    <input type="radio" id="category" name="categoryName" value="Men" <?php echo ($this->model->getCategoryName($productID)=='Men')?'checked':'' ?>>
                     <label for="Men">Men</label>
-                    <input type="radio" id="category" value="Kids">
+                    <input type="radio" id="category" name="categoryName" value="Kids" <?php echo ($this->model->getCategoryName($productID)=='Kids')?'checked':'' ?>>
                     <label for="Kids">Kids</label>
                 </div>
             </div><br>
@@ -66,7 +68,8 @@
                         $('#result').html(result);
                     })
                     </script>
-                        <option value="T-Shirt">T-Shirts</option>
+                        <option value="<?php echo $this->model->getSubCategory($productID);?>"><?php echo $this->model->getSubCategory($productID);?></option>
+                        <option value="T-Shirt">T-Shirt</option>
                         <option value="Hoodies & Sweatshirts">Hoodies & Sweatshirts</option>
                         <option value="Jackets">Jackets</option>
                         <option value="Co-ords">Co-ords</option>
@@ -77,6 +80,8 @@
                     </select></label>
                 </div>
             </div><br>
+            
+            
 
             <div class="row">
                 <div class="col-lg-6">
@@ -89,13 +94,13 @@
                     <label> Style:</label>
                 </div>
                 <div class="col-lg-3">
-                    <input type="text" name='style' id="style" class="form-control">
+                    <input type="text" name='style' id="style" class="form-control" value="<?php echo $this->model->getStyle($productID);?>">
                 </div>
                 <div class="col-lg-3">
                     <label for="season">Season: 
                 </div>
                 <div class="col-lg-3">
-                    <select name="season" id="season">
+                    <select name="season" id="season" value="<?php echo $this->model->getSeason($productID);?>">
                         <option value="Summer">Summer</option>
                         <option value="Fall">Fall</option>
                         <option value="Winter">Winter</option>
@@ -109,7 +114,7 @@
                     <label for="neckline">Neckline:
                 </div>
                 <div class="col-lg-3">
-                    <select name="neckline" id="neckline">
+                    <select name="neckline" id="neckline" value="<?php echo $this->model->getNeckline($productID);?>">
                         <option value="round">Round</option>
                         <option value="v-neck">V-Neck</option>
                         <option value="turtleneck">Turtleneck</option>
@@ -124,7 +129,7 @@
                     <label for="material">Material:
                 </div>
                 <div class="col-lg-3">
-                    <select name="material" id="material">
+                    <select name="material" id="material" value="<?php echo $this->model->getMaterial($productID);?>">
                         <option value="cotton">Cotton</option>
                         <option value="chiffon">Chiffon</option>
                         <option value="silk">Silk</option>
@@ -144,16 +149,27 @@
                 <div class="col-lg-3">
                     <label for="color">Color:
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-9"> 
+                    <!-- <?php
+                    for($i=0; $i<$this->model->getAllColors(); $i++){
+                        ?>
+                        <input type="checkbox" id="<?php $this->model->getColor($i)?>" name="color[]" 
+                        value="<?php $this->model->getColor($i)?>" <?php echo ($this->model->getColor($productID)[$i])?'checked': ''?>>
+                        
+                        <label for="<?php $this->model->getColor($i)?>"> <?php $this->model->getColor($productID)[$i]?></label>&nbsp
+                        <?php
+                    }
+                    ?> -->
+
                     <input type="checkbox" id="Black" name="color[]" value="Black" >
-                    <label for="black"> Black</label>&nbsp
-                    <input type="checkbox" id="White" name="color[]" value="White">
+                    <label for="Black"> Black</label>&nbsp                   
+                    <input type="checkbox" id="White" name="color[]" value="White" >
                     <label for="white"> White</label>&nbsp
                     <input type="checkbox" id="Blue" name="color[]" value="Blue">
                     <label for="blue"> Blue</label>&nbsp
                     <input type="checkbox" id="Red" name="color[]" value="Red">
                     <label for="red"> Red</label>&nbsp
-                    <input type="checkbox" id="Beige" name="color[]" value="Beige" >
+                    <input type="checkbox" id="Beige" name="color[]" value="Beige">
                     <label for="beige"> Beige</label>&nbsp
                     <input type="checkbox" id="Pink" name="color[]" value="Pink">
                     <label for="pink"> Pink</label>&nbsp
@@ -173,8 +189,10 @@
                     <label for="brown"> Brown</label>&nbsp
                     <input type="checkbox" id="Teal" name="color[]" value="Teal">
                     <label for="teal"> Teal</label>
-                </label></div>
+                </label></div> 
             </div><br>
+
+            <div id="colorForm"></div>
 
             <div class="row">
                 <div class="col-lg-3">
