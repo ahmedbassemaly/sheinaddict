@@ -35,11 +35,11 @@
     <div class="card" style="width:300px">
     <?php
     foreach($this->model->getImage($product->product_id,$id) as $image){ ?>
-      <img class="card-img-top" id="myImg" alt="image not found" src = "<?php echo ImageRoot . "addProduct/".$image->image; ?>" alt="Card image" >
+      <img class="card-img-top" id="myImg" alt="image not found" src = "<?php echo ImageRoot . "addProduct/".$image->image; ?>" >
       <?php }?>
         <div class="card-body">
           <h4 class="card-title"> <?php echo $this->model->getName($product->product_id,$id);?> </h4>
-          <h4 class="card-text"> <?php echo "Style: ".$this->model->getStyle($product->product_id,$id);?>       
+          <h4 class="card-text"> <?php echo "Style: ".$this->model->getStyle($product->product_id,$id);?>       </h4>
               <h4 class="card-text"> <?php echo "Season: ".$this->model->getSeason($product->product_id,$id);?>     </h4>
               <h4 class="card-text"> <?php echo "Neckline: ".$this->model->getNeckline($product->product_id,$id);?> </h4>
               <h4 class="card-text"> <?php echo "Material: ".$this->model->getMaterial($product->product_id,$id);?> </h4>
