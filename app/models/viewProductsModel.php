@@ -17,6 +17,11 @@ class viewProductsModel extends Model{
         $subCategory="";
         $rating="";
     }
+    public function getProductId($id){
+        $this->dbh->query("SELECT product_id FROM products WHERE `product_id`=:productId");
+        $this->dbh->bind(':productId',$id);
+        return $this->dbh->single()->product_id;
+    }
     public function getProduct($id){
         $this->dbh->query("SELECT * FROM products WHERE `categoryName`='Men'");
         $record=$this->dbh->execute();

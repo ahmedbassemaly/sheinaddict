@@ -37,7 +37,8 @@ class viewProducts extends View{
                                 <?php }?> 
                             </div>
                             <div class="media-body">
-                                <h6 class="media-title font-weight-semibold"> <?php echo $this->model->getName($i);?>  </h6>
+                                <h6 class="media-title font-weight-semibold"> <?php echo $this->model->getName($i); 
+                                                                                $productId=$this->model->getProductId($i);?>  </h6>
                                 <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
                                     <?php if ($this->model->getCategoryName($i)=="Men"){?>
                                     <li class="list-inline-item"><a href="<?php echo URLROOT . 'pages/category?categoryName=Men'; ?>" class="text-muted" data-abc="true"><?php echo $this->model->getCategoryName($i);?></a></li>
@@ -60,12 +61,15 @@ class viewProducts extends View{
                             <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
                                 <h3 class="mb-0 font-weight-semibold">Price: <?php echo"EGP ".$this->model->getPrice($i);?></h3>
                                 <div> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                                    <!-- <div class="text-muted"></div> <button type="button" class="btn1 btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i><a href="<?php echo URLROOT . 'pages/editProduct'; ?>"> Edit Product</a></button> -->
-                                    <?php $action1 = URLROOT . '/pages/editProduct'; ?>
-                                    <form method="post" action="<?php echo $action1;?>">
-                                        <button type="submit" value="editProduct" name ="submit" id="editProduct">Edit Product</button>
-                                    </form>
-                            
+                                    <!-- <div class="text-muted"></div> <button type="button" class="btn1 btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i>
+                                    <a href="<?php echo URLROOT . 'pages/editProduct?product_id='.$productId;?>"> Edit Product</a></button> -->
+                                    
+                                    <!-- <form method="post" >
+                                        <button type="submit" value="editProduct" name ="submit" id="editProduct" href="<?php echo URLROOT . 'pages/editProduct?product_id='.$productId;?>">Edit Product</button>
+                                    </form> -->
+                                   
+                                        <input type="button" id="editProduct" onclick="location.href='<?php echo URLROOT . 'pages/editProduct?product_id='.$productId;?>';" value="Edit Product" />
+                                   
                                 </div>
                         </div>
                     </div>
