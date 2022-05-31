@@ -170,7 +170,7 @@ class Index extends View
                         </div>
                         <div class="carousel-item ">
                             <div class="row">
-                                <?php for($i=0;$i<3;$i++){$rand=rand(1,$this->model->getCount());$products=$this->model->getProductRandom($rand);?>
+                                <?php  for($i=0;$i<3;$i++){$rand=rand(1,$this->model->getCount());$products=$this->model->getProductRandom($rand);?>
                                 <div class="col-md-4 mb-3">
                                     <?php foreach($products as $product){?>
                                     <div class="card">
