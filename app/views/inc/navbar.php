@@ -25,7 +25,7 @@
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <?php if (isset($_SESSION['user_id'])) {
+            <?php if (isset($_SESSION['userType_id'])) {
               ?> <i class="fas fa-user"></i> <?php echo $_SESSION['user_name'];
             } else {
               echo 'User';
@@ -33,7 +33,7 @@
             ?>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <?php if (isset($_SESSION['user_id'])) : ?>
+            <?php if (isset($_SESSION['userType_id'])) : ?>
               <li>
               <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/ViewProfile'; ?>">View Profile</a></li>
                 <a class="dropdown-item" href = "<?php echo URLROOT . 'pages/editProfile';?>" >Edit Profile</a>
@@ -65,8 +65,8 @@
           <a class="nav-link" href="<?php echo URLROOT . 'pages/FAQ'; ?>">FAQ</a>
         </li>
         </li>
-          <?php if (isset($_SESSION['user_id'])):?>
-            <?php if ($_SESSION['user_id']==1):?>
+          <?php if (isset($_SESSION['userType_id'])):?>
+            <?php if ($_SESSION['userType_id']==1):?>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="<?php echo URLROOT . 'pages/adminDashboard'; ?>">Admin</a>
               </li>
