@@ -105,40 +105,37 @@ class Pages extends Controller
             $addProduct->setMaterial($_POST['material']);
             $addProduct->setColor($_POST['color']);
             $addProduct->setImages($_FILES);
+
             /***********************************IMAGES***********************************/
             $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
+            $result=$addProduct->insertProduct();
+            
             if(!empty($_POST['color'])) {
                 foreach($_POST['color'] as $value){
+                    $newImageName=array();
+            $d=0;
                     //echo "Chosen color : ".$value.'<br/>';
                         for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
+                            $productid=$addProduct->getID();
                             $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
-                            $file_name = $_FILES['fileToUpload'.$value]['name'][$i];
+                            //$imageFileType=strtolower(pathinfo($fileName1,PATHINFO_EXTENSION));
+                            $file_name =$_FILES['fileToUpload'.$value]['name'][$i];
+                            $newImageName[$d]=$productid."_".$value."_".$file_name;
                             $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-                            move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
+                            move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$root.basename($newImageName[$d]));
+                            $d++;
                             //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
                         }
+                        $result=$addProduct->insertImages($newImageName,$value);
+
                     }
                 }
             /***********************************IMAGES***********************************/
-            // $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
-            // if(!empty($_POST['color'])) {
-            //     foreach($_POST['color'] as $value){
-            //         //echo "Chosen color : ".$value.'<br/>';
-            //             for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
-            //                 $time = date("d-m-Y")."-".time();
-            //                 $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
-            //                 $file_name =$_FILES['fileToUpload'.$value]['name'][$i];
-            //                 echo $time."_".$file_name;
-            //                 $newImageName=$time."_".$file_name;
-            //                 $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-            //                 move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
-            //                 //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
-            //             }
-            //         }
-            //     }
-            /***********************************IMAGES***********************************/    
-            $result=$addProduct->insertProduct($_FILES);
-
+            ?>
+            
+            <script>alert('<?php echo $productid ?>') </script>
+            <?php
+            
         }
 
         $viewPath = VIEWS_PATH . 'pages/addProduct.php';

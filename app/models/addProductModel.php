@@ -31,7 +31,12 @@ class addProductModel extends Model{
     $this->color = array();
     $this->images= array();
  }
-
+ public function getID(){
+    return $this->productId;
+}
+public function setID($id){
+    $this->productId = $id;
+}
  public function getName(){
      return $this->name;
  }
@@ -118,40 +123,44 @@ public function colorName($colorID){
     
 }
 
- public function insertProduct($images){
-     $this->dbh->query("SELECT product_id FROM products order by product_id desc limit 1");//betgeeb a5er (agbar) id fel database
-     $productId=$this->dbh->single()->product_id;
-     $newProductId=$productId+1;
-
-    $this->dbh->query("INSERT INTO products(`product_id`,`name`,`price`,`rating`,`quantity`,`categoryName`,`subCategory`) VALUES (:newProductId,:name, :price, :rating, :quantity, :categoryName, :subCategory)");
-    $this->dbh->bind(':newProductId', $newProductId);
-    $this->dbh->bind(':name', $this->name);
-    $this->dbh->bind(':price', $this->price);
-    $this->dbh->bind(':rating', '5');
-    $this->dbh->bind(':quantity', $this->quantity);
-    $this->dbh->bind(':categoryName', $this->categoryName);
-    $this->dbh->bind(':subCategory', $this->subCategory);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public function insertProduct(){
+    $this->dbh->query("SELECT product_id FROM products order by product_id desc limit 1");//betgeeb a5er (agbar) id fel database
+    $productId=$this->dbh->single()->product_id;
+    $newProductId=$productId+1;
+    $this->setID($newProductId);
+    //$this->product_id=$newProductId;
+   $this->dbh->query("INSERT INTO products(`product_id`,`name`,`price`,`rating`,`quantity`,`categoryName`,`subCategory`) VALUES (:newProductId,:name, :price, :rating, :quantity, :categoryName, :subCategory)");
+   $this->dbh->bind(':newProductId', $newProductId);
+   $this->dbh->bind(':name', $this->name);
+   $this->dbh->bind(':price', $this->price);
+   $this->dbh->bind(':rating', '5');
+   $this->dbh->bind(':quantity', $this->quantity);
+   $this->dbh->bind(':categoryName', $this->categoryName);
+   $this->dbh->bind(':subCategory', $this->subCategory);
+   $this->dbh->execute();
+   foreach($this->color as $colorID){
+    $this->dbh->query("INSERT INTO description(`product_id`,`style`,`season`,`neckline`,`material`,`color_id`) 
+    VALUES (:newProductId,:style, :season, :neckline, :material ,(SELECT color_id FROM colors WHERE colorName=:color))");
+    $this->dbh->bind(':newProductId', $this->productId);
+    $this->dbh->bind(':style', $this->style);
+    $this->dbh->bind(':season', $this->season);
+    $this->dbh->bind(':neckline', $this->neckline);
+    $this->dbh->bind(':material', $this->material);
+    $this->dbh->bind(':color' , $colorID);
     $this->dbh->execute();
-
-    foreach($this->color as $colorID){
-        $this->dbh->query("INSERT INTO description(`product_id`,`style`,`season`,`neckline`,`material`,`color_id`) VALUES (:newProductId,:style, :season, :neckline, :material ,(SELECT color_id FROM colors WHERE colorName=:color))");
-        $this->dbh->bind(':newProductId', $newProductId);
-        $this->dbh->bind(':style', $this->style);
-        $this->dbh->bind(':season', $this->season);
-        $this->dbh->bind(':neckline', $this->neckline);
-        $this->dbh->bind(':material', $this->material);
-        $this->dbh->bind(':color' , $colorID);
-        $this->dbh->execute();
-
-        $AllImages=$this->images['fileToUpload'.$colorID]['name'];
-        foreach($AllImages as $image){
-            $this->dbh->query("INSERT INTO image(`image`,`product_id`,`color_id`) VALUES (:image, :newProductId, (SELECT color_id FROM colors WHERE colorName=:color))");
-            $this->dbh->bind(':image' , $image);
-            $this->dbh->bind(':newProductId', $newProductId);
-            $this->dbh->bind(':color' , $colorID);
-            $this->dbh->execute();
-        }
-    }
+   }
+}
+public function insertImages($images, $colorID){
+       foreach($images as $image){
+           $this->dbh->query("INSERT INTO image(`image`,`product_id`,`color_id`) 
+           VALUES (:image, :newProductId, (SELECT color_id FROM colors WHERE colorName=:color))");
+           $this->dbh->bind(':image' , $image);
+           $this->dbh->bind(':newProductId', $this->productId);
+           $this->dbh->bind(':color' , $colorID);
+           $this->dbh->execute();
+       }
+   
 }
 
 }
