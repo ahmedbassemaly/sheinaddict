@@ -161,25 +161,48 @@ class Pages extends Controller
             $editProduct->setNeckline($_POST['neckline']);
             $editProduct->setMaterial($_POST['material']);
 
-            $editProduct->setColor($_POST['color']);
+            //$editProduct->setColor($_POST['color']);
 
-            $editProduct->setImages($_FILES);
+           // $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/editProduct/";
+            // if(!empty($_POST['color'])) {
+            //     foreach($_POST['color'] as $value){
+            //         //echo "Chosen color : ".$value.'<br/>';
+            //             for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
+            //                 $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
+            //                 $file_name = $_FILES['fileToUpload'.$value]['name'][$i];
+            //                 $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+            //                 move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
+            //                 //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
+            //             }
+            //         }
+            //     }
 
-            $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
-            if(!empty($_POST['color'])) {
-                foreach($_POST['color'] as $value){
-                    //echo "Chosen color : ".$value.'<br/>';
-                        for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
-                            $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
-                            $file_name = $_FILES['fileToUpload'.$value]['name'][$i];
-                            $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-                            move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
-                            //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
-                        }
-                    }
-                }
+            // if(!empty($_POST['color'])) {
+            //     foreach($_POST['color'] as $value){
+            //         $newImageName=array();
+            // $d=0;
+            //         //echo "Chosen color : ".$value.'<br/>';
+            //             for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
+            //                 $productid=$addProduct->getID();
+            //                 $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
+            //                 //$imageFileType=strtolower(pathinfo($fileName1,PATHINFO_EXTENSION));
+            //                 $file_name =$FILES['fileToUpload'.$value]['name'][$i];
+            //                 $newImageName[$d]=$productid."".$value."_".$file_name;
+            //                 $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+            //                 move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$root.basename($newImageName[$d]));
+            //                 $d++;
+            //                 //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
+            //             }
+            //             $result=$addProduct->insertImages($newImageName,$value);
 
-            $result=$editProduct->editProduct($_POST);
+            //         }
+            //     }
+            
+            for($i=0; $i<count($this->model->getColor($_GET['product_id'])); $i++){
+                $result=$editProduct->editProduct($_GET['product_id']);
+            }
+            
+            // $resul2=$editProduct->updateDesc($_POST);
         }
         
 

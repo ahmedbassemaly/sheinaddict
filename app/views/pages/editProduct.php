@@ -204,13 +204,15 @@
                 </li>
                 </div> 
             </div>                              
-
             <div class="row">
-               <button type="submit" name ="submit" id="submit">Submit Changes</button>
+                <button type="submit" value="" name ="submit" id="submit">Submit Changes</button>
             </div>
+            
         </div>
     </div>
     </form>
+    
+
         
     <script>
         /******************************Colors******************************/
