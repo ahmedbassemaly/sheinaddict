@@ -13,22 +13,11 @@
         <link rel="stylesheet" href="<?php echo URLROOT . 'css/category.css'; ?>">
         <h1 class="heading" style="margin-top:5%;">Sub Category Page</h1>
         <?php
-    $i=0;
-    $subCategoryName=$_GET['subCategoryName'];
-    $categoryName = isset($_SESSION['categoryName']) ? $_SESSION['categoryName'] : 'Women';
+        $i=0;
+        $subCategoryName=$_GET['subCategoryName'];
+        $categoryName = isset($_SESSION['categoryName']) ? $_SESSION['categoryName'] : 'Women';
 
     ?>  <h6 class="heading"><?php echo $categoryName."-".$subCategoryName; ?><br></h6>  <?php
-        
-        // require APPROOT . '/views/inc/footer.php';
-          ?>
-          <link rel="stylesheet" href="<?php echo URLROOT . 'css/category.css'; ?>">
-          <h1 class="heading">Sub Category Page</h1>
-          <?php
-      $i=0;
-      $subCategoryName=$_GET['subCategoryName'];
-      $categoryName = isset($_SESSION['categoryName']) ? $_SESSION['categoryName'] : 'Women';
-  
-      ?>  <h6 class="heading"><?php echo $categoryName."-".$subCategoryName; ?><br></h6>  <?php
           
       if(empty($this->model->getName($subCategoryName,$categoryName))){?>
         <h4 class="heading"> <?php echo "No data to show"; ?><br></h4>  <?php

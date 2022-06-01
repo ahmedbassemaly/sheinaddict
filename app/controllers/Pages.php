@@ -134,7 +134,7 @@ class Pages extends Controller
             /***********************************IMAGES***********************************/
             ?>
             
-            <script>alert('<?php echo $productid ?>') </script>
+            <!-- <script>alert('<?php// echo $productid ?>') </script> -->
             <?php
             
         }
