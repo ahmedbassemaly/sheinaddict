@@ -477,5 +477,12 @@ class Pages extends Controller
         $viewCustomersView->output();
     }
 
+    public function search()
+    {
+        $viewPath = VIEWS_PATH . 'pages/search.php';
+        require_once $viewPath;
+        $searchView = new search($this->getModel(), $this);
+        $searchView->output();
+    }
 }
 

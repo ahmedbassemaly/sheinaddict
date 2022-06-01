@@ -90,14 +90,14 @@
       </div>
       
       <div class="search-container">
-        <!-- <form action="/search" method="get"> -->
-          <input class="search expandright" id="searchright" type="search"  placeholder="Search">
+        <form action="<?php echo URLROOT . 'pages/search'; ?>" method="post">
+          <input class="search expandright" id="searchright" name="searchright" type="text"  placeholder="Search">
           <label class="button searchbutton" for="searchright">
             <div class="search-icon-btn">
-                <i class="fa fa-search"></i>
+                <i class="fa fa-search"><a href="<?php echo URLROOT . 'pages/search'; ?>"></a></i>
             </div>
           </label>
-        <!-- </form> -->
+        </form>
       </div>
 
 </nav>

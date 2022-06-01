@@ -22,7 +22,7 @@ class Index extends View
    <p>Shein Addict</p>
 </div> -->
 
-<div class="row-1">
+<div class="row-1" style="margin-left:4%;">
     <div class="pic-wrapper">
       
         <figure class="pic-1"><img src= "<?php echo ImageRoot . 'my_img_auto_x2 (1).jpg' ; ?>"/></figure>
