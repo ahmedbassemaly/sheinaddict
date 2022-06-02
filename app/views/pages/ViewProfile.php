@@ -19,14 +19,14 @@ class ViewProfile extends view{
                         
                     <!-- </div> -->
                 </div>
-                <div class="profile-card_email" style='font-size:120%';>
-                <i class="fa-solid fa-envelope"></i> <?php echo $this->model->getEmail($_SESSION['user_id']);?>
+                <div class="profile-card_email" style='font-size:120%;';>
+                <i class="fa-solid fa-envelope" style="margin-right: 2%;"></i> <?php echo $this->model->getEmail($_SESSION['user_id']);?>
                 </div>
                 <div class="profile-card_address">
-                    <i class="fa-solid fa-location-dot"></i> <?php echo $this->model->getAddress($_SESSION['user_id']);?>
+                    <i class="fa-solid fa-location-dot" style="margin-right: 2%;"></i> <?php echo $this->model->getAddress($_SESSION['user_id']);?>
                 </div>
                 <div class="profile-card_number" style='font-size:100%';>
-                    <i class="fa-solid fa-phone"></i><?php echo $this->model->getPhone($_SESSION['user_id']);?>
+                    <i class="fa-solid fa-phone" style="margin-right: 2%;"></i><?php echo $this->model->getPhone($_SESSION['user_id']);?>
                 </div>
                 <div class="profile-card_info">
                     <div class="profile-card_info_num">

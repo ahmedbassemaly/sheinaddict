@@ -7,6 +7,7 @@
   class editProfile extends View{
     public function output(){
         // $this->model->editUserData();
+        //pattern="[0-5]{3}[0-9]{8}"    Pattern for Phine Number
         require APPROOT . '/views/inc/header.php';
 
         ?>
@@ -40,7 +41,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <label>Phone Number:</label>
-                    <input type="text" name='PhoneNo' id="PhoneNo" value="<?php echo $this->model->getPhoneNo($_SESSION['user_id']) ?>" class="form-control" pattern="[0-5]{3}[0-9]{8}"> 
+                    <input type="text" name='PhoneNo' id="PhoneNo" value="<?php echo $this->model->getPhoneNo($_SESSION['user_id']) ?>" class="form-control" > 
                 </div>
                 <div class="col-lg-6" id=margin-bottom>
                     <label>Adress:</label>

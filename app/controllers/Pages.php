@@ -31,21 +31,30 @@ class Pages extends Controller
             $editProfile->setEmail($_POST['Email']);
             $editProfile->setPhoneNo($_POST['PhoneNo']);
             $editProfile->setAddress($_POST['Address']);
-            $result=$editProfile->editUserData($_SESSION['user_id']);
-            
 
-            #_________________filter email_________________#
-                // $oldEmail = $email;
-                // $email = filter_var($email,FILTER_SANITIZE_EMAIL);
+            if($editProfile->filterEmail($_POST['Email'])==false){
                 
-                // if(!filter_var($email , FILTER_VALIDATE_EMAIL) === false && $email===$oldEmail)
-                // {
-                //     return true;
-                // }
-                // else{
-                //     return false;
-                // }
-        
+                ?>
+                    <div class="text-center fixed-top" style="margin-top:500px;">  
+                      <button class="btn btn-danger" style="width:50%"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Email  is invalid, please enter a valid email</button>
+                    </div>
+                <?php
+            }
+            if($editProfile->phoneValidation($_POST['PhoneNo'])==false){
+                ?>
+                    <div class="text-center fixed-top" style="margin-top:620px;">  
+                      <button class="btn btn-danger" style="width:50%"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Phone Number  is invalid, please enter a valid phone number</button>
+                    </div>
+                <?php
+            }
+            if($editProfile->filterEmail($_POST['Email'])==true && $editProfile->phoneValidation($_POST['PhoneNo'])==true){
+                ?>
+                    <div class="text-center fixed-top" style="margin-top:630px;">  
+                      <button class="btn btn-success" id="Db" style="width:50%"><i aria-hidden="true"></i> Data updated successfully</button>
+                    </div>
+                <?php
+                $result=$editProfile->editUserData($_SESSION['user_id']);
+            }
         }
 
         $viewPath = VIEWS_PATH . 'pages/editProfile.php';

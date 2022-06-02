@@ -70,6 +70,28 @@ class editProfileModel extends Model{
         $this->Address = $Address;
     }
 
+    /**********************************VALIDATION************************************************/
+    function filterEmail($email){
+        $oldEmail = $email;
+        $email = filter_var($email,FILTER_SANITIZE_EMAIL);
+        
+        if(!filter_var($email , FILTER_VALIDATE_EMAIL) === false && $email===$oldEmail)
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    function phoneValidation($phone){
+        if(preg_match('/^[0-9]{11}+$/', $phone)) {
+                return true;
+            } else {
+                return false;
+            }
+    }
+    /**********************************VALIDATION************************************************/
+
     public function editUserData($id){
 
         $this->dbh->query("UPDATE users SET `firstName`=:firstName, `lastName`=:lastName, `phoneNumber`=:phoneNumber, `email`=:email, `Address`=:Address WHERE `user_id`=:id");
