@@ -565,4 +565,11 @@ class Pages extends Controller
         $viewSearch = new search($this->getModel(),$this);
         $viewSearch->output();
     }
+
+    public function adminReviews(){
+        $viewPath= VIEWS_PATH . 'pages/adminReviews.php';
+        require_once $viewPath;
+        $adminReviews = new adminReviews($this->getModel(),$this);
+        $adminReviews->output();
+    }
 }
