@@ -99,7 +99,6 @@ class Pages extends Controller
         $viewProfileView = new ViewProfile($this->getModel(), $this);
         $viewProfileView->output();
     }
-
     public function addProduct()
     {
         if(isset($_POST['addProduct'])){
@@ -115,37 +114,40 @@ class Pages extends Controller
             $addProduct->setMaterial($_POST['material']);
             $addProduct->setColor($_POST['color']);
             $addProduct->setImages($_FILES);
-
             /***********************************IMAGES***********************************/
             $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
-            $result=$addProduct->insertProduct();
-            
             if(!empty($_POST['color'])) {
                 foreach($_POST['color'] as $value){
-                    $newImageName=array();
-            $d=0;
                     //echo "Chosen color : ".$value.'<br/>';
                         for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
-                            $productid=$addProduct->getID();
                             $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
-                            //$imageFileType=strtolower(pathinfo($fileName1,PATHINFO_EXTENSION));
-                            $file_name =$_FILES['fileToUpload'.$value]['name'][$i];
-                            $newImageName[$d]=$productid."_".$value."_".$file_name;
+                            $file_name = $_FILES['fileToUpload'.$value]['name'][$i];
                             $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-                            move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$root.basename($newImageName[$d]));
-                            $d++;
+                            move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
                             //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
                         }
-                        $result=$addProduct->insertImages($newImageName,$value);
-
                     }
                 }
             /***********************************IMAGES***********************************/
-            ?>
-            
-            <!-- <script>alert('<?php// echo $productid ?>') </script> -->
-            <?php
-            
+            // $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
+            // if(!empty($_POST['color'])) {
+            //     foreach($_POST['color'] as $value){
+            //         //echo "Chosen color : ".$value.'<br/>';
+            //             for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
+            //                 $time = date("d-m-Y")."-".time();
+            //                 $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
+            //                 $file_name =$_FILES['fileToUpload'.$value]['name'][$i];
+            //                 echo $time."_".$file_name;
+            //                 $newImageName=$time."_".$file_name;
+            //                 $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+            //                 move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
+            //                 //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
+            //             }
+            //         }
+            //     }
+            /***********************************IMAGES***********************************/    
+            $result=$addProduct->insertProduct($_FILES);
+
         }
 
         $viewPath = VIEWS_PATH . 'pages/addProduct.php';
@@ -323,10 +325,33 @@ class Pages extends Controller
     public function cart()
     {
         $cart = $this->getModel();
+
+        if(isset($_POST["placeOrder"])) {
+            $totalAmount=0;
+            $price = $this->model->getProductPrice($_SESSION['user_id']);
+            $cartitems =$this->model->getNumberOfCartItems($_SESSION['user_id']);
+            for($i=0; $i<count($cartitems); $i++){
+                $totalAmount += $price[$i];
+            }
+            if(isset($_GET['country'])){
+            // $cart->insertIntoOrders($totalAmount, $_GET['country'], $_SESSION['user_id']);
+            $order = $cart->orderID($_SESSION['user_id']);
+            $product = $cart->productID($_SESSION['user_id']);
+            $color = $cart->colorID($_SESSION['user_id']);
+
+            for($i=0; $i<count($cartitems); $i++){
+                $cart->insertIntoOrderProducts($order,$product[$i], $color[$i]) ;
+            // echo $_SESSION['user_id'];
+            }
+            $cart->deleteFromCart($_SESSION['user_id']);
+            }
+            
+        }
         $viewPath = VIEWS_PATH . 'pages/cart.php';
         require_once $viewPath;
         $cartView = new cart($this->getModel(), $this);
         $cartView->output();
+        
     }
 
     public function shipping()
@@ -479,26 +504,42 @@ class Pages extends Controller
     }
 
     public function productInfo(){
-
         $productInfo = $this->getModel();
-        if (isset($_GET['colorid'])){
-    
-            echo $_GET['colorid'];
-            $colorid = $_GET['colorid'];
-            echo $colorid;
-               
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                // echo $_SERVER['REQUEST_METHOD'];
-                $productid = $_POST['addtocart'];
-                $productInfo->insertIntoCart($_SESSION['user_id'], $productid, $colorid);
+
+        if (isset($_GET['color_id'])){
+            $productInfo->sendColor = $_GET['color_id'];
+
+            if(isset($_GET['color_id2'])){
+                $productInfo->sendColor = $_GET['color_id2'];
+
+                    if(isset($_POST['addtocart']) ){
+
+                            $productid = $_POST['addtocart'];
+                            $alreadyInCart = $productInfo->selectFromCart($_SESSION['user_id'], $productid,  $productInfo->sendColor);  
+                            if(empty($alreadyInCart)){
+                                
+                            $productInfo->insertIntoCart($_SESSION['user_id'], $productid, $productInfo->sendColor);
+                            $productInfo->msg = "<div class='alert alert-success'>
+                            <strong> Added to cart successfuly</strong>
+                            </div>";
+                            }
+                            else{
+                                $productInfo->msg = "<div class='alert alert-danger'>
+                                <strong> Already added to cart </strong>
+                                </div>";
+                                ?>
+                                <!-- <script>alert("heyyy")</script> -->
+                                <?php
+                            }
+                    }
             }
         }
-
-
         $viewPath = VIEWS_PATH . 'pages/productInfo.php';
         require_once $viewPath;
         $productInfoView = new productInfo($this->getModel(), $this);
         $productInfoView->output();
+
+
     }
 
     public function viewCustomers()
@@ -509,12 +550,5 @@ class Pages extends Controller
         $viewCustomersView->output();
     }
 
-    public function search()
-    {
-        $viewPath = VIEWS_PATH . 'pages/search.php';
-        require_once $viewPath;
-        $searchView = new search($this->getModel(), $this);
-        $searchView->output();
-    }
 }
 

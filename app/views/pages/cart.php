@@ -7,7 +7,7 @@ class cart extends view
 {
     public function output(){
         require APPROOT . '/views/inc/header.php';
-    
+    echo "<br><br><br>";
 ?>
 <div class="container ">
     <!-- <div class="row d-flex justify-content-center align-items-center"> -->
@@ -20,16 +20,22 @@ class cart extends view
 
       <?php 
       
-      $cart=$this->model->getProductName($_SESSION['user_id']);
-      $userID=$_SESSION['user_id'];
-
+      $cart = $this->model->getProductName($_SESSION['user_id']);
+      $userID = $_SESSION['user_id'];
+      $price = $this->model->getProductPrice($_SESSION['user_id']);
+      $sum = 0;
       for($i=0; $i<count($cart); $i++){
         ?>
         <div class="card">
           <div class="card-body">
             <div class="row d-flex justify-content-between align-items-center">
               <div class="col-md-2 col-lg-2 col-xl-2">
-                <img src="<?php echo ImageRoot . 'top.jpg' ; ?>">
+              <?php 
+              // echo $this->model->getProductImage()[$i]; 
+              $productID=$this->model->getProductID();
+              $color= $this->model->getProductColor($_SESSION['user_id']);
+               ?>
+                <img src="<?php echo ImageRoot ."addProduct/". $this->model->getProductImage($productID[$i], $color[$i])[0] ; ?>">
               </div>
               <div class="col-md-3 col-lg-3 col-xl-3">
                 <p class="lead fw-normal mb-2"><?php echo $cart[$i]; ?></p>
@@ -41,7 +47,7 @@ class cart extends view
                   <i class="fas fa-minus"></i>
                 </button>
 
-                <input id="form1" min="0" name="quantity" value="2" type="number"
+                <input id="form1" min="0" name="quantity" value="1" type="number"
                   class="form-control form-control-sm" />
 
                 <button class="btn btn-link px-2"
@@ -50,7 +56,7 @@ class cart extends view
                 </button>
               </div>
               <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                <h5 class="mb-0">$499.00</h5>
+                <h5 class="mb-0"><?php echo $this->model->getProductPrice($_SESSION['user_id'])[$i] ?> EGP</h5>
               </div>
               <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                 <a class="cart" href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
@@ -58,7 +64,10 @@ class cart extends view
             </div>
           </div>
         </div>
-<?php } ?>
+<?php
+ $sum += $price[$i];
+} 
+?>
 
         <div class="card">
           <div class="card-body p-4 d-flex flex-row">
@@ -72,18 +81,22 @@ class cart extends view
 
         <div class="card">
           <div class="card-body">
-                <p class="lead">Total: 1000</p>
+                <p class="lead">Total: <?php echo $sum ?> EGP</p>
                 <div class="dropdown" col-md-6 text-center>
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   choose country
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="javascript:void(false);">Egypt</a></li>
-                  <li><a class="dropdown-item" href="javascript:void(false);">Saudi Arabia</a></li>
+                  <li><a class="dropdown-item" href=<?php echo URLROOT."pages/cart?country=Egypt"?>>Egypt</a></li>
+                  <li><a class="dropdown-item" href=<?php echo URLROOT."pages/cart?country=Saudi%20Arabia"?>>Saudi Arabia</a></li>
+                  <!-- javascript:void(false); -->
                 </ul>
               </div>
             </div>
-            <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+
+            <form action="" method="POST">
+             <button type="submit" class="btn btn-warning btn-block btn-lg" name="placeOrder" value="Order Now">Proceed to Pay</button>
+            </form>
         </div>
         
       </div>

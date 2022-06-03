@@ -7,20 +7,24 @@ class productInfo extends View{
         require APPROOT . '/views/inc/header.php';
         echo "<br><br><br>";
         ?>
-
+        <div>
+            <?php 
+            echo $this->model->msg;
+            ?>
+        </div>
         <?php $product_id=$_GET['product_id']; $color_id=$_GET['color_id'];
         //echo $this->model->getImage($product_id)[0];?>
 
         <div class="flex-box">
             <div class="left">
                 <div class="big-img">
-                    <?php foreach($this->model->getImageFront($product_id,$color_id) as $imageFront){ ?>
+                    <?php foreach($this->model->getImageFront($product_id,$this->model->sendColor) as $imageFront){ ?>
                     <img width= "23%" src="<?php echo ImageRoot ."addProduct/".$imageFront->image;?>">
                 </div>
                 <?php } ?>
                 <div class="images">
                     <?php //for($i=0;$i<4;$i++)
-                        foreach($this->model->getImage($product_id,$color_id) as $image){ ?>
+                        foreach($this->model->getImage($product_id,$this->model->sendColor) as $image){ ?>
                     <div class="small-img">
                         <?php //echo $product_id." ".$color_id. ?>
                         <img src="<?php echo ImageRoot ."addProduct/".$image->image ; ?>" onclick="showImg(this.src)">
@@ -51,31 +55,31 @@ class productInfo extends View{
         <?php
         
         $size_arr=['S','M','L','XL'];
-
+        $size_arr_num=[1,2,3,4];
         ?>
+
+            <form method="post" action="bacasoal.php">
                 <div class="size">
                     <p>Size</p>
-                    <?php foreach($size_arr as $size){ ?>
-                    <div class="psize" onclick="size()"><?php echo $size ?></div>
-                    <?php } ?>
+                    <?php for($i=0; $i<count($size_arr); $i++){ ?>
+                    <div class="psize"> <a href="#"><?php echo $size_arr[$i]?></a></div>
+                    <?php 
+                }
+                ?>
+
                     <!-- <div class="psize">M</div>
                     <div class="psize">L</div>
                     <div class="psize">XL</div>   -->
                 </div>
-
-                <script>
-                    function size() {
-                    return 
-                    }
-                </script>
-
-                <div>
+            </form>
+            
+            <div>
                 <?php
                 $colorID = $this->model->getColorID($product_id);
                 $color=$this->model->getColor($product_id);
                 for($i=0;$i<count($color); $i++){
                     ?>
-                    <a href="<?php echo URLROOT .'pages/productInfo?product_id='.$product_id.'&color_id='.$color_id.'&colorid='. $colorID[$i];?>"><div class="circle" style="background-color:<?php echo $color[$i];?>" > </div></a>
+                    <a href="<?php echo URLROOT .'pages/productInfo?product_id='.$product_id.'&color_id='.$color_id.'&color_id2='. $colorID[$i];?>"><div class="circle" style="background-color:<?php echo $color[$i];?>" > </div></a>
                     <?php
                   echo $color[$i];
                 }?>
@@ -104,6 +108,8 @@ class productInfo extends View{
             </div>
         </div>
         <br><br>
+
+
         <div class="blocks">
                 <span class="open"><?php echo "Size and Fit"?></span>
                 <div class="gameData">
