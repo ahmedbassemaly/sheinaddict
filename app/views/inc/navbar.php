@@ -5,6 +5,7 @@
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css'>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/a8598e67d0.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <div id="fixedNav">
 <nav  class="navbar navbar-expand-lg navbar-dark mb-4 navbar">
@@ -37,7 +38,7 @@
               <li>
               <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/ViewProfile'; ?>">View Profile</a></li>
                 <a class="dropdown-item" href = "<?php echo URLROOT . 'pages/editProfile';?>" >Edit Profile</a>
-                <a class="dropdown-item" href="users/logout">Logout</a>
+                <a class="dropdown-item" href="<?php echo URLROOT . 'users/logout';?>">Logout</a>
               </li>
             <?php else : ?>
               <li><a class="dropdown-item" href="<?php echo URLROOT . 'users/login'; ?>">Login</a></li>
@@ -49,7 +50,7 @@
             <?php endif; ?>           
           </ul>
           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+          <span class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">Category</span>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category?categoryName=Men'; ?>">Men</a></li>
               <li><a class="dropdown-item" href="<?php echo URLROOT . 'pages/category?categoryName=Women'; ?>">Women</a></li>

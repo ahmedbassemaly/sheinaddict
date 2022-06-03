@@ -317,10 +317,17 @@ class Pages extends Controller
     }
 
     public function viewProducts(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
+            if(isset($_POST['search'])){
+                echo $this->model->getProducts($_POST['search']);
+            }
+        }
+        else{
         $viewPath = VIEWS_PATH . 'pages/viewProducts.php';
         require_once $viewPath;
         $viewProductsView = new viewProducts($this->getModel(), $this);
         $viewProductsView->output();
+        }
     }
     public function cart()
     {
@@ -550,5 +557,11 @@ class Pages extends Controller
         $viewCustomersView->output();
     }
 
-}
 
+    public function search(){
+        $viewPath= VIEWS_PATH . 'pages/search.php';
+        require_once $viewPath;
+        $viewSearch = new search($this->getModel(),$this);
+        $viewSearch->output();
+    }
+}

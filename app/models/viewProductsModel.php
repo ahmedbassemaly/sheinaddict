@@ -22,71 +22,74 @@ class viewProductsModel extends Model{
         $this->dbh->bind(':productId',$id);
         return $this->dbh->single()->product_id;
     }
-    public function getProduct($id){
-        $this->dbh->query("SELECT * FROM products WHERE `categoryName`='Men'");
-        $record=$this->dbh->execute();
-        return $this->dbh->resultSet();
-    }
+    public function getProducts($key=""){
+        if($key==""){
+            $this->dbh->query("SELECT p.product_id,p.name,p.price,p.quantity,p.categoryName,p.subCategory, i.image, d.style,d.neckline,d.season,d.material FROM products p, image i, description d  WHERE p.product_id=i.product_id AND p.product_id = d.product_id AND i.image LIKE '%Front%'");
+        }else{
+            $this->dbh->query("SELECT p.product_id, p.name,p.price,p.quantity,p.categoryName,p.subCategory, i.image, d.style,d.neckline,d.season,d.material FROM products p, image i, description d  WHERE p.product_id=i.product_id AND p.product_id = d.product_id AND i.image LIKE '%Front%' AND p.name LIKE '%".$key."%'");
+        }
+        $result=$this->dbh->resultSet();
+        foreach($result as $product){
+        ?>
+        <div class="container d-flex justify-content-center mt-10 mb-10">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="card card-body">
+                        <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                            <div class="mr-2 mb-3 mb-lg-0">  
+                                <img class="card-img-top" id="myImg" alt="image not found" src = "<?php echo ImageRoot . "addProduct/".$product->image; ?>" alt="Card image" width="150" height="150">
+                                
+                            </div>
+                            <div class="media-body">
+                                <h6 class="media-title font-weight-semibold"> <?php echo $product->name; 
+                                                                                $productId=$product->product_id;?>  </h6>
+                                <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                                    <?php if ($product->categoryName=="Men"){?>
+                                    <li class="list-inline-item"><a href="<?php echo URLROOT . 'pages/category?categoryName=Men'; ?>" class="text-muted" data-abc="true"><?php echo $product->categoryName;?></a></li>
+                                    <?php }
+                                    else if($product->categoryName=="Women"){?>
+                                    <li class="list-inline-item"><a href="<?php echo URLROOT . 'pages/category?categoryName=Women'; ?>" class="text-muted" data-abc="true"><?php echo $product->categoryName;?></a></li>
+                                    <?php }
+                                    else if($product->categoryName=="Kids"){?>
+                                        <li class="list-inline-item"><a href="<?php echo URLROOT . 'pages/category?categoryName=Kids'; ?>" class="text-muted" data-abc="true"><?php echo $product->categoryName;?></a></li>
+                                        <?php }?>
+                                    <li class="list-inline-item"><?php echo $product->subCategory; ?></li>
+                                </ul>
+                                <h6> <?php echo "Style: ". $product->style;?></h6><h6> <?php echo "Neckline: ".$product->neckline;?></h6><h6><?php echo "Material: ".$product->material;?></h6><h6><?php echo "Season: ".$product->season;?></h6>
+                                    
+                                    
+                                <ul class="list-inline list-inline-dotted mb-0">
+                                    <li class="quantity" style="font-size:13px;color:black;font-style: italic;">Quantity: <?php echo $product->quantity;?> </li>
+                                </ul>
+                            </div>
+                            <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                                <h3 class="mb-0 font-weight-semibold">Price: <?php echo"EGP ".$product->price;?></h3>
+                                <div> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                                    <!-- <div class="text-muted"></div> <button type="button" class="btn1 btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i>
+                                    <a href="<?php echo URLROOT . 'pages/editProduct?product_id='.$productId;?>"> Edit Product</a></button> -->
+                                    
+                                    <!-- <form method="post" >
+                                        <button type="submit" value="editProduct" name ="submit" id="editProduct" href="<?php echo URLROOT . 'pages/editProduct?product_id='.$productId;?>">Edit Product</button>
+                                    </form> -->
+                                   
+                                        <input type="button" id="editProduct" onclick="location.href='<?php echo URLROOT . 'pages/editProduct?product_id='.$productId;?>';" value="Edit Product" />
+                                   
+                                </div>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+        <?php
+        
+        }
+    }
     public function getNum(){
         $this->dbh->query("SELECT * FROM products");
         $this->dbh->execute();
         return $this->dbh->rowCount();
     }
-    public function getName($id){
-        $this->dbh->query("SELECT `name` FROM products WHERE `product_id` = :id");
-        $this->dbh->bind(':id',$id);
-        return $this->dbh->single()->name;
-    }
-    public function getPrice($id){
-        $this->dbh->query("SELECT `price` FROM products WHERE `product_id` = :id");
-        $this->dbh->bind(':id',$id);
-        return $this->dbh->single()->price;
-    }
-    public function getQuantity($id){
-        $this->dbh->query("SELECT `quantity` FROM products WHERE `product_id` = :id");
-        $this->dbh->bind(':id',$id);
-        return $this->dbh->single()->quantity;
-    }
-    // public function getImage($id){
-    //     $this->dbh->query("SELECT image.image FROM products JOIN image ON image.product_id=products.product_id WHERE image.product_id=:id AND image.image LIKE '%FRONT%' GROUP BY products.product_id");
-    //     $this->dbh->bind(':id',$id);
-    //     return $this->dbh->resultSet();
-    // }
-    public function getImage($id){
-        $this->dbh->query("SELECT image.image FROM products JOIN image ON image.product_id=products.product_id WHERE image.product_id=:id AND image.image LIKE '%FRONT%' GROUP BY products.product_id");
-        $this->dbh->bind(':id',$id);
-        return $this->dbh->resultSet();
-    }
-    public function getCategoryName($id){
-        $this->dbh->query("SELECT `categoryName` FROM products WHERE `product_id` = :id");
-        $this->dbh->bind(':id',$id);
-        return $this->dbh->single()->categoryName;
-    }
-    public function getSubCategory($id){
-        $this->dbh->query("SELECT `subCategory` FROM products WHERE `product_id` = :id");
-        $this->dbh->bind(':id',$id);
-        return $this->dbh->single()->subCategory;
-    }
-    public function getStyle($id){
-        $this->dbh->query("SELECT description.style FROM description JOIN products ON description.product_id=products.product_id WHERE description.product_id=:id GROUP BY products.product_id");
-        $this->dbh->bind(':id',$id);
-        return $this->dbh->single()->style;
-    }
-    public function getNeckline($id){
-        $this->dbh->query("SELECT description.neckline FROM description JOIN products ON description.product_id=products.product_id WHERE description.product_id=:id GROUP BY products.product_id");
-        $this->dbh->bind(':id',$id);
-        return $this->dbh->single()->neckline;
-    }
-    public function getMaterial($id){
-        $this->dbh->query("SELECT description.material FROM description JOIN products ON description.product_id=products.product_id WHERE description.product_id=:id GROUP BY products.product_id");
-        $this->dbh->bind(':id',$id);
-        return $this->dbh->single()->material;
-    }
-    public function getSeason($id){
-        $this->dbh->query("SELECT description.season FROM description JOIN products ON description.product_id=products.product_id WHERE description.product_id=:id GROUP BY products.product_id");
-        $this->dbh->bind(':id',$id);
-        return $this->dbh->single()->season;
-    }
+    
  }
 ?>
