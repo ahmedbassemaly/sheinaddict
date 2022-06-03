@@ -54,7 +54,7 @@ class cartModel extends Model{
     public function getSize($userID){
 
         // $this->dbh->query("SELECT colors.colorName FROM products, cart, colors WHERE color.color_id = p.color_id AND c.product_id = p.product_id AND i.image LIKE '%FRont%' AND c.user_id = :userID");
-        $this->dbh->query("SELECT size FROM cart WHERE product_id = $productID AND user_id = :userID");
+        $this->dbh->query("SELECT cart.size FROM cart,products WHERE cart.product_id = products.product_id AND user_id = :userID");
         $this->dbh->bind(':userID',$userID);
         return $this->dbh->resultFetchCol();
     }
@@ -102,10 +102,11 @@ public function colorID($userID){
     return $this->dbh->resultFetchCol();
 }
 
-public function insertIntoOrderProducts($orderID, $productID, $colorID){
-    $this->dbh->query("INSERT INTO orderproduct(`order_id`, `product_id`, `color_id`) VALUES (:orderID, :productID, :colorID)");
+public function insertIntoOrderProducts($orderID, $productID, $size, $colorID){
+    $this->dbh->query("INSERT INTO orderproduct(`order_id`, `product_id`, `size` ,`color_id`) VALUES (:orderID, :productID, :size, :colorID)");
     $this->dbh->bind(':orderID',$orderID);
     $this->dbh->bind(':productID',$productID);
+    $this->dbh->bind(':size',$size);
     $this->dbh->bind(':colorID',$colorID);
     $this->dbh->execute();
 }

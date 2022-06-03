@@ -39,7 +39,7 @@ class cart extends view
               </div>
               <div class="col-md-3 col-lg-3 col-xl-3">
                 <p class="lead fw-normal mb-2"><?php echo $cart[$i]; ?></p>
-                <p class="lead">Size: M <br>Color: <?php echo $this->model->getProductColor($_SESSION['user_id'])[$i]; ?></p>
+                <p class="lead">Size: <?php echo $this->model->getSize($_SESSION['user_id'])[$i]?> <br>Color: <?php echo $this->model->getProductColor($_SESSION['user_id'])[$i]; ?></p>
               </div>
               <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                 <button class="btn btn-link px-2"

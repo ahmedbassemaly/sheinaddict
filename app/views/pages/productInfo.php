@@ -10,6 +10,7 @@ class productInfo extends View{
         <div>
             <?php 
             echo $this->model->msg;
+            echo "heyyy". $this->model->sendColor;
             ?>
         </div>
         <?php $product_id=$_GET['product_id']; $color_id=$_GET['color_id'];
@@ -55,23 +56,22 @@ class productInfo extends View{
         <?php
         
         $size_arr=['S','M','L','XL'];
-        $size_arr_num=[1,2,3,4];
         ?>
 
-            <form method="post" action="bacasoal.php">
                 <div class="size">
-                    <p>Size</p>
-                    <?php for($i=0; $i<count($size_arr); $i++){ ?>
-                    <div class="psize"> <a href="#"><?php echo $size_arr[$i]?></a></div>
+                 <p>Size</p>
+                    <?php foreach($size_arr as $size){ ?>
+                        <div class="psize">
+                        <a href="<?php echo URLROOT .'pages/productInfo?product_id='.$product_id.'&color_id='.$color_id. '&size='.$size?>"><?php echo $size;?></a>
+                        </div>
                     <?php 
-                }
-                ?>
+                    }
+                    ?>
 
                     <!-- <div class="psize">M</div>
                     <div class="psize">L</div>
                     <div class="psize">XL</div>   -->
                 </div>
-            </form>
             
             <div>
                 <?php
@@ -79,7 +79,7 @@ class productInfo extends View{
                 $color=$this->model->getColor($product_id);
                 for($i=0;$i<count($color); $i++){
                     ?>
-                    <a href="<?php echo URLROOT .'pages/productInfo?product_id='.$product_id.'&color_id='.$color_id.'&color_id2='. $colorID[$i];?>"><div class="circle" style="background-color:<?php echo $color[$i];?>" > </div></a>
+                    <a href="<?php echo URLROOT .'pages/productInfo?product_id='.$product_id.'&color_id='.$color_id.'&size='.$_GET['size'].'&color_id2='. $colorID[$i];?>"><div class="circle" style="background-color:<?php echo $color[$i];?>" > </div></a>
                     <?php
                   echo $color[$i];
                 }?>
@@ -94,11 +94,10 @@ class productInfo extends View{
                 </div>
 
             <form action="" method="POST">
+                <input type ="hidden" name ="size" value="reem is tired">
                 <div class="btn-box">
-                <!-- <a href="<?php echo URLROOT .'pages/productInfo?product_id='.$product_id.'&color_id='.$color_id.'&addproduct_id='.$product_id ?>" class="btn btn-primary">Add to cart</a> -->
                 <button type="submit" name="addtocart" value="<?php echo $product_id ?>">Add To Cart</button>
                 </div>
-
             </form>
 
 

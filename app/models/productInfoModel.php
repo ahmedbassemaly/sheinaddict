@@ -141,12 +141,12 @@ class productInfoModel extends Model{
 
    /************************************ ADD TO CART ************************************/ 
 
-    public function insertIntoCart($userID,$productID,$colorID){
+    public function insertIntoCart($userID,$productID, $size, $colorID){
 
         $this->dbh->query("INSERT INTO cart(`user_id`, `product_id`, `size`, `color_id`) VALUES(:userID, :productID, :size, :colorID)");
         $this->dbh->bind(':userID',$userID);
         $this->dbh->bind(':productID',$productID);
-        $this->dbh->bind(':size',$this->size);
+        $this->dbh->bind(':size',$size);
         $this->dbh->bind(':colorID',$colorID);
         $this->dbh->execute();
     }

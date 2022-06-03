@@ -341,14 +341,16 @@ class Pages extends Controller
                 $totalAmount += $price[$i];
             }
             if(isset($_GET['country'])){
-            // $cart->insertIntoOrders($totalAmount, $_GET['country'], $_SESSION['user_id']);
+            $cart->insertIntoOrders($totalAmount, $_GET['country'], $_SESSION['user_id']);
             $order = $cart->orderID($_SESSION['user_id']);
             $product = $cart->productID($_SESSION['user_id']);
+            $size = $cart->getSize($_SESSION['user_id']);
             $color = $cart->colorID($_SESSION['user_id']);
 
             for($i=0; $i<count($cartitems); $i++){
-                $cart->insertIntoOrderProducts($order,$product[$i], $color[$i]) ;
-            // echo $_SESSION['user_id'];
+                // echo"<br><br><br>".$i;
+                $cart->insertIntoOrderProducts($order,$product[$i], $cart->getSize($_SESSION['user_id'])[$i], $color[$i]) ;
+            echo $_SESSION['user_id'];
             }
             $cart->deleteFromCart($_SESSION['user_id']);
             }
@@ -513,19 +515,18 @@ class Pages extends Controller
     public function productInfo(){
         $productInfo = $this->getModel();
 
-        if (isset($_GET['color_id'])){
+        if ( isset($_GET['color_id'])){
             $productInfo->sendColor = $_GET['color_id'];
 
-            if(isset($_GET['color_id2'])){
+            if(isset($_GET['color_id2']) && isset($_GET['color_id2'])){
                 $productInfo->sendColor = $_GET['color_id2'];
 
-                    if(isset($_POST['addtocart']) ){
-
+                    if(isset($_POST['addtocart'])){
                             $productid = $_POST['addtocart'];
-                            $alreadyInCart = $productInfo->selectFromCart($_SESSION['user_id'], $productid,  $productInfo->sendColor);  
+                            $alreadyInCart = $productInfo->selectFromCart($_SESSION['user_id'], $productid,$productInfo->sendColor);  
                             if(empty($alreadyInCart)){
                                 
-                            $productInfo->insertIntoCart($_SESSION['user_id'], $productid, $productInfo->sendColor);
+                            $productInfo->insertIntoCart($_SESSION['user_id'], $productid, $_GET['size'], $productInfo->sendColor);
                             $productInfo->msg = "<div class='alert alert-success'>
                             <strong> Added to cart successfuly</strong>
                             </div>";
@@ -539,8 +540,8 @@ class Pages extends Controller
                                 <?php
                             }
                     }
+                }
             }
-        }
         $viewPath = VIEWS_PATH . 'pages/productInfo.php';
         require_once $viewPath;
         $productInfoView = new productInfo($this->getModel(), $this);
