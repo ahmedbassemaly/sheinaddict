@@ -1,5 +1,6 @@
 <?php
-class productInfoModel extends Model{
+require_once 'reviewInterface.php';
+class productInfoModel extends Model implements review{
     //Product
     protected $name;
     protected $price;
@@ -26,6 +27,8 @@ class productInfoModel extends Model{
 
     public $msg;
 
+    protected $firstName;
+
     public function __construct(){
         parent::__construct();
         $this->name ="";
@@ -47,6 +50,7 @@ class productInfoModel extends Model{
 
         $this->size="";
         $this->msg="";
+        $this->firstName="";
     }
 
     /************************************PRODUCT************************************/
@@ -150,5 +154,17 @@ class productInfoModel extends Model{
         $this->dbh->bind(':colorID',$colorID);
         $this->dbh->execute();
     }
+
+
+    public function viewReview($product_id){
+        $this->dbh->query("SELECT users.firstName, reviews.comment FROM reviews, users WHERE reviews.user_id=users.user_id AND reviews.product_id = :product_id");
+        $this->dbh->bind(':product_id',$product_id);
+        return $this->dbh->resultSet();
+    }
+
+    // public function viewName(){
+    //     $this->dbh->query("SELECT users.firstName FROM users, reviews WHERE reviews.user_id=users.user_id");
+    //     return $this->dbh->resultFetchCol();
+    // }
 }
 ?>

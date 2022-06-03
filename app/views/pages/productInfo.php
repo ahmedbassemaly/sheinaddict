@@ -128,10 +128,15 @@ class productInfo extends View{
             </div>
         </div>
         <hr>
+        <?php
+        $result = $this->model->viewReview($product_id);
+            foreach($result as $review){
+        ?>
         <div class="review-section">
-            <h6>Customer Name</h6>
-            <p>I like this product!</p>
+            <p><?php echo $review->firstName;?></p>
+            <p><?php echo $review->comment;?></p>
         </div>
+        <?php } ?>
 
         <script>
             let bigImg= document.querySelector('.big-img img');
