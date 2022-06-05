@@ -19,15 +19,15 @@
 
     <div class="container" style="margin-left:20%;">
         <?php
-            $j=0;
             $i=0;
-            while($j<5){
+            $names = $this->model->customerName();
+            for($j=0; $j<count($names); $j++){
         ?>
         <div class="container-fluid py-5 mx-auto">
             <div class="card py-4 px-4">
                 <div class="row justify-content-start px-3">
                     <div class="text-left">
-                        <h2>Omar Bassem</h2>
+                        <h2><?php echo $names[$j]."  ".count($names); ?></h2>
                         <hr>
                     </div>
             </div>
@@ -35,21 +35,27 @@
             <div class="line"></div>
                 <div class="row d-flex justify-content-between px-3">
                     <?php
-                        $i=0;
-                        while($i<5){?>
-                        <div class="prod-bg text-center py-1"><img class="prod-pic" src = "<?php echo ImageRoot . "orders/orders-".$i.".png" ; ?>"></div>
+                        $orderID = $this->model->orderID()[$j];
+                        $image = $this->model->Image($orderID);
+                        $totalAmount = $this->model->totalAmount($orderID);
+                        $totalItems = $this->model->totalItems($orderID);
+
+                        for($i=0; $i<count($image); $i++){
+                            // $order = $this->model->orderID()[$i];
+                            ?>
+                        
+                        <div class="prod-bg text-center py-1"><img class="prod-pic" src = "<?php echo ImageRoot . "addproduct/".$image[$i]; ?>"></div>
                             <?php
-                                $i++;
                             }
                             ?>
                         <hr>
-                    <h6>Total Items:<?php echo $i ?> - Total Amount:$40</h6>
+                    <h6>Total Items:<?php echo $totalAmount[0] ?> - Total Amount:<?php echo $totalAmount[0] ?></h6>
                 <div class="btn btn-pink ml-auto">Order Shipped</div>
             </div>
         </div>
     </div>
     <?php
-        $j++;}
+    }
     ?>
     </div>
         <?php

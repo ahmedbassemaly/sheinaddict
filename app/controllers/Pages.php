@@ -333,6 +333,10 @@ class Pages extends Controller
     {
         $cart = $this->getModel();
 
+        if(isset($_GET['product_id']) && $_GET['color_id']){
+            $cart->RemoveFromCart($_SESSION['user_id'], $_GET['product_id'], $_GET['color_id']);
+        }
+
         if(isset($_POST["placeOrder"])) {
             $totalAmount=0;
             $price = $this->model->getProductPrice($_SESSION['user_id']);
@@ -340,6 +344,7 @@ class Pages extends Controller
             for($i=0; $i<count($cartitems); $i++){
                 $totalAmount += $price[$i];
             }
+
             if(isset($_GET['country'])){
             $cart->insertIntoOrders($totalAmount, $_GET['country'], $_SESSION['user_id']);
             $order = $cart->orderID($_SESSION['user_id']);
