@@ -15,9 +15,8 @@ class Index extends View
     // $user_name = $_SESSION['user_name'];
 
     require APPROOT . '/views/inc/header.php';
-
 ?>
-
+<br><br><br>
 <!-- <div class = "center">
    <p>Shein Addict</p>
 </div> -->

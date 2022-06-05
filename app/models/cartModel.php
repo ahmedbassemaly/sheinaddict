@@ -96,8 +96,9 @@ public function productID($userID){
     return$this->dbh->resultFetchCol();
 }
 
-public function colorID($userID){
-    $this->dbh->query("SELECT cart.color_id FROM cart, orders  WHERE cart.user_id = :userID and orders.order_id = LAST_INSERT_ID()");
+public function colorID($userID, $productID){
+    $this->dbh->query("SELECT color_id FROM cart  WHERE product_id = :product_id and user_id = :userID ");
+    $this->dbh->bind(':product_id',$productID);
     $this->dbh->bind(':userID',$userID);
     return $this->dbh->resultFetchCol();
 }
@@ -109,6 +110,15 @@ public function insertIntoOrderProducts($orderID, $productID, $size, $colorID){
     $this->dbh->bind(':size',$size);
     $this->dbh->bind(':colorID',$colorID);
     $this->dbh->execute();
+}
+
+public function RemoveFromCart($userID, $productID, $colorID){
+
+    $this->dbh->query("DELETE FROM cart WHERE `user_id` = :userID AND product_id = :productID AND color_id = :colorID");
+    $this->dbh->bind(':userID',$userID);
+    $this->dbh->bind(':productID',$productID);
+    $this->dbh->bind(':colorID',$colorID);
+    return $this->dbh->execute();
 }
 
 }

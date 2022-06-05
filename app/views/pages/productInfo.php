@@ -10,7 +10,6 @@ class productInfo extends View{
         <div>
             <?php 
             echo $this->model->msg;
-            echo "heyyy". $this->model->sendColor;
             ?>
         </div>
         <?php $product_id=$_GET['product_id']; $color_id=$_GET['color_id'];

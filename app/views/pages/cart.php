@@ -32,8 +32,9 @@ class cart extends view
               <div class="col-md-2 col-lg-2 col-xl-2">
               <?php 
               // echo $this->model->getProductImage()[$i]; 
-              $productID=$this->model->getProductID();
-              $color= $this->model->getProductColor($_SESSION['user_id']);
+              $productID = $this->model->getProductID();
+              $color = $this->model->getProductColor($_SESSION['user_id']);
+              $color_id = $this->model->colorID($_SESSION['user_id'],$productID[$i])
                ?>
                 <img src="<?php echo ImageRoot ."addProduct/". $this->model->getProductImage($productID[$i], $color[$i])[0] ; ?>">
               </div>
@@ -59,7 +60,7 @@ class cart extends view
                 <h5 class="mb-0"><?php echo $this->model->getProductPrice($_SESSION['user_id'])[$i] ?> EGP</h5>
               </div>
               <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <a class="cart" href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                <a class="cart" href="<?php echo URLROOT . 'pages/cart?product_id='.$productID[$i].'&color_id='.$color_id[0] ?>" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
               </div>
             </div>
           </div>
