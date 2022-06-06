@@ -201,7 +201,7 @@
                 </div>
                 <div class="col-lg-3">
                 <li class="list-inline-item">
-                    <button class="btn btn-danger btn-md" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                    <button type="submit" class="btn btn-danger btn-md" name="deleteProduct" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
                 </li>
                 </div> 
             </div>                              

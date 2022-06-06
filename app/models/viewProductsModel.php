@@ -24,7 +24,7 @@ class viewProductsModel extends Model{
     }
     public function getProducts($key=""){
         if($key==""){
-            $this->dbh->query("SELECT p.product_id,p.name,p.price,p.quantity,p.categoryName,p.subCategory, i.image, d.style,d.neckline,d.season,d.material FROM products p, image i, description d  WHERE p.product_id=i.product_id AND p.product_id = d.product_id AND i.image LIKE '%Front%'");
+            $this->dbh->query("SELECT p.product_id,p.name,p.price,p.quantity,p.categoryName,p.subCategory, i.image, d.style,d.neckline,d.season,d.material FROM products p, image i, description d  WHERE p.product_id=i.product_id AND p.product_id = d.product_id AND i.image LIKE '%Front%' GROUP BY product_id");
         }else{
             $this->dbh->query("SELECT p.product_id, p.name,p.price,p.quantity,p.categoryName,p.subCategory, i.image, d.style,d.neckline,d.season,d.material FROM products p, image i, description d  WHERE p.product_id=i.product_id AND p.product_id = d.product_id AND i.image LIKE '%Front%' AND p.name LIKE '%".$key."%'");
         }
