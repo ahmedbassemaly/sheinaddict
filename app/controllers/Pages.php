@@ -103,60 +103,44 @@ class Pages extends Controller
     {
         if(isset($_POST['addProduct'])){
             $addProduct=$this->getModel();
-            // $addProduct->setName($_POST['name']);
-            // $addProduct->setPrice($_POST['price']);
-            // $addProduct->setQuantity($_POST['quantity']);
-            // $addProduct->setCategoryName($_POST['category']);
-            // $addProduct->setsubCategory($_POST['subcategory']);
-            // $addProduct->setStyle($_POST['style']);
-            // $addProduct->setSeason($_POST['season']);
-            // $addProduct->setNeckline($_POST['neckline']);
-            // $addProduct->setMaterial($_POST['material']);
-            // $addProduct->setColor($_POST['color']);
-            // $addProduct->setImages($_FILES);
-            /***********************************IMAGES***********************************/
-            $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
-            if(!empty($_POST['color'])) {
-                foreach($_POST['color'] as $value){
-                    //echo "Chosen color : ".$value.'<br/>';
-                        for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
-                            $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
-                            $uploadOk=1;
-                            $file_name = $_FILES['fileToUpload'.$value]['name'][$i];
-                            $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-                            if($file_ext != "jpg" || $file_ext != "png" || $file_ext != "jpeg"){
-                                $uploadOk=0;
-                                $addProduct->msg = "<div class='alert alert-danger'>
-                            <strong> Wrong file extension</strong>
-                            </div>";
-                            }
-                            if($uploadOk==1){
-                                move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
-                                // $addProduct=$this->getModel();
-                                $addProduct->setName($_POST['name']);
-                                $addProduct->setPrice($_POST['price']);
-                                $addProduct->setQuantity($_POST['quantity']);
-                                $addProduct->setCategoryName($_POST['category']);
-                                $addProduct->setsubCategory($_POST['subcategory']);
-                                $addProduct->setStyle($_POST['style']);
-                                $addProduct->setSeason($_POST['season']);
-                                $addProduct->setNeckline($_POST['neckline']);
-                                $addProduct->setMaterial($_POST['material']);
-                                $addProduct->setColor($_POST['color']);
-                                $addProduct->setImages($_FILES);
-                                $result=$addProduct->insertProduct($_FILES);
-                            }else{
-                                $addProduct->msg = "<div class='alert alert-danger'>
-                            <strong> Wrong file extension</strong>
-                            </div>";
-
-                            }
-                            //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
-                        }
-                    }
-                }  
-            
-
+            $addProduct->setName($_POST['name']);
+            $addProduct->setPrice($_POST['price']);
+            $addProduct->setQuantity($_POST['quantity']);
+            $addProduct->setCategoryName($_POST['category']);
+            $addProduct->setsubCategory($_POST['subcategory']);
+            $addProduct->setStyle($_POST['style']);
+            $addProduct->setSeason($_POST['season']);
+            $addProduct->setNeckline($_POST['neckline']);
+            $addProduct->setMaterial($_POST['material']);
+            $addProduct->setColor($_POST['color']);
+            $addProduct->setImages($_FILES);
+             /***********************************IMAGES***********************************/
+             $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
+             $result=$addProduct->insertProduct();
+ 
+             if(!empty($_POST['color'])) {
+                 foreach($_POST['color'] as $value){
+                     $newImageName=array();
+             $d=0;
+                     //echo "Chosen color : ".$value.'<br/>';
+                         for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
+                             $productid=$addProduct->getID();
+                             $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
+                             //$file_name = $_FILES['fileToUpload'.$value]['name'][$i];
+                             //$imageFileType=strtolower(pathinfo($fileName1,PATHINFO_EXTENSION));
+                             $file_name =$_FILES['fileToUpload'.$value]['name'][$i];
+                             $newImageName[$d]=$productid."_".$value."_".$file_name;
+                             $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                             //move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
+                             move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$root.basename($newImageName[$d]));
+                             $d++;
+                             //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
+                         }
+                         $result=$addProduct->insertImages($newImageName,$value);
+ 
+                     }
+                 }
+             /***********************************IMAGES***********************************/
         }
 
         $viewPath = VIEWS_PATH . 'pages/addProduct.php';
@@ -181,51 +165,38 @@ class Pages extends Controller
             $editProduct->setNeckline($_POST['neckline']);
             $editProduct->setMaterial($_POST['material']);
 
-            //$editProduct->setColor($_POST['color']);
+            // $editProduct->setColor($_POST['color']);
+            // $addProduct->setImages($_FILES);
+            /***********************************IMAGES***********************************/
+            $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
+            if(!empty($_POST['color'])) {
+                foreach($_POST['color'] as $value){
+                    //echo "Chosen color : ".$value.'<br/>';
+                        for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
+                            $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
+                            $file_name = $_FILES['fileToUpload'.$value]['name'][$i];
+                            $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                            move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
+                            //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
+                        }
+                    }
+                }
+            /***********************************IMAGES***********************************/
 
-           // $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/editProduct/";
-            // if(!empty($_POST['color'])) {
-            //     foreach($_POST['color'] as $value){
-            //         //echo "Chosen color : ".$value.'<br/>';
-            //             for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
-            //                 $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
-            //                 $file_name = $_FILES['fileToUpload'.$value]['name'][$i];
-            //                 $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-            //                 move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
-            //                 //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
-            //             }
-            //         }
-            //     }
 
-            // if(!empty($_POST['color'])) {
-            //     foreach($_POST['color'] as $value){
-            //         $newImageName=array();
-            // $d=0;
-            //         //echo "Chosen color : ".$value.'<br/>';
-            //             for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
-            //                 $productid=$addProduct->getID();
-            //                 $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
-            //                 //$imageFileType=strtolower(pathinfo($fileName1,PATHINFO_EXTENSION));
-            //                 $file_name =$FILES['fileToUpload'.$value]['name'][$i];
-            //                 $newImageName[$d]=$productid."".$value."_".$file_name;
-            //                 $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-            //                 move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$root.basename($newImageName[$d]));
-            //                 $d++;
-            //                 //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
-            //             }
-            //             $result=$addProduct->insertImages($newImageName,$value);
-
-            //         }
-            //     }
-            
-            for($i=0; $i<count($this->model->getColor($_GET['product_id'])); $i++){
+           
+            //for($i=0; $i<count($this->model->getColor($_GET['product_id'])); $i++){
                 $result=$editProduct->editProduct($_GET['product_id']);
-            }
+            //}
             
             // $resul2=$editProduct->updateDesc($_POST);
         }
+             if(isset($_POST['deleteProduct'])){
+                ?> <script> alert("Deleted")</script>; <?php
+                $result=$editProduct->deleteProduct($_GET['product_id']);
+                redirect('pages/viewProducts');
+            }
         
-
         $viewPath = VIEWS_PATH . 'pages/editProduct.php';
         require_once $viewPath;
         $editProductView = new editProduct($this->getModel(), $this);
