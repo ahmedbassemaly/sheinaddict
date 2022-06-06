@@ -58,7 +58,7 @@
             ?> <a href="<?php echo URLROOT . '/users/Register'; ?>" class="btn btn-primary">View Product</a>
             <?php } 
              else if($_SESSION['userType_id']==1){ 
-            ?> <a href="<?php echo URLROOT . '/pages/editProduct'; ?>" class="btn btn-primary">Edit Product</a>
+            ?> <a href="<?php echo URLROOT . '/pages/editProduct?product_id='.$this->model->getID($product->product_id,$id); ?>" class="btn btn-primary">Edit Product</a>
             <?php }
             else{ 
             ?> <a href="<?php echo URLROOT . 'pages/productInfo?product_id='.$product->product_id.'&color_id='.$this->model->getColor($product->product_id)[0];?>" class="btn btn-primary">View Product</a>

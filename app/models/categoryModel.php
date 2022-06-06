@@ -52,6 +52,20 @@ class categoryModel extends Model{
             return $this->dbh->rowCount();
         }
     }
+    
+    public function getID($id,$category){
+        if($category == 'Men'){
+            $this->dbh->query("SELECT `product_id` from products WHERE (`product_id`) = :id AND (`categoryName` = 'Men')");
+        }
+        if($category == 'Women'){
+            $this->dbh->query("SELECT `product_id` from products WHERE (`product_id`) = :id AND(`categoryName` = 'Women')");
+        }
+        if($category == 'Kids'){
+            $this->dbh->query("SELECT `product_id` from products WHERE (`product_id`) = :id AND (`categoryName` = 'Kids')");
+        }
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->product_id;
+    }
     public function getName($id,$category){
         if($category == 'Men'){
             $this->dbh->query("SELECT `name` from products WHERE (`product_id`) = :id AND (`categoryName` = 'Men')");
