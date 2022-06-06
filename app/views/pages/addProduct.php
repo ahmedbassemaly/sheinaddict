@@ -18,7 +18,9 @@
         ?>
         <link rel="stylesheet" href="<?php echo URLROOT . 'css/product.css'; ?>">
         
+        
         <form action="" method="POST" enctype='multipart/form-data'>
+        
         <div class="card" >
         <div id="centerEditForm">
             <div class="row">
@@ -199,8 +201,7 @@
 
         </div>
     </div>
-            
-
+    <div><?php echo $this->model->msg; ?> </div>
     </form>
     
         <script>

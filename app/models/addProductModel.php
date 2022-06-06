@@ -17,6 +17,8 @@ class addProductModel extends Model{
 
  protected $images=[];
 
+ public $msg;
+
  public function __construct(){
     parent::__construct();
     $this->name ="";
@@ -30,6 +32,7 @@ class addProductModel extends Model{
     $this->material = "";
     $this->color = array();
     $this->images= array();
+    $this->msg=" ";
  }
  public function getID(){
     return $this->productId;
