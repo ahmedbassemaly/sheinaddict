@@ -123,6 +123,7 @@
                         <option value="sweetheart">Sweetheart</option>
                         <option value="strapless">Strapless</option>
                         <option value="square">Square</option>
+                        <option value="pants">Pants</option>
                     </select></label>
                 </div>
                 <div class="col-lg-3">

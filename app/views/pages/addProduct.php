@@ -1,5 +1,6 @@
 <!-- To fix search bar in header -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js%22%3E</script>"></script>
+
 <?php
   
   class addProduct extends View{
@@ -34,11 +35,19 @@
             <div class="row">
                 <div class="col-lg-6" id=margin-bottom>
                     <label>Price:</label>
-                    <input type="text" name='price' id="price" placeholder="EGP" class="form-control" required>
+                    <input type="text" name='price' id="price" placeholder="EGP" class="form-control" pattern="[0-9]+" 
+                    oninvalid="this.setCustomValidity('Please enter the price in digits')"
+                    onchange="try{setCustomValidity('')}catch(e){}"
+                    oninput="setCustomValidity('')"
+                    required>
                 </div>
                 <div class="col-lg-6" id=margin-bottom>
                     <label>Quantity:</label>
-                    <input type="text" name='quantity' id="quantity" class="form-control" required>  
+                    <input type="text" name='quantity' id="quantity" placeholder="Quantity" class="form-control" pattern="[0-9]+" 
+                    oninvalid="this.setCustomValidity('Please enter the quantity as a number')"
+                    onchange="try{setCustomValidity('')}catch(e){}"
+                    oninput="setCustomValidity('')"
+                    required>  
                 </div>               
             </div>
 
@@ -91,7 +100,7 @@
                     <label> Style:</label>
                 </div>
                 <div class="col-lg-3">
-                    <input type="text" name='style' id="style" placeholder="style" class="form-control">
+                    <input type="text" name='style' id="style" placeholder="style" class="form-control" required>
                 </div>
                 <div class="col-lg-3">
                     <label for="season">Season: 
@@ -120,6 +129,7 @@
                         <option value="sweetheart">Sweetheart</option>
                         <option value="strapless">Strapless</option>
                         <option value="square">Square</option>
+                        <option value="pants">Pants</option>
                     </select></label>
                 </div>
 
@@ -207,7 +217,7 @@
                                             <label for='images'><h4> `+$(this).attr('id')+` </h4>
                                         </div>
                                         <div class='col-lg-9'>
-                                        <label id='fileUpload'> <input type='file' name="fileToUpload`+$(this).attr('id')+`[]" multiple='multiple'> </label>
+                                        <label id='fileUpload'> <input type='file' name="fileToUpload`+$(this).attr('id')+`[]" multiple='multiple' accept='image/jpg'> </label>
                                            
                                         </div>
                                     </div> 
