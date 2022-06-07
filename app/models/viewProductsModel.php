@@ -24,9 +24,9 @@ class viewProductsModel extends Model{
     }
     public function getProducts($key=""){
         if($key==""){
-            $this->dbh->query("SELECT p.product_id,p.name,p.price,p.quantity,p.categoryName,p.subCategory, i.image, d.style,d.neckline,d.season,d.material FROM products p, image i, description d  WHERE p.product_id=i.product_id AND p.product_id = d.product_id AND i.image LIKE '%Front%' GROUP BY product_id");
+            $this->dbh->query("SELECT p.product_id,p.name,p.price,p.quantity,p.categoryName,p.subCategory, i.image, d.style,d.neckline,d.season,d.material FROM products p, image i, description d  WHERE p.product_id=i.product_id AND p.product_id = d.product_id AND i.image LIKE '%Front%' GROUP BY product_id ORDER BY p.quantity ASC");
         }else{
-            $this->dbh->query("SELECT p.product_id, p.name,p.price,p.quantity,p.categoryName,p.subCategory, i.image, d.style,d.neckline,d.season,d.material FROM products p, image i, description d  WHERE p.product_id=i.product_id AND p.product_id = d.product_id AND i.image LIKE '%Front%' AND p.name LIKE '%".$key."%'");
+            $this->dbh->query("SELECT p.product_id, p.name,p.price,p.quantity,p.categoryName,p.subCategory, i.image, d.style,d.neckline,d.season,d.material FROM products p, image i, description d  WHERE p.product_id=i.product_id AND p.product_id = d.product_id AND i.image LIKE '%Front%' AND p.name LIKE '%".$key."%' ORDER BY p.quantity ASC");
         }
         $result=$this->dbh->resultSet();
         foreach($result as $product){
@@ -59,7 +59,11 @@ class viewProductsModel extends Model{
                                     
                                     
                                 <ul class="list-inline list-inline-dotted mb-0">
-                                    <li class="quantity" style="font-size:13px;color:black;font-style: italic;">Quantity: <?php echo $product->quantity;?> </li>
+                                    <?php if(($product->quantity)>0){?>
+                                        <li class="quantity" style="font-size:13px;color:black;font-style: italic;">Quantity: <?php echo $product->quantity;?> </li>
+                                    <?php } else{?>
+                                        <li class="quantity" style="font-size:13px;color:red;font-style: italic;">Quantity: <?php echo "OUT OF STOCK!";?> </li>
+                                        <?php }?>
                                 </ul>
                             </div>
                             <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
