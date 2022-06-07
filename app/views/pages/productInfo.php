@@ -132,8 +132,17 @@ class productInfo extends View{
             foreach($result as $review){
         ?>
         <div class="review-section">
-            <p><?php echo $review->firstName;?></p>
-            <p><?php echo $review->comment;?></p>
+            <!-- <p><?php echo $review->firstName;?></p>
+            <p><?php echo $review->comment;?></p> -->
+            
+            <table class="table w-auto">
+            <tbody>
+                <tr>
+                <td><?php echo $review->firstName;?></td>
+                <td><?php echo $review->comment;?></td>
+                </tr>
+            </tbody>
+            </table>
         </div>
         <?php } ?>
 
