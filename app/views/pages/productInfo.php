@@ -78,7 +78,7 @@ class productInfo extends View{
                 $color=$this->model->getColor($product_id);
                 for($i=0;$i<count($color); $i++){
                     ?>
-                    <a href="<?php echo URLROOT .'pages/productInfo?product_id='.$product_id.'&color_id='.$color_id.'&size='.$_GET['size'].'&color_id2='. $colorID[$i];?>"><div class="circle" style="background-color:<?php echo $color[$i];?>" > </div></a>
+                    <a href="<?php echo URLROOT .'pages/productInfo?product_id='.$product_id.'&color_id='.$color_id.'&color_id2='. $colorID[$i];?>"><div class="circle" style="background-color:<?php echo $color[$i];?>" > </div></a>
                     <?php
                   echo $color[$i];
                 }?>
