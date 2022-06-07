@@ -25,7 +25,7 @@ class shipping extends view
     require APPROOT . '/views/inc/header.php';
     ?>
 
-    <div class="containter-shipping">
+    <div class="containter-shipping" style="margin-left:5%; margin-right:5%;">
         <div class="title">
           <h1> <?php echo $title ?> </h1>
         </div>
@@ -49,9 +49,10 @@ class shipping extends view
         <div class="col-1 text-center d-flex align-items-center"><i class="fa-solid fa-a  me-2 fa-2x"></i> </div>
         <p class="text"> <?php echo $text1 ?> </p>
         
-        <br>
-        <hr style="width:50%; position=relative">
-        <br>
+        <br><br>
+        <hr style="width:50%; margin:auto">
+        <br><br>
+
         <div><div class="col-1 text-center d-flex align-items-center">
         <i class="fa-solid fa-truck-fast me-2 fa-2x"></i></div>
           <p class="text"> <?php echo $subtitle8?> </p>
@@ -61,7 +62,7 @@ class shipping extends view
 
         
     </div>
-    
+    <br><br>
 
 <?php
 

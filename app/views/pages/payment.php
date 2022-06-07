@@ -11,13 +11,14 @@ class payment extends view
     require APPROOT . '/views/inc/header.php';
     ?>
 
-    <div class="containter-shipping">
+    <div class="containter-shipping" style="margin-left:5%; margin-right:5%;">
         <div class="title">
+          <br><br>
           <h1> <?php echo $title ?> </h1>
         </div>
-    
-      <img src= "<?php echo ImageRoot2 . $this->model->getImage(6) ; ?>" width="232" height="217" style="float:left"/></img>
-
+      
+      <img src= "<?php echo ImageRoot . $this->model->getImage(6) ; ?>" width="232" height="217" style="margin-left:42%"/></img>
+      <br><br>
         <?php
         foreach($text as $value){
         ?>

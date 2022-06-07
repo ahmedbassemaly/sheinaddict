@@ -28,14 +28,20 @@ class measurement extends view
 
     <div class="containter-shipping">
       <div class="title">
+        <br><br>
         <h1> <?php echo $title ?> </h1>
       </div>
     
     <div class="chart-container">
-      <img src= "<?php echo ImageRoot2 . $this->model->getImage(2) ; ?>"/></img>
+      <img src= "<?php echo ImageRoot . $this->model->getImage(2) ; ?>"/></img>
     </div>
-      <hr>
-      <img src= "<?php echo ImageRoot2 . $this->model->getImage(3) ; ?>" style="float:right"/></img>
+    <br>
+      <hr style="width:50%; margin:auto">
+      <br>
+      <img src= "<?php echo ImageRoot . $this->model->getImage(3) ; ?>" style="float:right; margin-right:30%; margin-top:2%"/></img>
+      
+      <div><div class="col-1 text-center d-flex align-items-center">
+      <i class="fa-solid fa-circle-question me-2 fa-2x"style= "margin-left:20%"></i></div>
       <p class="text"> <?php echo $subtitle_1  ?> </p>
 
 <?php
@@ -50,6 +56,7 @@ class measurement extends view
       
       <!-- <p class="text"> <?php echo $text ?> </p> -->
     </div>
+    <br><br>
 
 <!-- <p class="text"> <?php print json_encode($subtitle_2); ?> </p> -->
 <?php
