@@ -27,7 +27,7 @@
             <div class="card py-4 px-4">
                 <div class="row justify-content-start px-3">
                     <div class="text-left">
-                        <h2><?php echo $names[$j]."  ".count($names); ?></h2>
+                        <h2><?php echo $names[$j]."  "; ?></h2>
                         <hr>
                     </div>
             </div>
@@ -41,7 +41,6 @@
                         $totalItems = $this->model->totalItems($orderID);
 
                         for($i=0; $i<count($image); $i++){
-                            // $order = $this->model->orderID()[$i];
                             ?>
                         
                         <div class="prod-bg text-center py-1"><img class="prod-pic" src = "<?php echo ImageRoot . "addproduct/".$image[$i]; ?>"></div>
@@ -49,7 +48,7 @@
                             }
                             ?>
                         <hr>
-                    <h6>Total Items:<?php echo $totalAmount[0] ?> - Total Amount:<?php echo $totalAmount[0] ?></h6>
+                    <h6>Total Items:<?php echo $totalItems[0] ?> - Total Amount:<?php echo $totalAmount[0] ?></h6>
                 <div class="btn btn-pink ml-auto">Order Shipped</div>
             </div>
         </div>

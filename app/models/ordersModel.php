@@ -15,31 +15,37 @@ class ordersModel extends model{
     }
 
     public function customerName(){
-        $this->dbh->query("SELECT users.firstName FROM users, orders WHERE users.user_id = orders.user_id");
+        $this->dbh->query("SELECT users.firstName FROM users, orders WHERE users.user_id = orders.user_id AND orders.country=:country");
+        $this->dbh->bind(':country',$_GET['country']);
         return $this->dbh->resultFetchCol();
     }
 
     public function orderID(){
-        $this->dbh->query("SELECT order_id FROM users, orders WHERE users.user_id = orders.user_id");
+        $this->dbh->query("SELECT order_id FROM users, orders WHERE users.user_id = orders.user_id AND orders.country=:country");
+        $this->dbh->bind(':country',$_GET['country']);
+        // $this->dbh->bind(':country',$country);
         return $this->dbh->resultFetchCol();
     }
 
     public function Image($orderID){
         $this->dbh->query("SELECT image.image, orderproduct.order_id FROM image, orderproduct, orders WHERE  
         image.product_id = orderproduct.product_id AND orderproduct.order_id = :orderID
-        AND image LIKE '%FRONT%' AND image.color_id = orderproduct.color_id GROUP BY orderproduct.color_id");
+        AND image LIKE '%FRONT%' AND image.color_id = orderproduct.color_id AND orders.country=:country");
+        $this->dbh->bind(':country',$_GET['country']);
         $this->dbh->bind(':orderID',$orderID);
         return $this->dbh->resultFetchCol();
     }
 
     public function totalAmount($orderID){
-        $this->dbh->query("SELECT totalAmount FROM orders WHERE order_id = :orderID");
+        $this->dbh->query("SELECT totalAmount FROM orders WHERE order_id = :orderID AND orders.country=:country");
+        $this->dbh->bind(':country',$_GET['country']);
         $this->dbh->bind(':orderID',$orderID);
         return $this->dbh->resultFetchCol();
     }
 
     public function totalItems($orderID){
-        $this->dbh->query("SELECT totalItems FROM orders WHERE order_id = :orderID");
+        $this->dbh->query("SELECT totalItems FROM orders WHERE order_id = :orderID AND orders.country=:country");
+        $this->dbh->bind(':country',$_GET['country']);
         $this->dbh->bind(':orderID',$orderID);
         return $this->dbh->resultFetchCol();
     }
