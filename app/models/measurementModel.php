@@ -31,7 +31,7 @@ class measurementModel extends model{
         $word="Measurement chart";
         $this->dbh->query("SELECT text FROM editfaq WHERE `helpMethod`=:word");
         $this->dbh->bind(':word',$word);
-        return $this->dbh->single()->text;
+        return $this->dbh->resultFetchCol();
     }
 
     public function getImage($id){

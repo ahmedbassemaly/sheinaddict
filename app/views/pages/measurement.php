@@ -45,10 +45,10 @@ class measurement extends view
       <p class="text "style="margin-top:-2%"> <?php echo $subtitle_1  ?> </p>
 
 <?php
-   foreach($subtitle_2 as $value){
+   for($i=0; $i<count($subtitle_2); $i++){
      ?>
-    <p class="text"> <?php echo $value ?> </p>
-    <p class="text"> <?php echo $text ?> </p>
+    <p class="text"> <?php echo $subtitle_2[$i] ?> </p>
+    <p class="text"> <?php echo $text[$i] ?> </p>
   <?php
    }
   ?>
