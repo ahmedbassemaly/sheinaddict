@@ -22,6 +22,7 @@ class shippingModel extends model{
     //     $this->dbh->bind(':id',$id);
     //     return $this->dbh->single()->helpMethod;
     // }
+    protected $id;
 
     public function getTitle(){
         $word="Shipping Policy";
@@ -30,17 +31,19 @@ class shippingModel extends model{
         return $this->dbh->single()->title;
     }
 
-    public function getSubtitle_1(){
+    public function getSubtitle_1($id){
         $word="Shipping Policy";
-        $this->dbh->query("SELECT subtitle_1 FROM editfaq WHERE `helpMethod`=:word");
+        $this->dbh->query("SELECT subtitle_1 FROM editfaq WHERE `helpMethod`=:word AND `FAQ_id`=:id");
         $this->dbh->bind(':word',$word);
-        return $this->dbh->resultFetchCol();
+        $this->dbh->bind(':id',$id);
+        return $this->dbh->single()->subtitle_1;
     }
 
-    public function getText(){
+    public function getText($id){
         $word="Shipping Policy";
-        $this->dbh->query("SELECT text FROM editfaq WHERE `helpMethod`=:word");
+        $this->dbh->query("SELECT text FROM editfaq WHERE `helpMethod`=:word AND `FAQ_id`=:id");
         $this->dbh->bind(':word',$word);
+        $this->dbh->bind(':id',$id);
         return $this->dbh->single()->text;
     }
 

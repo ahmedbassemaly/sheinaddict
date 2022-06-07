@@ -1,28 +1,31 @@
-.title{
+.title {
     margin-top: 3%;
     margin-bottom: 3%;
     font-family: 'Lato', sans-serif;
 }
-p.text{
+
+p.text {
     color: black;
     font-family: 'Lato', sans-serif;
     font-size: large;
     margin-left: 5%;
     margin-right: 5%;
+    /* margin-bottom: 10%; */
 }
 
-h1{
+h1 {
     margin-bottom: 30%;
     text-align: center;
     font-family: 'Lato', sans-serif;
     /* font-family: DejaVu Sans Mono, monospace; */
 }
 
-h4{
+h4 {
     margin-left: 5%;
     font-family: 'Lato', sans-serif;
+    color: #ddb6a8;
 }
 
-.chart-container{
+.chart-container {
     text-align: center;
 }

@@ -13,10 +13,14 @@ class shipping extends view
 
         // $helpMethod = $this->model->getHelpMethod($id);
         // $helpText=$this->model->getHelpText($id);
-
+        echo "<br><br>";
         $title = $this->model->getTitle();
-        $subtitle = $this->model->getSubtitle_1();
-        $text=$this->model->getText();
+        // $id=1;
+        $subtitle1 = $this->model->getSubtitle_1(1);
+        $subtitle8 = $this->model->getSubtitle_1(8);
+
+        $text1=$this->model->getText(1);
+        $text8=$this->model->getText(8);
 
     require APPROOT . '/views/inc/header.php';
     ?>
@@ -25,19 +29,39 @@ class shipping extends view
         <div class="title">
           <h1> <?php echo $title ?> </h1>
         </div>
-    
-      <!-- <img src= "<?php echo ImageRoot . 'payment.png' ; ?>" style="float:left"/></img> -->
 
-        <?php
-        foreach($subtitle as $value){
-        ?>
-          <p class="text"> <?php echo $value ?> </p>
-          <p class="text"> <?php echo $text ?> </p>
+        <!-- <?php
+          foreach($subtitle as $value){
+            ?>
+              <div class="col-1 text-center d-flex align-items-center">
+                <i class="fa-solid fa-money-bill-1-wave  me-2 fa-3x"></i></div>
+                <p class="text"> <?php echo $value ?> </p>
+              <p class="text"> <?php echo $text ?> </p>
+            
+            <?php
+          }               
+        ?> -->
 
-        <?php
-            }
-        ?>
+        <div><div class="col-1 text-center d-flex align-items-center">
+        <i class="fa-solid fa-hourglass  me-2 fa-2x"></i></div>
+          <p class="text"> <?php echo $subtitle1?> </p>
+        </div>
+        <div class="col-1 text-center d-flex align-items-center"><i class="fa-solid fa-a  me-2 fa-2x"></i> </div>
+        <p class="text"> <?php echo $text1 ?> </p>
+        
+        <br>
+        <hr style="width:50%; position=relative">
+        <br>
+        <div><div class="col-1 text-center d-flex align-items-center">
+        <i class="fa-solid fa-truck-fast me-2 fa-2x"></i></div>
+          <p class="text"> <?php echo $subtitle8?> </p>
+        </div>
+        <div class="col-1 text-center d-flex align-items-center"><i class="fa-solid fa-a  me-2 fa-2x"></i> </div>
+        <p class="text"> <?php echo $text8 ?> </p>
+
+        
     </div>
+    
 
 <?php
 
