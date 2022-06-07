@@ -9,7 +9,8 @@ define('DB_NAME', 'sheinaddict');
 //echo dirname(dirname(__FILE__));
 define('APPROOT', dirname(dirname(__FILE__)));
 // URL Root
-define('URLROOT', 'http://localhost/sheinaddict/public/');
+//define('URLROOT', 'http://localhost/sheinaddict/public/');
+define('URLROOT', 'https://sheinaddict.herokuapp.com/public/');
 // Site Name
 define('SITENAME', 'Shein Addict');
 
