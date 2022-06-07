@@ -52,7 +52,11 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <p class="quantity" style="font-size:13px;color:black;font-style: italic;">Quantity: <?php echo $this->model->getQuantity($product->product_id,$id);?> </p>
+            <?php if(($product->quantity)>0){?>
+                                        <p class="quantity" style="font-size:13px;color:black;font-style: italic;">Quantity: <?php echo $product->quantity;?> </p>
+                                    <?php } else{?>
+                                        <p class="quantity" style="font-size:13px;color:red;font-style: italic;"><?php echo "OUT OF STOCK!";?> </p>
+                                        <?php }?>
 
             <?php if(empty($_SESSION['userType_id'])){
             ?> <a href="<?php echo URLROOT . '/users/Register'; ?>" class="btn btn-primary">View Product</a>
