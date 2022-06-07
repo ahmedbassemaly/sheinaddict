@@ -22,7 +22,7 @@
         <div class="container">
         <link rel="stylesheet" href="<?php echo URLROOT . 'css/viewCustomers.css'; ?>">
         <br><h2 class="heading">Customers Info</h2> <br><br>       
-        <table class="table table-hover">
+        <table class="table table-hover " style="width:80%">
             <thead>
             <tr>
                 <th>#</th>

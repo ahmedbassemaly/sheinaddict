@@ -35,14 +35,14 @@ class measurement extends view
     <div class="chart-container">
       <img src= "<?php echo ImageRoot . $this->model->getImage(2) ; ?>"/></img>
     </div>
-    <br>
+    <br><br>
       <hr style="width:50%; margin:auto">
       <br>
       <img src= "<?php echo ImageRoot . $this->model->getImage(3) ; ?>" style="float:right; margin-right:30%; margin-top:2%"/></img>
       
       <div><div class="col-1 text-center d-flex align-items-center">
       <i class="fa-solid fa-circle-question me-2 fa-2x"style= "margin-left:20%"></i></div>
-      <p class="text"> <?php echo $subtitle_1  ?> </p>
+      <p class="text "style="margin-top:-2%"> <?php echo $subtitle_1  ?> </p>
 
 <?php
    foreach($subtitle_2 as $value){

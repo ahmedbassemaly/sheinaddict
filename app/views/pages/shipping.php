@@ -26,7 +26,7 @@ class shipping extends view
     ?>
 
     <div class="containter-shipping" style="margin-left:5%; margin-right:5%;">
-        <div class="title">
+        <div class="title" style="margin-bottom:8%">
           <h1> <?php echo $title ?> </h1>
         </div>
 
@@ -42,23 +42,27 @@ class shipping extends view
           }               
         ?> -->
 
-        <div><div class="col-1 text-center d-flex align-items-center">
-        <i class="fa-solid fa-hourglass  me-2 fa-2x"></i></div>
-          <p class="text"> <?php echo $subtitle1?> </p>
-        </div>
-        <div class="col-1 text-center d-flex align-items-center"><i class="fa-solid fa-a  me-2 fa-2x"></i> </div>
-        <p class="text"> <?php echo $text1 ?> </p>
+        <div class="col-1 text-center d-flex align-items-center">
+        <i  class="fa-solid fa-hourglass  me-2 fa-2x"></i></div>
+          <p class="text" style="margin-top:-2%" style="margin-bottom:2%"> <?php echo $subtitle1?> </p>
+        
+        <br>  
+
+        <div class="col-1 text-center d-flex align-items-center"><i class="fa-solid fa-a me-2 fa-2x"></i> </div>
+        <p class="text" style="margin-top:-2%"> <?php echo $text1 ?> </p>
         
         <br><br>
         <hr style="width:50%; margin:auto">
         <br><br>
 
-        <div><div class="col-1 text-center d-flex align-items-center">
+        <div class="col-1 text-center d-flex align-items-center">
         <i class="fa-solid fa-truck-fast me-2 fa-2x"></i></div>
-          <p class="text"> <?php echo $subtitle8?> </p>
-        </div>
+          <p class="text" style="margin-top:-2%"> <?php echo $subtitle8?> </p>
+        
+        <br>
+
         <div class="col-1 text-center d-flex align-items-center"><i class="fa-solid fa-a  me-2 fa-2x"></i> </div>
-        <p class="text"> <?php echo $text8 ?> </p>
+        <p class="text" style="margin-top:-2%"> <?php echo $text8 ?> </p>
 
         
     </div>
