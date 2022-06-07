@@ -19,7 +19,14 @@ class cart extends view
         </div>
 
       <?php 
-      
+      if(count($this->model->getNumberOfCartItems($_SESSION['user_id']))<1){
+        ?>
+        <div class="text-center fixed-top" style="margin-top:80px;">  
+                      <button class="btn btn-danger" style="width:40%"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Cart is Empty!</button>
+                    </div>
+      <?php
+      }
+      else{
       $cart = $this->model->getProductName($_SESSION['user_id']);
       $userID = $_SESSION['user_id'];
       $price = $this->model->getProductPrice($_SESSION['user_id']);
@@ -32,9 +39,9 @@ class cart extends view
               <div class="col-md-2 col-lg-2 col-xl-2">
               <?php 
               // echo $this->model->getProductImage()[$i]; 
-              $productID = $this->model->getProductID();
+              $productID = $this->model->getProductID($_SESSION['user_id']);
               $color = $this->model->getProductColor($_SESSION['user_id']);
-              $color_id = $this->model->colorID($_SESSION['user_id'],$productID[$i])
+              $color_id = $this->model->colorID($_SESSION['user_id'],$productID[$i]);
                ?>
                 <img src="<?php echo ImageRoot ."addProduct/". $this->model->getProductImage($productID[$i], $color[$i])[0] ; ?>">
               </div>
@@ -43,19 +50,38 @@ class cart extends view
                 <p class="lead">Size: <?php echo $this->model->getSize($_SESSION['user_id'])[$i]?> <br>Color: <?php echo $this->model->getProductColor($_SESSION['user_id'])[$i]; ?></p>
               </div>
               <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                  <i class="fas fa-minus"></i>
-                </button>
+              <?php
 
-                <input id="form1" min="0" name="quantity" value="1" type="number"
-                  class="form-control form-control-sm" />
+                $quantity = 1;
+                $cartdetailsID = $this->model->getNumberOfCartItems($_SESSION['user_id']);  
+                ?>
+                <a href="javascript:" id="minus2" onclick="decrementValue(<?php echo $i ?>)"/><strong>-</strong></a>
+                <input type="text" id="qty<?php echo $i?>" name="quan<?php echo $i?>" min="1" value="<?php echo $quantity; ?>">
+                <a href="javascript:" id="add2" onclick="incrementValue(<?php echo $i ?>)"/><strong>+</strong></a>
+                <script type="text/javascript">
+                  
+                function decrementValue(i){         
+                  var qty2 = document.getElementById("qty"+i);
+                    if(!isNaN(qty2.value) && qty2.value > 0 ) {
 
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                  <i class="fas fa-plus"></i>
-                </button>
+                      qty2.value--;
+
+                    }
+                }
+
+                function incrementValue(i){
+                   var qty2 = document.getElementById("qty"+i);
+                    if(!isNaN(qty2.value)) {
+
+                      qty2.value++;
+
+                    }
+                }
+
+                </script>
+
               </div>
+              <?php echo $quantity ?>
               <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                 <h5 class="mb-0"><?php echo $this->model->getProductPrice($_SESSION['user_id'])[$i] ?> EGP</h5>
               </div>
@@ -66,8 +92,9 @@ class cart extends view
           </div>
         </div>
 <?php
- $sum += $price[$i];
-} 
+  $sum += $price[$i];
+  } 
+}
 ?>
 
         <div class="card">
@@ -80,23 +107,36 @@ class cart extends view
           </div>
         </div>
 
+        <?php
+        if(count($this->model->getNumberOfCartItems($_SESSION['user_id']))<1){
+          $sum=0;
+        }
+        ?>
         <div class="card">
           <div class="card-body">
+            <?php if(isset($_GET['country'])=='Egypt'){?>
                 <p class="lead">Total: <?php echo $sum ?> EGP</p>
+                <?php }
+                else{
+                  ?>
+                  <p class="lead">Total: <?php echo $sum*10?> EGP</p>
+                  <?php
+                }
+                ?>
                 <div class="dropdown" col-md-6 text-center>
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   choose country
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href=<?php echo URLROOT."pages/cart?country=Egypt"?>>Egypt</a></li>
-                  <li><a class="dropdown-item" href=<?php echo URLROOT."pages/cart?country=Saudi%20Arabia"?>>Saudi Arabia</a></li>
+                  <li><a class="dropdown-item" href=<?php echo URLROOT."pages/cart?country=Egypt"?>>2 weeks</a></li>
+                  <li><a class="dropdown-item" href=<?php echo URLROOT."pages/cart?country=Saudi%20Arabia"?>> 1 month</a></li>
                   <!-- javascript:void(false); -->
                 </ul>
               </div>
             </div>
 
             <form action="" method="POST">
-             <button type="submit" class="btn btn-warning btn-block btn-lg" name="placeOrder" value="Order Now">Proceed to Pay</button>
+             <button type="submit" class="btn btn-warning btn-block btn-lg" name="placeOrder" value="Order Now">Place Order</button>
             </form>
         </div>
         

@@ -4,6 +4,7 @@ class cartModel extends Model{
     protected $productName;
     protected $cartItems;
     protected $order_id;
+    protected $quantity;
 
 
 
@@ -12,6 +13,7 @@ class cartModel extends Model{
         $this->productName = "";
         $this->cartItems = "";
         $this->order_id="";
+        $this->quantity="";
     }
    
     public function getProductName($userID){
@@ -21,9 +23,10 @@ class cartModel extends Model{
         return $this->dbh->resultFetchCol();
     }
 
-    public function getProductID(){
+    public function getProductID($userID){
 
-        $this->dbh->query("SELECT cart.product_id from cart, products WHERE cart.product_id = products.product_id");
+        $this->dbh->query("SELECT cart.product_id from cart, products WHERE cart.product_id = products.product_id AND cart.user_id = :userID ");
+        $this->dbh->bind(':userID',$userID);
         return $this->dbh->resultFetchCol();
     }
    
@@ -61,7 +64,7 @@ class cartModel extends Model{
 
     public function getNumberOfCartItems($userID){
 
-    $this->dbh->query("SELECT user_id FROM cart WHERE user_id=:userID");
+    $this->dbh->query("SELECT cart_id FROM cart WHERE user_id=:userID");
     $this->dbh->bind(":userID",$userID);
     return $this->dbh->resultFetchCol();
 }
@@ -96,19 +99,24 @@ public function productID($userID){
     return$this->dbh->resultFetchCol();
 }
 
-public function colorID($userID, $productID){
-    $this->dbh->query("SELECT color_id FROM cart  WHERE product_id = :product_id and user_id = :userID ");
-    $this->dbh->bind(':product_id',$productID);
+public function colorID($userID){
+    $this->dbh->query("SELECT color_id FROM cart  WHERE user_id = :userID ");
     $this->dbh->bind(':userID',$userID);
     return $this->dbh->resultFetchCol();
 }
 
+public function setQuantity($quantity){
+    $this->quantity = $quantity;
+
+}
+
 public function insertIntoOrderProducts($orderID, $productID, $size, $colorID){
-    $this->dbh->query("INSERT INTO orderproduct(`order_id`, `product_id`, `size` ,`color_id`) VALUES (:orderID, :productID, :size, :colorID)");
+    $this->dbh->query("INSERT INTO orderproduct(`order_id`, `product_id`, `size` ,`color_id`, `quantity`) VALUES (:orderID, :productID, :size, :colorID, :quantity)");
     $this->dbh->bind(':orderID',$orderID);
     $this->dbh->bind(':productID',$productID);
     $this->dbh->bind(':size',$size);
     $this->dbh->bind(':colorID',$colorID);
+    $this->dbh->bind(':quantity',$this->quantity);
     $this->dbh->execute();
 }
 
