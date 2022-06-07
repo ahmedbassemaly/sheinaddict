@@ -103,49 +103,39 @@ class Pages extends Controller
     {
         if(isset($_POST['addProduct'])){
             $addProduct=$this->getModel();
-             /***********************************IMAGES***********************************/
-             $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
-             if(!empty($_POST['color'])) {
-                 foreach($_POST['color'] as $value){
-                     //echo "Chosen color : ".$value.'<br/>';
-                         for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
-                             $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
-                             $uploadOk=1;
-                             $file_name = $_FILES['fileToUpload'.$value]['name'][$i];
-                             $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-                             move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
-                             $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-                             if($file_ext != "jpg" || $file_ext != "png" || $file_ext != "jpeg"){
-                                 $uploadOk=0;
-                                 $addProduct->msg = "<div class='alert alert-danger'>
-                             <strong> Wrong file extension</strong>
-                             </div>";
-                             }
-                             if($uploadOk==1){
-                                 move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
-                                 // $addProduct=$this->getModel();
-                                 $addProduct->setName($_POST['name']);
-                                 $addProduct->setPrice($_POST['price']);
-                                 $addProduct->setQuantity($_POST['quantity']);
-                                 $addProduct->setCategoryName($_POST['category']);
-                                 $addProduct->setsubCategory($_POST['subcategory']);
-                                 $addProduct->setStyle($_POST['style']);
-                                 $addProduct->setSeason($_POST['season']);
-                                 $addProduct->setNeckline($_POST['neckline']);
-                                 $addProduct->setMaterial($_POST['material']);
-                                 $addProduct->setColor($_POST['color']);
-                                 $addProduct->setImages($_FILES);
-                                 $result=$addProduct->insertProduct($_FILES);
-                             }else{
-                                 $addProduct->msg = "<div class='alert alert-danger'>
-                             <strong> Wrong file extension</strong>
-                             </div>";
- 
-                             }
-                            }
+            $addProduct->setName($_POST['name']);
+            $addProduct->setPrice($_POST['price']);
+            $addProduct->setQuantity($_POST['quantity']);
+            $addProduct->setCategoryName($_POST['category']);
+            $addProduct->setsubCategory($_POST['subcategory']);
+            $addProduct->setStyle($_POST['style']);
+            $addProduct->setSeason($_POST['season']);
+            $addProduct->setNeckline($_POST['neckline']);
+            $addProduct->setMaterial($_POST['material']);
+            $addProduct->setColor($_POST['color']);
+            $addProduct->setImages($_FILES);
+            /***********************************IMAGES***********************************/
+            $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
+            $result=$addProduct->insertProduct();
+            
+            if(!empty($_POST['color'])) {
+                foreach($_POST['color'] as $value){
+                    $newImageName=array();
+                    $d=0;
+                        for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
+                            $productid=$addProduct->getID();
+                            $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
+                            //$imageFileType=strtolower(pathinfo($fileName1,PATHINFO_EXTENSION));
+                            $file_name =$_FILES['fileToUpload'.$value]['name'][$i];
+                            $newImageName[$d]=$productid."_".$value."_".$file_name;
+                            $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                            move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$root.basename($newImageName[$d]));
+                            $d++;
                         }
+                        $result=$addProduct->insertImages($newImageName,$value);
                     }
-             /***********************************IMAGES***********************************/
+                }
+            /***********************************IMAGES***********************************/
         }
 
         $viewPath = VIEWS_PATH . 'pages/addProduct.php';

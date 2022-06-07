@@ -7,7 +7,7 @@ class addProductModel extends Model{
  protected $price;
  protected $quantity;
  protected $categoryName;
- protected $subcategory;
+ protected $subCategory;
 
  protected $style;
  protected $season;
@@ -25,7 +25,7 @@ class addProductModel extends Model{
     $this->price = "";
     $this->quantity = "";
     $this->categoryName = "";
-    $this->subcategory = "";
+    $this->subCategory = "";
     $this->style = "";
     $this->season = "";
     $this->neckline = "";
