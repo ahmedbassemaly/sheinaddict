@@ -182,19 +182,19 @@ class Pages extends Controller
             // $editProduct->setColor($_POST['color']);
             // $addProduct->setImages($_FILES);
             /***********************************IMAGES***********************************/
-            $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
-            if(!empty($_POST['color'])) {
-                foreach($_POST['color'] as $value){
-                    //echo "Chosen color : ".$value.'<br/>';
-                        for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
-                            $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
-                            $file_name = $_FILES['fileToUpload'.$value]['name'][$i];
-                            $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-                            move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
-                            //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
-                        }
-                    }
-                }
+            // $root = $_SERVER['DOCUMENT_ROOT']. "/sheinaddict/app/views/images/addProduct/";
+            // if(!empty($_POST['color'])) {
+            //     foreach($_POST['color'] as $value){
+            //         //echo "Chosen color : ".$value.'<br/>';
+            //             for($i=0;$i<count($_FILES['fileToUpload'.$value]['name']);$i++){
+            //                 $fileName1=$root.basename($_FILES['fileToUpload'.$value]['name'][$i]);
+            //                 $file_name = $_FILES['fileToUpload'.$value]['name'][$i];
+            //                 $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+            //                 move_uploaded_file($_FILES['fileToUpload'.$value]['tmp_name'][$i],$fileName1);
+            //                 //echo "Chosen image : ".$_FILES['fileToUpload'.$value]['name'][$i].'<br/>';
+            //             }
+            //         }
+            //     }
             /***********************************IMAGES***********************************/
 
 

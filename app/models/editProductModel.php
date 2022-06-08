@@ -166,11 +166,6 @@ class editProductModel extends Model{
 
 
     public function editProduct($productId){
-        $this->dbh->query("SELECT product_id FROM products order by product_id desc limit 1");//betgeeb a5er (agbar) id fel database
-        $productId=$this->dbh->single()->product_id;
-        $newProductId=$productId+1;
-        $this->setID($newProductId);
-
         $this->dbh->query("UPDATE products SET `name`=:name, `price`=:price,
                         `quantity`=:quantity, `categoryName`=:categoryName, `subCategory`=:subCategory 
                         WHERE   `product_id`=:productId");
@@ -183,40 +178,38 @@ class editProductModel extends Model{
         $this->dbh->bind(':subCategory', $this->subCategory);
         $this->dbh->execute();
 
-        foreach($this->color as $colorID){ 
+        //foreach($this->color as $colorID){                   ,(SELECT color_id FROM colors WHERE colorName=:color),
         //,(UDPATE color_id FROM colors WHERE colorName=:color),
-        $this->dbh->query("UPDATE description SET `style`=:style ,`season`=:season,
-                                `neckline`=:neckline,`material`=:material,(SELECT color_id FROM colors WHERE colorName=:color),
-                                WHERE `product_id`=:productId "); 
+        $this->dbh->query("UPDATE description SET `style`=:style ,`season`=:season,`neckline`=:neckline,`material`=:material WHERE `product_id`=:productId "); 
                                 //,`color_id`=".$x->color_id[$i]."
         $this->dbh->bind(':productId', $productId);
         $this->dbh->bind(':style', $this->style);
         $this->dbh->bind(':season', $this->season);
         $this->dbh->bind(':neckline', $this->neckline);
         $this->dbh->bind(':material', $this->material);
-        $this->dbh->bind(':color' , $colorID);
+        //$this->dbh->bind(':color' , $colorID);
         $this->dbh->execute();
-       }
+       //}
     }
 
-    public function insertImages($images, $colorID){
-        // foreach($images as $image){
-        //     $this->dbh->query("INSERT INTO image(`image`,`product_id`,`color_id`) 
-        //     VALUES (:image, :newProductId, (SELECT color_id FROM colors WHERE colorName=:color))");
-        //     $this->dbh->bind(':image' , $image);
-        //     $this->dbh->bind(':newProductId', $this->productId);
-        //     $this->dbh->bind(':color' , $colorID);
-        //     $this->dbh->execute();
-        // }
-        foreach($images as $image){
-            $this->dbh->query("UPDATE image SET `image`=:image ,`product_id`=:newProductId ,`color_id`=(SELECT color_id FROM colors WHERE colorName=:color)");
-            $this->dbh->bind(':image' , $image);
-            $this->dbh->bind(':newProductId', $this->productId);
-            $this->dbh->bind(':color' , $colorID);
-            $this->dbh->execute();
-        }
+//     public function insertImages($images, $colorID){
+//         // foreach($images as $image){
+//         //     $this->dbh->query("INSERT INTO image(`image`,`product_id`,`color_id`) 
+//         //     VALUES (:image, :newProductId, (SELECT color_id FROM colors WHERE colorName=:color))");
+//         //     $this->dbh->bind(':image' , $image);
+//         //     $this->dbh->bind(':newProductId', $this->productId);
+//         //     $this->dbh->bind(':color' , $colorID);
+//         //     $this->dbh->execute();
+//         // }
+//         foreach($images as $image){
+//             $this->dbh->query("UPDATE image SET `image`=:image ,`product_id`=:newProductId ,`color_id`=(SELECT color_id FROM colors WHERE colorName=:color)");
+//             $this->dbh->bind(':image' , $image);
+//             $this->dbh->bind(':newProductId', $this->productId);
+//             $this->dbh->bind(':color' , $colorID);
+//             $this->dbh->execute();
+//         }
     
- }
+//  }
 
 /*******************************************DELETE PRODUCT**********************************************************/
 public function deleteProduct($productID){
