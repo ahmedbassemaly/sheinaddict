@@ -114,18 +114,27 @@ class cart extends view
         ?>
         <div class="card">
           <div class="card-body">
-            <?php if(isset($_GET['country'])=='Egypt'){?>
-                <p class="lead">Total: <?php echo $sum ?> EGP</p>
-                <?php }
-                else{
+            <?php 
+                if(isset($_GET['country'])){
+                  if($_GET['country']=='Egypt'){
+                  $sum = (intval($sum) * 2) ;
                   ?>
-                  <p class="lead">Total: <?php echo $sum*10?> EGP</p>
-                  <?php
+                  <p class="lead" id="total">Total: <?php echo $sum ?> EGP</p>
+                <?php 
+                  }
+                  elseif($_GET['country']=='Saudi Arabia'){
+                    $sum = (intval($sum));
+                    ?>
+                    <p class="lead" id="total">Total: <?php echo $sum?> EGP</p>
+                    <?php
+                  }
                 }
                 ?>
+                <script>
+                </script>
                 <div class="dropdown" col-md-6 text-center>
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  choose country
+                  Shipping
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <li><a class="dropdown-item" href=<?php echo URLROOT."pages/cart?country=Egypt"?>>2 weeks</a></li>
