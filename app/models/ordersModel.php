@@ -30,7 +30,7 @@ class ordersModel extends model{
     public function Image($orderID){
         $this->dbh->query("SELECT image.image, orderproduct.order_id FROM image, orderproduct, orders WHERE  
         image.product_id = orderproduct.product_id AND orderproduct.order_id = :orderID
-        AND image LIKE '%FRONT%' AND image.color_id = orderproduct.color_id AND orders.country=:country");
+        AND image LIKE '%FRONT%' AND image.color_id = orderproduct.color_id AND country = :country GROUP BY orderproduct.color_id, orderproduct.product_id");
         $this->dbh->bind(':country',$_GET['country']);
         $this->dbh->bind(':orderID',$orderID);
         return $this->dbh->resultFetchCol();

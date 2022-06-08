@@ -326,10 +326,6 @@ class Pages extends Controller
     public function cart()
     {
         $cart = $this->getModel();
-        
-        if(isset($_GET['product_id']) && $_GET['color_id']){
-            $cart->RemoveFromCart($_SESSION['user_id'], $_GET['product_id'], $_GET['color_id']);
-        }
 
         if(isset($_POST["placeOrder"])) {
             $totalAmount=0;
@@ -338,7 +334,6 @@ class Pages extends Controller
             for($i=0; $i<count($cartitems); $i++){
                 $totalAmount += $price[$i];
             }
-
             if(isset($_GET['country'])){
             $cart->insertIntoOrders($totalAmount, $_GET['country'], $_SESSION['user_id']);
             $order = $cart->orderID($_SESSION['user_id']);
@@ -347,6 +342,7 @@ class Pages extends Controller
             $color = $cart->colorID($_SESSION['user_id']);
 
             for($i=0; $i<count($cartitems); $i++){
+                // echo"<br><br><br>".$i;
                 $cart->insertIntoOrderProducts($order,$product[$i], $cart->getSize($_SESSION['user_id'])[$i], $color[$i]) ;
             echo $_SESSION['user_id'];
             }
@@ -358,7 +354,6 @@ class Pages extends Controller
         require_once $viewPath;
         $cartView = new cart($this->getModel(), $this);
         $cartView->output();
-        
     }
 
     public function shipping()

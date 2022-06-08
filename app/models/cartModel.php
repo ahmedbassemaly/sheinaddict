@@ -111,12 +111,11 @@ public function setQuantity($quantity){
 }
 
 public function insertIntoOrderProducts($orderID, $productID, $size, $colorID){
-    $this->dbh->query("INSERT INTO orderproduct(`order_id`, `product_id`, `size` ,`color_id`, `quantity`) VALUES (:orderID, :productID, :size, :colorID, :quantity)");
+    $this->dbh->query("INSERT INTO orderproduct(`order_id`, `product_id`, `size` ,`color_id`) VALUES (:orderID, :productID, :size, :colorID)");
     $this->dbh->bind(':orderID',$orderID);
     $this->dbh->bind(':productID',$productID);
     $this->dbh->bind(':size',$size);
     $this->dbh->bind(':colorID',$colorID);
-    $this->dbh->bind(':quantity',$this->quantity);
     $this->dbh->execute();
 }
 

@@ -78,7 +78,7 @@ class productInfo extends View{
                 $color=$this->model->getColor($product_id);
                 for($i=0;$i<count($color); $i++){
                     ?>
-                    <a href="<?php echo URLROOT .'pages/productInfo?product_id='.$product_id.'&color_id='.$color_id.'&color_id2='. $colorID[$i];?>"><div class="circle" style="background-color:<?php echo $color[$i];?>" > </div></a>
+                    <a href="<?php echo URLROOT .'pages/productInfo?product_id='.$product_id.'&color_id='.$color_id.'&size='.$_GET['size'].'&color_id2='. $colorID[$i];?>"><div class="circle" style="background-color:<?php echo $color[$i];?>" > </div></a>
                     <?php
                   echo $color[$i];
                 }?>
@@ -127,24 +127,10 @@ class productInfo extends View{
             </div>
         </div>
         <hr>
-        <?php
-        $result = $this->model->viewReview($product_id);
-            foreach($result as $review){
-        ?>
         <div class="review-section">
-            <!-- <p><?php echo $review->firstName;?></p>
-            <p><?php echo $review->comment;?></p> -->
-            
-            <table class="table w-auto">
-            <tbody>
-                <tr>
-                <td><?php echo $review->firstName;?></td>
-                <td><?php echo $review->comment;?></td>
-                </tr>
-            </tbody>
-            </table>
+            <h6>Customer Name</h6>
+            <p>I like this product!</p>
         </div>
-        <?php } ?>
 
         <script>
             let bigImg= document.querySelector('.big-img img');
